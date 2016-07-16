@@ -1,4 +1,4 @@
-const {ipcRenderer} = nodeRequire('electron');
+// const {ipcRenderer} = nodeRequire('electron');
 
 // ipcRenderer.on('load-message' , function(event, data) {
 //   document.getElementById('title').innerHTML = data.appName + ' App';

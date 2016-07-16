@@ -3,6 +3,9 @@
   "version" : "0.1.0",
   "main"    : "main.js",
   "scripts": {
-    "start": "electron app/javascripts/main/index.js"
+    "start": "NODE_ENV=development electron app/javascripts/main/index.js"
+  },
+  "dependencies": {
+    "electron-is-dev": "0.1.1"
   }
 }
