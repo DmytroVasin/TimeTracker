@@ -15,7 +15,7 @@ let optionsWindow;
 
 app.on('ready', function () {
   const createWindow = function () {
-    window = new BrowserWindow({ width: 800, height: 600 })
+    window = new BrowserWindow({ width: 1300, height: 800 })
     window.loadURL('file://' + path.join(__dirname, '..', '..') + '/views/index.html');
 
     optionsWindow = new BrowserWindow({ width: 400, height: 300, show: false });
@@ -32,24 +32,16 @@ app.on('ready', function () {
       optionsWindow = new BrowserWindow({ width: 400, height: 300, show: false });
       optionsWindow.loadURL('file://' + path.join(__dirname, '..', '..') + '/views/options.html');
     });
-
-    if (isDev) {
-      window.webContents.openDevTools()
-    }
   }
   createWindow();
 
-  const setupMenu = function () {
-    Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate()) );
-  };
 
-  setupMenu();
+  Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate()) );
 })
 
 app.on('window-all-closed', function () {
   app.quit()
 })
-
 
 // Custom events
 app.on('show-about', function() {

@@ -27,7 +27,7 @@ let Menu = function() {
         },
         {
           label: 'Toggle Developer Tools',
-          accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+          accelerator: 'F12',
           click: function (item, focusedWindow) {
             focusedWindow.webContents.toggleDevTools();
           }

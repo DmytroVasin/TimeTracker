@@ -2,7 +2,42 @@
 <html>
   <head>
     <title>Second Page</title>
-    <link rel="stylesheet" href="../stylesheets/options.css" />
+
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        font-family: -apple-system, "Helvetica Neue", Helvetica, sans-serif;
+      }
+
+      .message {
+        position: absolute;
+        width: 500px;
+        height: 250px;
+        top: 50%;
+        left: 50%;
+        color: #777;
+        font-weight: 200;
+        text-align: center;
+        margin-top: -125px;
+        margin-left: -250px;
+      }
+
+      .message h1 {
+        font-size: 50px;
+        font-weight: 100;
+        color: #333;
+      }
+
+      .message div {
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
 
   <body>
@@ -11,4 +46,5 @@
       <div id="details">built with Electron v 2.2.2</div>
       <small id="versions">running on Node v 213 and Chromium v 123</small>
     </div>
+  </body>
 </html>
