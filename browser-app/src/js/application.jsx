@@ -3,10 +3,6 @@ require('../scss/application.scss');
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class World extends React.Component {
-  render() {
-    return <h1>Hello World</h1>
-  }
-}
+import { Container } from './components/container.jsx'
 
-ReactDOM.render(<World/>, document.getElementById('react-root'));
+ReactDOM.render(<Container/>, document.getElementById('react-root'));
