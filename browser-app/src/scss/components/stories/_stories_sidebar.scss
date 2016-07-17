@@ -1,0 +1,109 @@
+#stories-sidebar {
+  padding: 25px;
+  overflow: hidden;
+  float: right;
+
+  ul.group {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 5px;
+    word-spacing: -1em;
+
+    li {
+      margin: 0;
+      padding: 0;
+      width: 55px;
+      height: 5.2em;
+      border-right: 1px solid #e0e0e0;
+      color: #7e858a;
+      font-size: 0.75em;
+      line-height: 1.9em;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: inset 1px -1px 1px #fff, inset -1px -1px 1px #fff;
+      background: #f5f5f5;
+      float: left;
+      list-style: none;
+
+      &:first-child { border-radius: 5px 0 0 5px; }
+      &:last-child {
+        border-radius: 0 5px 5px 0;
+        border: none;
+      }
+
+      &.selected {
+        color: #fff;
+        box-shadow: none;
+        box-shadow: inset 0 5px 10px rgba(67,71,73,0.5);
+        background: #7d858a;
+      }
+
+      span {
+        display: block;
+        height: 20px;
+        overflow: hidden;
+        margin-top: 1em;
+      }
+    }
+  }
+
+  .delimiter {
+    padding: 20px 0;
+    background: url(/assets/stories/bottom_border_filter-be11c6991d78bd9b367183b5673bd927.png) repeat-x center;
+  }
+
+  #users_filter {
+    .filter-title {
+      color: #5c5d5d;
+      padding: 5px 0;
+      font-size: 0.85em;
+    }
+
+    a {
+      width: 13px;
+      height: 13px;
+      top: 7px;
+      right: 0;
+      cursor: pointer;
+      background: url(/assets/action_icons/clear_action-348d032f03e76ea2b345c794cd38ffeb.png) no-repeat 0 0;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        font-size: 0.75em;
+        padding: 2px;
+        color: #8d9398;
+        text-align: center;
+        cursor: pointer;
+        text-transform: lowercase;
+        margin-right: 5px;
+        display: inline-block;
+
+        &.selected {
+          background: #858b92;
+          color: #fff;
+        }
+
+        .gravatar {
+          display: block;
+
+          img {
+            display: block;
+          }
+        }
+
+        .login {
+          display: block;
+          margin: 2px 0;
+        }
+      }
+    }
+  }
+}

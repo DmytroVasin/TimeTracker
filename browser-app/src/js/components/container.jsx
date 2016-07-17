@@ -1,30 +1,28 @@
 import React from 'react'
 
-// import { Video } from './video.jsx'
-// import { PlayList } from './playlist.jsx'
-// import { SearchBox } from './search-box.jsx'
-// import { SearchHistory } from './search-history.jsx'
-// import { Navigation } from './navigation.jsx'
-// import { Sidebar } from './sidebar.jsx'
-// import { PopularList } from './popular-list.jsx'
-// import { Github } from './github.jsx'
-import { Box } from './box.jsx'
+import { StoryBox } from './stories/story_box.jsx'
+import { StoriesSideBar } from './stories/stories_sidebar.jsx'
 
 export class Container extends React.Component {
   render() {
     var stories = [
-      {title: 'Education Grants', description: 'Prepare your students for cloud computing with free credits.', type: 'green'},
-      {title: 'July Webinar Series', description: 'Learn about containers, Node.js and migration to the cloud.', type: 'yellow'},
-      {title: 'VM Migration', description: 'Resources for migrating a VM to Google Compute Engine.', type: 'red'}
+      {id: 1, title: 'Education Grants', description: 'Prepare your students for cloud computing with free credits.', type: 'green'},
+      {id: 2, title: 'July Webinar Series', description: 'Learn about containers, Node.js and migration to the cloud.', type: 'yellow'},
+      {id: 3, title: 'VM Migration', description: 'Resources for migrating a VM to Google Compute Engine.', type: 'red'},
+      {id: 4, title: 'VM Migration', description: 'Resources for migrating a VM to Google Compute Engine.', type: 'red'}
     ];
 
     var storyBoxes = stories.map(function(item){
-      return <Box story={item}/>
+      return <StoryBox story={item} key={item.id}/>
     })
 
     return (
-      <div className="container">
-        { storyBoxes }
+      <div className="stories-wrapper">
+        <StoriesSideBar />
+
+        <div className="stories-main">
+          { storyBoxes }
+        </div>
       </div>
     )
   }

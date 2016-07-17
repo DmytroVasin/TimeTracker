@@ -1,8 +1,8 @@
 @import
-  "base/base";
-
-// @import
-//   "layouts/table";
+  "utils/mixins";
 
 @import
-  "components/box";
+  "base/base";
+
+@import
+  "layouts/stories";

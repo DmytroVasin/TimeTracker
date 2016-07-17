@@ -3,7 +3,7 @@ import React from 'react'
 // import FontAwesome from 'react-fontawesome'
 
 
-export class Box extends React.Component {
+export class StoryBox extends React.Component {
 
   // constructor (props) {
   //   super(props)
@@ -35,7 +35,7 @@ export class Box extends React.Component {
 
             <tr>
               <td className="learn-more">
-                <span onClick={ this.handleClick }>REGISTER NOW</span>
+                <span onClick={ this.handleClick }>Show</span>
               </td>
             </tr>
           </tbody>
