@@ -20,7 +20,7 @@ let Menu = function() {
       label: 'View',
       submenu: [
         {
-          label: 'About Hawkpass',
+          label: 'About App',
           click: function() {
             app.emit('show-about')
           }
@@ -30,6 +30,13 @@ let Menu = function() {
           accelerator: 'F12',
           click: function (item, focusedWindow) {
             focusedWindow.webContents.toggleDevTools();
+          }
+        },
+        {
+          label: 'Reload',
+          accelerator: 'CmdOrCtrl+R',
+          click: function (item, focusedWindow) {
+            focusedWindow.reload();
           }
         }
       ]

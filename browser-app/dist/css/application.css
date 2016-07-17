@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  font-family: 'lato', helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.2;
+  overflow-x: hidden; }
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+input::-webkit-input-placeholder {
+  color: #c3c3c3; }
+
+#issuetable {
+  font-size: 12px;
+  width: 80%; }
+
+th {
+  font-weight: normal;
+  text-align: left; }
+
+.issuekey a, #issuetable .summary a {
+  color: #326CA6; }
+
+.issuekey {
+  white-space: nowrap; }
+
+#issuetable th {
+  color: #999999; }
+
+#issuetable td {
+  line-height: 1.286;
+  padding: 5px 3px;
+  white-space: nowrap; }
+
+.nav {
+  border-bottom: 1px solid #eee; }
+
+.border {
+  border-left: 1px solid #ddd; }
+
+.rowAlternate {
+  background-color: #F5FAFF; }
+
+.rowHeader {
+  color: #999999;
+  padding: 3px 7px; }
+
+.rowHeader, .rowNormal, .rowAlternate, .rowFooter {
+  display: table-row; }
+
+.nav, .total, .issuetype, .issuekey, .summary, .priority {
+  display: table-cell;
+  padding: 3px 7px; }
+
+.colHeaderLink {
+  display: table-cell;
+  vertical-align: bottom;
+  padding: 3px; }
+
+.rowHeader th, .issuetable .colHeaderLink {
+  border-bottom: 1px solid #BBBBBB; }
+
+.rowFooter {
+  background-color: #E0F0FF; }
+
+.nonBusinessDay {
+  background-color: #ffeedd; }
+
+.toDay {
+  background-color: #e3feeb; }
+
+#slider-prev {
+  position: absolute;
+  left: 5px;
+  bottom: 0px; }
+
+.total {
+  color: red; }
+
+.aui-button.aui-button-link {
+  color: #333333; }
+
+a.fa {
+  text-decoration: none; }

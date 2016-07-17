@@ -1,11 +1,19 @@
 {
   "name"    : "your-app",
   "version" : "0.1.0",
-  "main"    : "main.js",
+  "main"    : "app/js/index.js",
   "scripts": {
-    "start": "NODE_ENV=development electron app/javascripts/main/index.js"
+    "start": "electron ."
   },
   "dependencies": {
     "electron-is-dev": "0.1.1"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-watch": "^4.3.5",
+    "run-sequence": "^1.1.5",
+    "gulp-watch": "^4.3.5"
   }
 }
