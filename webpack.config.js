@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './application.jsx',
+  entry: './bundle.jsx',
   context: __dirname + '/browser-app/src/js',
 
   output: {

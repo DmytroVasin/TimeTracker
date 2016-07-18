@@ -4,7 +4,7 @@
   "main": "app/js/index.js",
   "scripts": {
     "start": "electron .",
-    "build": "webpack",
+    "build": "webpack --display-error-details",
     "watch": "webpack-dev-server --hot --inline"
   },
   "dependencies": {

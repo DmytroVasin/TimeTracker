@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { StoryBox } from './stories/story_box.jsx'
-import { StoriesSideBar } from './stories/stories_sidebar.jsx'
+import { StoryBox } from './storyBox.jsx'
+import { StoriesSideBar } from './storiesSidebar.jsx'
 
-export class Container extends React.Component {
+export class storyPage extends React.Component {
   render() {
     var stories = [
       {id: 1, title: 'Education Grants', description: 'Prepare your students for cloud computing with free credits.', type: 'green'},
@@ -21,7 +21,26 @@ export class Container extends React.Component {
         <StoriesSideBar />
 
         <div className="stories-main">
-          { storyBoxes }
+          <div className="stories-period">
+            <div className='period-title'>Overdue</div>
+            <div className='story-list'>
+              { storyBoxes }
+            </div>
+          </div>
+
+          <div className="stories-period">
+            <div className='period-title'>Sprint 27</div>
+            <div className='story-list'>
+              { storyBoxes }
+            </div>
+          </div>
+
+          <div className="stories-period">
+            <div className='period-title'>Unscheduled</div>
+            <div className='story-list'>
+              { storyBoxes }
+            </div>
+          </div>
         </div>
       </div>
     )

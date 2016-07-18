@@ -68,13 +68,9 @@
 
 	var reducers = _interopRequireWildcard(_reducers);
 
-	var _App = __webpack_require__(260);
+	var _application = __webpack_require__(260);
 
-	var _App2 = _interopRequireDefault(_App);
-
-	var _Home = __webpack_require__(261);
-
-	var _Home2 = _interopRequireDefault(_Home);
+	var _application2 = _interopRequireDefault(_application);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -82,26 +78,25 @@
 
 	__webpack_require__(262);
 
+	// import Application from './components/layout/application'
+
+
 	var reducer = (0, _redux.combineReducers)(_extends({}, reducers, { routing: _reactRouterRedux.routerReducer }));
 	var store = (0, _redux.createStore)(reducer);
-	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
+	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
 	  { store: store },
 	  _react2.default.createElement(
-	    'div',
-	    null,
+	    _reactRouter.Router,
+	    { history: history },
 	    _react2.default.createElement(
-	      _reactRouter.Router,
-	      { history: history },
-	      _react2.default.createElement(
-	        _reactRouter.Route,
-	        { path: '/', component: _App2.default },
-	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default })
-	      )
-	    ),
-	    _react2.default.createElement(DevTools, null)
+	      _reactRouter.Route,
+	      { path: '/', component: _application2.default },
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: Stories }),
+	      _react2.default.createElement(_reactRouter.Route, { path: 'about', component: Graphs })
+	    )
 	  )
 	), document.getElementById('react-root'));
 
@@ -28539,6 +28534,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _navigation = __webpack_require__(261);
+
+	var _navigation2 = _interopRequireDefault(_navigation);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28546,31 +28545,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	// import { Link, browserHistory } from 'react-router'
-
-	// export default function App({ children }) {
-	//   return (
-	//     <div>
-	//       <header>
-	//         Links:
-	//         {' '}
-	//         <Link to="/">Home</Link>
-	//         {' '}
-	//         <Link to="/foo">Foo</Link>
-	//         {' '}
-	//         <Link to="/bar">Bar</Link>
-	//       </header>
-
-	//       <div>
-	//         <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
-	//       </div>
-	//       <div style={{ marginTop: '1.5em' }}>
-	//         {children}
-	//       </div>
-	//     </div>
-	//   )
-	// }
 
 	var Application = function (_React$Component) {
 	  _inherits(Application, _React$Component);
@@ -28585,17 +28559,15 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'section',
-	        { id: 'layout' },
+	        'div',
+	        null,
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'wrapper full-height' },
-	          _react2.default.createElement(
-	            'main',
-	            { id: 'content', className: 'full-height inner' },
-	            this.props.children
-	          )
-	        )
+	          'h1',
+	          null,
+	          'App'
+	        ),
+	        _react2.default.createElement(_navigation2.default, null),
+	        this.props.children
 	      );
 	    }
 	  }]);
@@ -28614,12 +28586,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.Navigation = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(194);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28629,60 +28604,60 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// import { connect } from 'react-redux'
-	// import { increase, decrease } from '../actions/count'
+	var Navigation = exports.Navigation = function (_React$Component) {
+	  _inherits(Navigation, _React$Component);
 
-	// function Home({ number, increase, decrease }) {
-	//   return (
-	//     <div>
-	//       Some state changes:
-	//       {number}
-	//       <button onClick={() => increase(1)}>Increase</button>
-	//       <button onClick={() => decrease(1)}>Decrease</button>
-	//     </div>
-	//   )
-	// }
+	  function Navigation() {
+	    _classCallCheck(this, Navigation);
 
-	// export default connect(
-	//   state => ({ number: state.count.number }),
-	//   { increase, decrease }
-	// )(Home)
-
-	// import React from 'react';
-
-	var Home = function (_React$Component) {
-	  _inherits(Home, _React$Component);
-
-	  function Home() {
-	    _classCallCheck(this, Home);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Navigation).apply(this, arguments));
 	  }
 
-	  _createClass(Home, [{
+	  _createClass(Navigation, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { id: 'home-view' },
+	        null,
 	        _react2.default.createElement(
-	          'h1',
+	          'ul',
 	          null,
-	          'About'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Aaaaaa'
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/' },
+	              'Main'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/about' },
+	              'About'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/contact' },
+	              'Contact'
+	            )
+	          )
 	        )
 	      );
 	    }
 	  }]);
 
-	  return Home;
+	  return Navigation;
 	}(_react2.default.Component);
 
-	exports.default = Home;
+	;
 
 /***/ },
 /* 262 */

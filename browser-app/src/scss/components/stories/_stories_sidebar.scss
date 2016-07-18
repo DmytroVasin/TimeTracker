@@ -16,7 +16,7 @@
       margin: 0;
       padding: 0;
       width: 55px;
-      height: 5.2em;
+      // height: 5.2em;
       border-right: 1px solid #e0e0e0;
       color: #7e858a;
       font-size: 0.75em;
@@ -52,23 +52,25 @@
 
   .delimiter {
     padding: 20px 0;
-    background: url(/assets/stories/bottom_border_filter-be11c6991d78bd9b367183b5673bd927.png) repeat-x center;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAIAAAAW4yFwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABNJREFUeNpieP78OcOfP38AAgwAFi4Fqom2nLoAAAAASUVORK5CYII=) repeat-x center;
   }
 
   #users_filter {
+    position: relative;
+
     .filter-title {
       color: #5c5d5d;
       padding: 5px 0;
-      font-size: 0.85em;
     }
 
     a {
+      position: absolute;
       width: 13px;
       height: 13px;
       top: 7px;
       right: 0;
       cursor: pointer;
-      background: url(/assets/action_icons/clear_action-348d032f03e76ea2b345c794cd38ffeb.png) no-repeat 0 0;
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAOCAYAAAChHnWMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAydJREFUeNqUlV9IU1Ecx8/dPXd/HaksXPh3OkWmc05FFHyIqKfeoqKQoKeIelIjokA0eijIzAh6KQh66KWXIgiqlz02jKkLxH80dTNLtJxsjfbHvr/LzriKbvqDH+f+7vn9Pue7c347V9re3mbCRh+N1nDOL+h0OpckSSWYW89kMt9SqdSbvv6+EDukgecGbxC8HvDs4EXA84F3H7ygyJNIxMjDEZ2iKL0Gg+GM0WTkekXPJJ3EUMCSySRL/E2kEonEaxIzcGMgU2hx8GTwhsG7CZ6yBy8J3jCJAS/NqchoNF4xm82nzRYz0+v1TJblHDCdTjOjwchj8dileCxuwKtXhUSANwbe9Tw8Bbx74Jnx6o5cUlzislgs14qsRQzKWX19ffnGxsaWKHI6neXRaHSLQNg1l8/n+9LV3fV7PwFjj8d6wHsmeNXV1WxzczM3X1VVxWKxGMvyesB7y0tLSy9yhTNsn7pgc3Ozl5Ln5+cj2nhubi6CrZWQdw7hg/1EgDcoeJWVlaytrY0WY8vLyzvipaUlluXd5jKXG9E8TCxECW6320sjCQgGgwESRPOUhwJ3vqMAr1vwaCHidHR0qGN7ezsbHx9XBWl4x7nEJAM6l4l/CQmhkYSQABGTocvpTC35RIBn1vJICBkJIQEi1vCO6NBEagF1LjkdAQmYmpoK0EixmCM3mUyFmnIHr6KiQhXg9/vVkeLdPG47aouvrKxYSFVDQ0N5S0uLd3JyMjA7O6sejcfjUY9GxDabLZpPBHhR8IqJR03Z2dmpClhcXFTnKSajOMtb57WO2kA4HKbLhM3MzETEgpS4OyblDofDn08EeB/BO0+8UCikLiQE7I6zvHd0WdXglz+Znp6WqHA/owLsUqapqekqwh95dLjBmwBPdwBeGrxGeWho6I/dbk9DjGdtbY1pr3GteVu9zOVyPcfj1wJ31a8s78QBeP14/CBpks7iUupdWFjgq6urue4tKytjdXV1KavV+gKv3h/i03ELvLvgKXvwkuCRgKe5b4fGjsFPwlupBp6CT8A/w3+yw5sTfhl+iq4Q+D/4J/hL+HeR9F+AAQAfnc9XxOUGpQAAAABJRU5ErkJggg==) no-repeat 0 0;
     }
 
     ul {

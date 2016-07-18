@@ -2,7 +2,9 @@
   "utils/mixins";
 
 @import
-  "base/base";
+  "base/base",
+  "base/navigation";
 
 @import
-  "layouts/stories";
+  "layouts/stories",
+  "layouts/graph_page";

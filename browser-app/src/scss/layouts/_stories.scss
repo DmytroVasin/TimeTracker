@@ -6,11 +6,22 @@
 .stories-wrapper {
   @include clearfix;
 
-  #stories-main {
-    @include clearfix;
-
-    padding: 20px 20px 5px;
+  .stories-main {
+    padding: 10px 20px 5px;
     margin-right: 275px;
     box-shadow: 7px 0px 4px -5px #bdbdbd;
+
+    .stories-period {
+      .period-title {
+        padding: 3px;
+        margin: 0;
+        color: #5c5d5d;
+        font-size: 1.3em;
+      }
+
+      .story-list {
+        margin: 5px 0 15px 0;
+      }
+    }
   }
 }

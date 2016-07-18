@@ -1,0 +1,26 @@
+#header {
+  border-bottom: 1px solid #bcc3ce;
+  background: #f2f2f2;
+
+  .container {
+    height: 35px;
+    line-height: 35px;
+
+    .project_name {
+      color: #000000;
+      font-weight: bold;
+      font-size: 14px;
+      margin: 0 20px 0 30px;
+    }
+
+    a {
+      margin: 0 12px;
+      color: #077fcc;
+      font-size: 12px;
+
+      &.current {
+        color: #000;
+      }
+    }
+  }
+}
