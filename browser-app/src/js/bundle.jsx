@@ -12,16 +12,25 @@ import { Application } from './components/layout/application.jsx'
 import { storyPage }   from './components/stories/storyPage.jsx'
 import { graphPage }   from './components/graphs/graphPage.jsx'
 
+import axios from 'axios'
+
 
 const store = configureStore()
 
 
 // // >>>>>>>>>>>>>>>>>>>>>
 // console.info(store.getState())
-// store.dispatch({
-//   type: 'ADD_TODO',
-//   text: 'Use Redux'
-// })
+store.dispatch((dispatch) => {
+  dispatch({type: "FETCH_USERS_START"})
+
+  axios.get('http://rest.learncode.academy/api/wstern/users')
+    .then((response) => {
+      dispatch({type: "FETCH_USERS_SUCCESS", payload: response.data})
+    })
+    .catch((error) => {
+      dispatch({type: "FETCH_USERS_ERROR", payload: error})
+    })
+})
 // console.info(store.getState())
 // // >>>>>>>>>>>>>>>>>>>>>
 

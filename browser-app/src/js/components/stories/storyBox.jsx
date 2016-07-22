@@ -1,20 +1,16 @@
 import React from 'react'
 
-// import FontAwesome from 'react-fontawesome'
-
+import { addTodo } from '../actions/actions';
 
 export class StoryBox extends React.Component {
+  constructor (props) {
+    super(props);
+    this._handleClick = this._handleClick.bind(this);;
+  }
 
-  // constructor (props) {
-  //   super(props)
-  // }
-
-  // handleClick (e) {
-  //   e.preventDefault()
-  //   shell.openExternal('https://github.com/Tubehead/TubeHead')
-  // }
-  handleClick() {
-    console.log('Open Story');
+  _handleClick() {
+    //  ???????????????
+    // this.props.dispatch(addTodo())
   }
 
   render () {
@@ -35,7 +31,7 @@ export class StoryBox extends React.Component {
 
             <tr>
               <td className="learn-more">
-                <span onClick={ this.handleClick }>Show</span>
+                <span onClick={ this._handleClick }>Show</span>
               </td>
             </tr>
           </tbody>
