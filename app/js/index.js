@@ -10,6 +10,9 @@ let mainWindow;
 let optionsWindow;
 
 const createApp = function () {
+  const reactDevToolsname = BrowserWindow.addDevToolsExtension("/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/0.15.0_0")
+  const reduxDevToolsname = BrowserWindow.addDevToolsExtension("/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.3.0_0")
+
   mainWindow = new BrowserWindow({ width: 1300, height: 800 })
   mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/views/index.html');
 
@@ -18,6 +21,9 @@ const createApp = function () {
 
 
   mainWindow.on('closed', function() {
+    BrowserWindow.removeDevToolsExtension("React Developer Tools")
+    BrowserWindow.removeDevToolsExtension("Redux DevTools")
+
     app.quit()
   });
 
