@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import { Navigation } from './navigation.jsx'
 import { ModalRoot } from './modalRoot.jsx'
 
-export class Application extends React.Component {
+class Application extends Component {
   render() {
     return (
       <div>
@@ -16,3 +16,5 @@ export class Application extends React.Component {
     );
   }
 }
+
+export default Application

@@ -2,10 +2,9 @@ import { applyMiddleware, createStore } from 'redux'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 
+import rootReducer from '../reducers'
 
-import rootReducer from '../reducers/reducer'
-
-function configureStore () {
+const configureStore = function() {
   const logger = createLogger({collapsed: true})
   const store = createStore(
     rootReducer,

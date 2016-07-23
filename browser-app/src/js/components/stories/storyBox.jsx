@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { addTodo } from '../actions/actions';
+// import { addTodo } from '../actions/actions';
 
 export class StoryBox extends React.Component {
   constructor (props) {
