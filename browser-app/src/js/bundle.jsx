@@ -12,6 +12,8 @@ import application from './components/layout/application.jsx'
 import storyPage     from './components/stories/storyPage.jsx'
 import graphPage   from './components/graphs/graphPage.jsx'
 
+// api
+import FirebaseApi from './api/firebase';
 import axios from 'axios'
 
 

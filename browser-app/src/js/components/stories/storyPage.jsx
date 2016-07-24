@@ -2,49 +2,28 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 
-import { StoryBox } from './storyBox.jsx'
 import { StoriesSideBar } from './storiesSidebar.jsx'
+import { CreateNewStory } from './createNewStory.jsx'
+import { StoryPeriod } from './storyPeriod.jsx'
 
 import * as storyActions from '../../actions/storyActions'
 
 class storyPage extends Component {
   componentDidMount() {
-    let { dispatch } = this.props
-    let action = storyActions.fetchStories()
-
-    dispatch(action)
+    this.props.actions.fetchStories()
   }
 
   render() {
-    var storyBoxes = this.props.stories.map( (item) => {
-      return <StoryBox story={item} key={item.id}/>
-    })
+    const { stories, actions } = this.props;
 
     return (
       <div className="stories-wrapper">
         <StoriesSideBar />
+        <CreateNewStory addStory={actions.addStory} />
 
         <div className="stories-main">
-          <div className="stories-period">
-            <div className='period-title'>Overdue</div>
-            <div className='story-list'>
-              {storyBoxes}
-            </div>
-          </div>
-
-          <div className="stories-period">
-            <div className='period-title'>Sprint 27</div>
-            <div className='story-list'>
-              {storyBoxes}
-            </div>
-          </div>
-
-          <div className="stories-period">
-            <div className='period-title'>Unscheduled</div>
-            <div className='story-list'>
-              {storyBoxes}
-            </div>
-          </div>
+          <StoryPeriod title='Sprint 26' periodStories={ stories.filter(story => story.period == 1) } />
+          <StoryPeriod title='Overdue'   periodStories={ stories.filter(story => story.period == 2) } />
         </div>
       </div>
     )
@@ -57,7 +36,13 @@ function mapStateToProps(store) {
     stories: store.reducer.stories
   }
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(storyActions, dispatch)
+  };
+}
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(storyPage)
