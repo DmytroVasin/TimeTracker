@@ -4,4 +4,4 @@ node_modules
 
 npm-debug.log
 
-browser-app/dist/*.*
+browser-app/dist/
