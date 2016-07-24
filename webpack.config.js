@@ -1,12 +1,12 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './bundle.jsx',
+  entry: './entry.jsx',
   context: __dirname + '/browser-app/src/js',
 
   output: {
     path: __dirname + '/browser-app/dist/js',
-    filename: 'bundle.js',
+    filename: 'entry.js',
     publicPath: 'http://localhost:8080/browser-app/dist/js/'
   },
 
