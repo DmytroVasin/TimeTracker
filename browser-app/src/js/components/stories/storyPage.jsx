@@ -19,7 +19,7 @@ class storyPage extends Component {
     return (
       <div className="stories-wrapper">
         <StoriesSideBar />
-        <CreateNewStory addStory={actions.addStory} />
+        <CreateNewStory addStory={actions.addFireStory} />
 
         <div className="stories-main">
           <StoryPeriod title='Sprint 26' periodStories={ stories.filter(story => story.period == 1) } />

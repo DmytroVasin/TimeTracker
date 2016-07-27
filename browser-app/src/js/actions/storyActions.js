@@ -1,3 +1,6 @@
+import axios from 'axios'
+import * as firebaseApi from '../api/firebase';
+
 export function fetchStories() {
   return {
     type: 'FETCH_STORIES_SUCCESS',
@@ -10,11 +13,41 @@ export function fetchStories() {
   }
 }
 
-export function addStory(title, description) {
+// export function addStory(title, description) {
+//   const uid = () => Math.random().toString(34).slice(2);
+
+//   return {
+//     type: 'ADD_STORY',
+//     payload: { id: uid(), period: 2, title: title, description: description, type: 'grey' }
+//   }
+// }
+
+export function addFireStory(title, description) {
   const uid = () => Math.random().toString(34).slice(2);
 
-  return {
-    type: 'ADD_STORY',
-    payload: { id: uid(), period: 2, title: title, description: description, type: 'grey' }
+  return (dispatch) => {
+    dispatch( requestData() )
+    axios.post('https://timetracking-c860a.firebaseio.com/stories.json', { firstName: 'Fred', lastName: 'Flintstone' })
+    .then(function(response) {
+      dispatch( receiveData(response.data) )
+    })
+    .catch(function(response){
+      console.log('ERROR')
+    })
+
   }
 }
+
+function requestData() {
+  return {
+    type: 'REQ_STORIES'
+  }
+};
+
+
+function receiveData(story) {
+  return {
+    type: 'RECV_STORIES',
+    payload: story
+  }
+};

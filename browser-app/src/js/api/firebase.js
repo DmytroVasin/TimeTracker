@@ -5,73 +5,12 @@ import { firebaseConfig } from '../config/configureFirebase';
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const firebaseDb = firebaseApp.database();
 
+export function writeData(title, description) {
 
-class FirebaseApi {
-
-  static initAuth() {
-    firebase.initializeApp(firebaseConfig);
-    return new Promise((resolve, reject) => {
-      const unsub = firebase.auth().onAuthStateChanged(
-        user => {
-          unsub();
-          resolve(user);
-        },
-        error => reject(error)
-      );
-    });
-  }
-
-  static createUserWithEmailAndPassword(user){
-    return firebase.auth().createUserWithEmailAndPassword(user.email, user.password);
-  }
-
-  static signInWithEmailAndPassword(user) {
-    return firebase.auth().signInWithEmailAndPassword(user.email, user.password);
-  }
-
-  static authSignOut(){
-    return firebase.auth().signOut();
-  }
-
-  static databasePush(path, value) {
-    return new Promise((resolve, reject) => {
-      firebase
-        .database()
-        .ref(path)
-        .push(value, (error) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve();
-          }
-        });
-    });
-  }
-
-  static GetValueByKeyOnce(path, key) {
-    return firebase
-      .database()
-      .ref(path)
-      .orderByKey()
-      .equalTo(key)
-      .once('value');
-  }
-
-  static GetChildAddedByKeyOnce(path, key) {
-    return firebase
-      .database()
-      .ref(path)
-      .orderByKey()
-      .equalTo(key)
-      .once('child_added');
-  }
-
-  static databaseSet(path, value) {
-    return firebase
-      .database()
-      .ref(path)
-      .set(value);
-  }
+  return firebase.database().ref('/stories/').push({
+    title: title,
+    description: description
+  });
 }
 
-export default FirebaseApi;
+// curl -X Pcurl -X POST -d '{"user_id" : "jack", "text" : "Ahoy!"}' 'https://timetracking-c860a.firebaseio.com/stories.json'
