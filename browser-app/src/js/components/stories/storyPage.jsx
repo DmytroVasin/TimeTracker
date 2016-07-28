@@ -6,6 +6,8 @@ import { StoriesSideBar } from './storiesSidebar.jsx'
 import { CreateNewStory } from './createNewStory.jsx'
 import { StoryPeriod } from './storyPeriod.jsx'
 
+import { Spinner } from '../layout/spinner.jsx';
+
 import * as storyActions from '../../actions/storyActions'
 
 class storyPage extends Component {
@@ -18,12 +20,14 @@ class storyPage extends Component {
 
     return (
       <div className="stories-wrapper">
+        {this.props.isLoading ? <Spinner />:<div></div> }
+
         <StoriesSideBar />
         <CreateNewStory addStory={actions.addStory} />
 
         <div className="stories-main">
           <StoryPeriod title='Sprint 26' periodStories={ stories.filter(story => story.period == 1) } />
-          <StoryPeriod title='Overdue'   periodStories={ stories.filter(story => story.period == 2) } />
+          <StoryPeriod title='Spring 27' periodStories={ stories.filter(story => story.period == 2) } />
           <StoryPeriod title='Overdue'   periodStories={ stories.filter(story => story.period == 3) } />
         </div>
       </div>
@@ -34,6 +38,7 @@ class storyPage extends Component {
 // Smart component!
 function mapStateToProps(store) {
   return {
+    isLoading: store.reducer.isLoading,
     stories: store.reducer.stories
   }
 }

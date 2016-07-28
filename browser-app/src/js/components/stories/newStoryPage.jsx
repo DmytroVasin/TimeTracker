@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import * as storyActions from '../../actions/storyActions'
 
 
-export class newStoryPage extends React.Component {
-  constructor (props) {
-    super(props);
-  }
+export default class newStoryPage extends React.Component {
+  // constructor (props) {
+  //   super(props);
+  // }
 
   render () {
     return (
@@ -19,21 +19,3 @@ export class newStoryPage extends React.Component {
     )
   }
 }
-
-
-// Smart component!
-function mapStateToProps(store) {
-  return {
-    stories: store.reducer.stories
-  }
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(storyActions, dispatch)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(newStoryPage)
