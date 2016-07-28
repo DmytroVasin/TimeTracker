@@ -1,6 +1,10 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
 
-export class graphPage extends React.Component {
+import * as storyActions from '../../actions/storyActions'
+
+class graphPage extends React.Component {
   render() {
     return (
       <table id="issuetable" cellSpacing="0" cellPadding="3">
@@ -138,3 +142,20 @@ export class graphPage extends React.Component {
     )
   }
 }
+
+// Smart component!
+function mapStateToProps(store) {
+  return {
+    stories: store.reducer.stories
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(storyActions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(graphPage)

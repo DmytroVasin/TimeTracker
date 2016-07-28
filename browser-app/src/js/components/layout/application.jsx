@@ -1,3 +1,5 @@
+import '../../../scss/application.scss'
+
 import React, { Component } from 'react'
 
 import { Navigation } from './navigation.jsx'
@@ -12,12 +14,21 @@ class Application extends Component {
       <div>
         <ModalRoot />
         <Navigation />
-        {this.props.root_reducer.isLoading ? <Spinner /> : this.props.children}
+        {this.props.children}
       </div>
     );
   }
 }
 
-export default connect(
-  store => ({ root_reducer: store.reducer })
-)(Application)
+export default Application
+
+
+//         {this.props.root_reducer.isLoading ? <Spinner /> : this.props.children}
+//       </div>
+//     );
+//   }
+// }
+
+// export default connect(
+//   store => ({ root_reducer: store.reducer })
+// )(Application)

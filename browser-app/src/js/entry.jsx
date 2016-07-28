@@ -1,5 +1,3 @@
-require('../scss/application.scss');
-
 import React from 'react';
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -8,9 +6,10 @@ import { syncHistoryWithStore } from 'react-router-redux'
 
 import configureStore from './config/configureStore';
 
-import application from './components/layout/application.jsx'
-import storyPage     from './components/stories/storyPage.jsx'
-import graphPage   from './components/graphs/graphPage.jsx'
+import application  from './components/layout/application.jsx'
+import storyPage    from './components/stories/storyPage.jsx'
+import newStoryPage from './components/stories/newStoryPage.jsx'
+import graphPage    from './components/graphs/graphPage.jsx'
 
 const store = configureStore()
 const history = syncHistoryWithStore(hashHistory, store)
@@ -19,9 +18,10 @@ const history = syncHistoryWithStore(hashHistory, store)
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path='/' component={application}>
-        <IndexRoute component={storyPage} />
-        <Route path='graph' component={graphPage} />
+      <Route   path='/'            component={application} >
+        <IndexRoute                component={storyPage} />
+        <Route path='/graph'       component={graphPage} />
+        <Route path='/stories/new' component={newStoryPage} />
       </Route>
     </Router>
   </Provider>,

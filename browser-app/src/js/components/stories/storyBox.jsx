@@ -1,16 +1,9 @@
 import React from 'react'
-
-// import { addTodo } from '../actions/actions';
+import { Link } from 'react-router'
 
 export class StoryBox extends React.Component {
   constructor (props) {
     super(props);
-    this._handleClick = this._handleClick.bind(this);;
-  }
-
-  _handleClick() {
-    //  ???????????????
-    // this.props.dispatch(addTodo())
   }
 
   render () {
@@ -20,7 +13,7 @@ export class StoryBox extends React.Component {
         <table>
           <tbody>
             <tr>
-              <td className={'type '+this.props.story.type} rowSpan='2'>
+              <td className={'type '+this.props.story.story_type} rowSpan='2'>
               </td>
 
               <td className='description'>
@@ -31,7 +24,7 @@ export class StoryBox extends React.Component {
 
             <tr>
               <td className="learn-more">
-                <span onClick={ this._handleClick }>Show</span>
+                <Link to='/stories/new'>Show</Link>
               </td>
             </tr>
           </tbody>
@@ -40,3 +33,4 @@ export class StoryBox extends React.Component {
     )
   }
 }
+
