@@ -1,8 +1,10 @@
 #header {
+  @include clearfix;
   border-bottom: 1px solid #bcc3ce;
   background: #f2f2f2;
 
   .container {
+    float: left;
     height: 35px;
     line-height: 35px;
 
@@ -17,10 +19,14 @@
       margin: 0 12px;
       color: #077fcc;
       font-size: 12px;
-
-      &.current {
-        color: #000;
-      }
     }
+  }
+
+  .add-story {
+    float: right;
+    padding: 0 15px;
+    text-decoration: none;
+    font-size: 2em;
+    color: #4a4a4a;;
   }
 }
