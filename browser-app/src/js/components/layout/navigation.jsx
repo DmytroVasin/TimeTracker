@@ -9,7 +9,7 @@ export class Navigation extends React.Component {
           <span className='project_name'>Project Name</span>
           <Link to='/'>Stories</Link>
           <Link to='/graph'>Graph</Link>
-          <Link to='/graph'>Create New Story</Link>
+          <Link to='/stories/new'>Create New Story</Link>
         </div>
       </div>
     );

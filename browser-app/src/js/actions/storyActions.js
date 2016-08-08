@@ -4,7 +4,7 @@ import axios from 'axios'
 export function fetchStories() {
   return (dispatch) => {
     dispatch(toggleLoading(true))
-    axios.get('http://localhost:3000/stories.json')
+    axios.get('https://peaceful-dawn-52251.herokuapp.com/stories.json')
     .then(function(response) {
       dispatch(setStories(response.data))
       dispatch(toggleLoading(false))
@@ -16,7 +16,7 @@ export function fetchStories() {
 export function addStory(title, description) {
   return (dispatch) => {
     dispatch(toggleLoading(true))
-    axios.post('http://localhost:3000/stories.json', { title: title, description: description })
+    axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: title, description: description })
     .then(function(response) {
       dispatch(receiveData(response.data))
       dispatch(toggleLoading(false))
@@ -51,7 +51,7 @@ function receiveData(story) {
 // export function addStory(title, description) {
 //   return (dispatch) => {
 //     dispatch(toggleLoading())
-//     axios.delete('http://localhost:3000/stories.json', { title: title, description: description })
+//     axios.delete('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: title, description: description })
 //     .then(function(response) {
 //       dispatch(receiveData(response.data))
 //     })

@@ -24,7 +24,7 @@ export class StoryBox extends React.Component {
 
             <tr>
               <td className="learn-more">
-                <Link to='/stories/new'>Show</Link>
+                <Link to='#'>Show</Link>
               </td>
             </tr>
           </tbody>
