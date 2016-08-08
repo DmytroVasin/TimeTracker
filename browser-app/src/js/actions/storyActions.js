@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { push } from 'react-router-redux';
 
 // INDEX
 export function fetchStories() {
@@ -18,8 +19,9 @@ export function addStory(title, description) {
     dispatch(toggleLoading(true))
     axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: title, description: description })
     .then(function(response) {
-      dispatch(receiveData(response.data))
-      dispatch(toggleLoading(false))
+      // dispatch(receiveData(response.data))
+      // dispatch(toggleLoading(false))
+      // dispatch(push('/'))
     })
   }
 }
@@ -40,20 +42,9 @@ function setStories(stories) {
   }
 };
 
-function receiveData(story) {
-  return {
-    type: 'ADD_STORY',
-    payload: story
-  }
-};
-
-// SHOW
-// export function addStory(title, description) {
-//   return (dispatch) => {
-//     dispatch(toggleLoading())
-//     axios.delete('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: title, description: description })
-//     .then(function(response) {
-//       dispatch(receiveData(response.data))
-//     })
+// function receiveData(story) {
+//   return {
+//     type: 'ADD_STORY',
+//     payload: story
 //   }
-// }
+// };

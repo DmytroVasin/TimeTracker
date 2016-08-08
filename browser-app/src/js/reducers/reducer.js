@@ -16,8 +16,8 @@ const reducer = function(state=initialState, action) {
     case "SET_STORIES":
       return Object.assign({}, state, { stories: [...action.payload] })
 
-    case "ADD_STORY":
-      return Object.assign({}, state, { stories: [...state.stories, action.payload] })
+    // case "ADD_STORY":
+    //   return Object.assign({}, state, { stories: [...state.stories, action.payload] })
 
     default:
       return state

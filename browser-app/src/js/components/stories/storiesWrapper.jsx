@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 
 
-import { StoryFooter } from './storyFooter.jsx'
 import { StoryPeriod } from './storyPeriod.jsx'
 
 import { Spinner } from '../layout/spinner.jsx';
@@ -30,7 +29,6 @@ class StoriesWrapper extends React.Component {
           <StoryPeriod title='Overdue'   periodStories={ stories.filter(story => story.period == 3) } />
         </div>
 
-        <StoryFooter />
       </div>
     )
   }

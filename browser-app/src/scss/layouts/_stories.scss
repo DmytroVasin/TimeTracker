@@ -15,6 +15,12 @@
     font-weight: bold;
   }
 
+  .devider {
+    margin: 6px 0px;
+    width: 100%;
+    height: 1px;
+  }
+
   .sidebar-list {
     li {
       padding: 5px 10px;
@@ -23,12 +29,37 @@
       &.selected {
         background-color: #CECECE;
         color: #000000;
+
+        .badge {
+          color: black;
+          border: 1px solid #838383;
+        }
       }
 
       i {
         width: 20px;
         text-align: right;
         margin-right: 10px;
+
+        &.yellow { color: #CEC700; }
+        &.green { color: #02B137; }
+        &.red { color: #FF7799; }
+        &.grey { color: #826262; }
+      }
+
+      .badge {
+        float: right;
+        background: #E9E9E9;
+        border-radius: 3em;
+        color: #333;
+        font-size: 0.8em;
+        line-height: 0.99;
+        margin: 0;
+        min-height: 1em;
+        min-width: 1em;
+        padding: 3px;
+        text-align: center;
+        border: 1px solid #838383;
       }
     }
   }
@@ -66,7 +97,7 @@
         &.yellow { background-color: #CEC700; }
         &.green { background-color: #02B137; }
         &.red { background-color: #FF7799; }
-        &.grey { background-color: #EEEEEE; }
+        &.grey { background-color: #826262; }
       }
 
       &.description {
@@ -95,56 +126,6 @@
         }
       }
     }
-  }
-}
-
-
-// "components/stories/story_footer"
-.story-footer {
-  color: #777;
-  padding: 10px 15px;
-  height: 20px;
-  text-align: center;
-  border-top: 1px solid #e6e6e6;
-
-  .todo-count {
-    float: left;
-    text-align: left;
-  }
-
-  .todo-count strong {
-    font-weight: 300;
-  }
-
-  .filters {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    right: 0;
-    left: 0;
-  }
-
-  .filters li {
-    display: inline;
-  }
-
-  .filters li a {
-    color: inherit;
-    margin: 3px;
-    padding: 3px 7px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    border-radius: 3px;
-  }
-
-  .filters li a.selected,
-  .filters li a:hover {
-    border-color: rgba(175, 47, 47, 0.1);
-  }
-
-  .filters li a.selected {
-    border-color: rgba(175, 47, 47, 0.2);
   }
 }
 
