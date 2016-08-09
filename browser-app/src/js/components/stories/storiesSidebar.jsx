@@ -11,17 +11,22 @@ export class StoriesSideBar extends React.Component {
         <div className='sidebar-title'>Story Periods</div>
 
         <ul className='sidebar-list'>
-          <li className='selected'>
+          <li onClick={() => this.props.setSprintFilter('-1')} className={this.props.sprintFilter == '-1' ? 'selected' : null}>
+            <i className='fa fa-sitemap'></i>
+            <span>Backlog</span>
+          </li>
+
+          <li onClick={() => this.props.setSprintFilter('1')} className={this.props.sprintFilter == '1' ? 'selected' : null}>
             <i className='fa fa-users'></i>
             <span>Sprint 27</span>
           </li>
 
-          <li>
+          <li onClick={() => this.props.setSprintFilter('2')} className={this.props.sprintFilter == '2' ? 'selected' : null}>
             <i className='fa fa-share-square'></i>
             <span>Sprint 28</span>
           </li>
 
-          <li>
+          <li onClick={() => this.props.setSprintFilter('0')} className={this.props.sprintFilter == '0' ? 'selected' : null}>
             <i className='fa fa-sitemap'></i>
             <span>Unscheduled</span>
           </li>
@@ -48,7 +53,7 @@ export class StoriesSideBar extends React.Component {
             <span className='badge'>15</span>
           </li>
 
-          <li onClick={() => this.props.setStatusFilter('')} className={this.props.statusFilter == '' ? 'selected' : null}>
+          <li onClick={() => this.props.setStatusFilter('all')} className={this.props.statusFilter == 'all' ? 'selected' : null}>
             <i className="fa fa-server"></i>
             All
             <span className='badge'>30</span>

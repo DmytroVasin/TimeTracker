@@ -17,9 +17,8 @@ export class StoriesWrapper extends React.Component {
     }
   }
 
-
   render () {
-    const { stories, isLoading, statusFilter } = this.props;
+    const { stories, isLoading, statusFilter, sprintFilter } = this.props;
     const filteredStories = this.getFilteredStories(stories, statusFilter)
 
     return (
@@ -27,7 +26,6 @@ export class StoriesWrapper extends React.Component {
         {isLoading ? <Spinner />:null }
 
         <div className="stories-main">
-          {statusFilter}
           <StoryPeriod title='Sprint 26' periodStories={ filteredStories.filter(story => story.period == 1) } />
           <StoryPeriod title='Spring 27' periodStories={ filteredStories.filter(story => story.period == 2) } />
           <StoryPeriod title='Overdue'   periodStories={ filteredStories.filter(story => story.period == 3) } />

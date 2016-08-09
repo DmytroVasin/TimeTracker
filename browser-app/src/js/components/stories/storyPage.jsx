@@ -16,7 +16,11 @@ class storyPage extends Component {
   render() {
     return (
       <div className="stories-container">
-        <StoriesSideBar setStatusFilter={this.props.actions.setStatusFilter} statusFilter={this.props.statusFilter} />
+        <StoriesSideBar setStatusFilter={this.props.actions.setStatusFilter}
+                        statusFilter={this.props.statusFilter}
+                        setSprintFilter={this.props.actions.setSprintFilter}
+                        sprintFilter={this.props.sprintFilter}/>
+
         <StoriesWrapper {...this.props} />
       </div>
     )
@@ -29,7 +33,8 @@ function mapStateToProps(store) {
   return {
     isLoading: store.reducer.isLoading,
     stories: store.reducer.stories,
-    statusFilter: store.reducer.statusFilter
+    statusFilter: store.reducer.statusFilter,
+    sprintFilter: store.reducer.sprintFilter
   }
 }
 function mapDispatchToProps(dispatch) {

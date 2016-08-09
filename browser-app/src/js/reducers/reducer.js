@@ -4,7 +4,8 @@ const initialState = {
   fetched: false,
   users: [],
   error: null,
-  statusFilter: '',
+  statusFilter: 'all',
+  sprintFilter: '-1',
   stories: []
 }
 
@@ -22,6 +23,9 @@ const reducer = function(state=initialState, action) {
 
     case "SET_STATUS_FILTER":
       return Object.assign({}, state, { statusFilter: action.payload })
+
+    case "SET_SPRINT_FILTER":
+      return Object.assign({}, state, { sprintFilter: action.payload })
 
     default:
       return state

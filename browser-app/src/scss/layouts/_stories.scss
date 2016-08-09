@@ -1,7 +1,8 @@
-// @import
-//   "components/stories/stories_sidebar",
-//   "components/stories/story_box",
-//   "components/stories/story_footer";
+@import
+  "components/stories/new_story";
+
+  // "components/stories/story_box",
+  // "components/stories/story_footer";
 
 
 // "components/stories/stories_sidebar"
@@ -68,8 +69,8 @@
 // "components/stories/story_box"
 .banner-box {
   background: #FFF;
-  display: inline-block;
-  margin: 0 15px 15px 0;
+  // display: inline-block;
+  margin: 0 5px 15px 0;
   box-shadow: 0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12),0 5px 5px -3px rgba(0,0,0,.2);
 
   table {
@@ -79,8 +80,7 @@
     border-radius: 4px;
     border-spacing: 0;
     box-shadow: 0 2px 2px rgba(0,0,0,.24),0 0 2px rgba(0,0,0,.12);
-    width: 250px;
-    height: 115px;
+    width: 100%;
 
     tr {
       border: 0;
@@ -88,11 +88,9 @@
     }
 
     td {
-      border: 1px solid rgba(207,216,220,.24);
-      text-align: left;
 
       &.type {
-        width: 20px;
+        width: 5%;
 
         &.yellow { background-color: #CEC700; }
         &.green { background-color: #02B137; }
@@ -100,29 +98,43 @@
         &.grey { background-color: #826262; }
       }
 
-      &.description {
-        padding: 8px 12px;
-
-        h3 {
-          color: #36474F;
-          font-size: 1.6em;
-          font-weight: bold;
-          margin: 0 10px;
-        }
+      &.title {
+        vertical-align: middle;
+        padding-top: 15px;
 
         p {
-          height: 28px;
-          overflow: hidden;
+          color: #36474F;
+          font-size: 1.2em;
+          font-weight: bold;
+          margin: 0 10px;
         }
       }
 
       &.learn-more {
-        font-size: 1em;
-        padding: 5px 10px;
+        padding: 5px 20px;
+        height: 15px;
 
         span {
-          color: #2B85E7;
-          cursor: pointer
+          color: #95a5a6;
+          text-transform: uppercase;
+          font-size: 0.6em;
+          font-weight: bold;
+        }
+      }
+
+      &.actions {
+        width: 15%;
+
+        vertical-align: middle;
+
+        a {
+          color: #808080;
+          font-size: 1.2em;
+          margin: 5px;
+
+          &:hover {
+            color: #333333;
+          }
         }
       }
     }

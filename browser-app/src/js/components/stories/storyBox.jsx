@@ -8,7 +8,6 @@ export class StoryBox extends React.Component {
 
   render () {
     return (
-
       <div className="banner-box">
         <table>
           <tbody>
@@ -16,15 +15,19 @@ export class StoryBox extends React.Component {
               <td className={'type '+this.props.story.story_type} rowSpan='2'>
               </td>
 
-              <td className='description'>
-                <h3>{this.props.story.title}</h3>
-                <p>{this.props.story.description}</p>
+              <td className='title'>
+                <p>{this.props.story.title}</p>
+              </td>
+
+              <td className='actions' rowSpan='2'>
+                <a href="#" className ='edit'><i className="fa fa-pencil"></i></a>
+                <a href="#" className ='show'><i className="fa fa-eye"></i></a>
               </td>
             </tr>
 
             <tr>
               <td className="learn-more">
-                <Link to='#'>Show</Link>
+                <span>dv 2</span>
               </td>
             </tr>
           </tbody>

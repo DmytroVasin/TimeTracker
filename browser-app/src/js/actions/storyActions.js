@@ -33,6 +33,13 @@ export function setStatusFilter(filter) {
   }
 }
 
+export function setSprintFilter(filter) {
+  return {
+    type: 'SET_SPRINT_FILTER',
+    payload: filter
+  }
+}
+
 
 
 function toggleLoading(value) {

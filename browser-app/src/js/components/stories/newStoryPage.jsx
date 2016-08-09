@@ -33,49 +33,39 @@ export class newStoryPage extends React.Component {
   }
 
   render () {
-    var storyError = <div id="new-story-error">Fill in values.</div>
+    var storyError = <div id='new-story-error'>Fill in values.</div>
 
     return (
-      <div id="new-story" onSubmit={this.handleSubmit.bind(this)}>
-        { this.state.error.length ? storyError : null }
+      <form id='new-story' onSubmit={this.handleSubmit.bind(this)}>
 
-        <form>
+        <div className='new-story-inner'>
+          { this.state.error.length ? storyError : null }
 
-          <div>
-            <label>Title</label>
-            <div>
-              <input ref='titleInput' type='text' placeholder='Title' />
-            </div>
+          <div className='new-story-input'>
+            <input ref='titleInput' type='text' placeholder='Title' />
           </div>
 
-
-          <div>
-            <label>Description</label>
-            <div>
-              <input ref='descriptionInput' type='text' placeholder='Description' />
-            </div>
-          </div>
-
-          <div>
-            <label>Status</label>
-            <div>
-              <select onChange={this.change} value={this.state.value}>
-                <option></option>
-                <option value="ff0000">Red</option>
-                <option value="00ff00">Green</option>
-                <option value="0000ff">Blue</option>
+          <div className='new-story-input'>
+            <label for='select' className='select'>
+              <select name='subject' onChange={this.change} value={this.state.value}>
+                <option value='' selected>Choose Subject</option>
+                <option value='1'>I have a suggestion</option>
+                <option value='1'>I found a bug</option>
+                <option value='1'>Other</option>
               </select>
-            </div>
+            </label>
           </div>
 
-          <div>
-            <button type="submit" disabled={this.props.isLoading}>
-              {this.props.isLoading ? <i className="fa fa-server"></i> : null} Submit
-            </button>
+          <div className='new-story-input'>
+            <textarea ref='descriptionInput' type='text' placeholder='Description'></textarea>
           </div>
 
-        </form>
-      </div>
+          <div className='new-story-submit'>
+            <button type='submit'>Create Story</button>
+          </div>
+        </div>
+
+      </form>
     )
   }
 }
