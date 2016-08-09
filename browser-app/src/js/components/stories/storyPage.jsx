@@ -1,16 +1,44 @@
 import React, { Component } from 'react'
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
+
+import * as storyActions from '../../actions/storyActions'
+
 import { StoriesSideBar } from './storiesSidebar.jsx'
-import StoriesWrapper from './storiesWrapper.jsx'
+import { StoriesWrapper } from './storiesWrapper.jsx'
 
-export default class storyPage extends Component {
+class storyPage extends Component {
+  componentWillMount() {
+    this.props.actions.fetchStories()
+  }
+
   render() {
-
     return (
       <div className="stories-container">
-        <StoriesSideBar />
-        <StoriesWrapper />
+        <StoriesSideBar setStatusFilter={this.props.actions.setStatusFilter} statusFilter={this.props.statusFilter} />
+        <StoriesWrapper {...this.props} />
       </div>
     )
   }
 }
+
+
+// Smart component!
+function mapStateToProps(store) {
+  return {
+    isLoading: store.reducer.isLoading,
+    stories: store.reducer.stories,
+    statusFilter: store.reducer.statusFilter
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(storyActions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(storyPage)

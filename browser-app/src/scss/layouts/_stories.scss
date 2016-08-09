@@ -151,7 +151,8 @@
 
 // stories_container
 .stories-container {
-  // @include clearfix;
+  height: calc(100vh - 62px);
+  width: 100%;
   display: table;
 
   #stories-sidebar {

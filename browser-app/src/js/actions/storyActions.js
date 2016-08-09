@@ -26,6 +26,13 @@ export function addStory(title, description) {
   }
 }
 
+export function setStatusFilter(filter) {
+  return {
+    type: 'SET_STATUS_FILTER',
+    payload: filter
+  }
+}
+
 
 
 function toggleLoading(value) {
