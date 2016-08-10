@@ -16,11 +16,12 @@ export class newStoryPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
+    const period = this.refs.periodInput
     const title = this.refs.titleInput
     const description = this.refs.descriptionInput
 
     if (title.value && description.value) {
-      this.props.actions.addStory(title.value, description.value)
+      this.props.actions.addStory(title.value, description.value, period.value)
       // TODO: Can i do this in add Story?
       hashHistory.push('/')
 
@@ -46,12 +47,13 @@ export class newStoryPage extends React.Component {
           </div>
 
           <div className='new-story-input'>
-            <label for='select' className='select'>
-              <select name='subject' onChange={this.change} value={this.state.value}>
-                <option value='' selected>Choose Subject</option>
-                <option value='1'>I have a suggestion</option>
-                <option value='1'>I found a bug</option>
-                <option value='1'>Other</option>
+            <label className='select'>
+              <select ref='periodInput' onChange={this.change}>
+                <option value=''>Choose Sprint</option>
+                <option value='0'>Unscheduled</option>
+                <option value='1'>Sprint 1</option>
+                <option value='2'>Sprint 2</option>
+                <option value='3'>Sprint 3</option>
               </select>
             </label>
           </div>
@@ -74,7 +76,6 @@ export class newStoryPage extends React.Component {
 // Smart component!
 function mapStateToProps(store) {
   return {
-    isLoading: store.reducer.isLoading,
   }
 }
 function mapDispatchToProps(dispatch) {

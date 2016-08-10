@@ -6,10 +6,11 @@ import { syncHistoryWithStore } from 'react-router-redux'
 
 import configureStore from './config/configureStore';
 
-import application  from './components/layout/application.jsx'
-import storyPage    from './components/stories/storyPage.jsx'
-import newStoryPage from './components/stories/newStoryPage.jsx'
-import graphPage    from './components/graphs/graphPage.jsx'
+import application   from './components/layout/application.jsx'
+import storyPage     from './components/stories/storyPage.jsx'
+import newStoryPage  from './components/stories/newStoryPage.jsx'
+import graphPage     from './components/graphs/graphPage.jsx'
+import showStoryPage from './components/stories/showStoryPage.jsx'
 
 const store = configureStore()
 const history = syncHistoryWithStore(hashHistory, store)
@@ -22,6 +23,7 @@ render(
         <IndexRoute                component={storyPage} />
         <Route path='/graph'       component={graphPage} />
         <Route path='/stories/new' component={newStoryPage} />
+        <Route path='/stories/:id' component={showStoryPage} />
       </Route>
     </Router>
   </Provider>,

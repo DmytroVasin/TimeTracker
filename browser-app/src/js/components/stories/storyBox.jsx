@@ -6,13 +6,18 @@ export class StoryBox extends React.Component {
     super(props);
   }
 
+  handleRemoveStoryClick (e) {
+    e.preventDefault()
+    this.props.removeStory(this.props.story.id)
+  }
+
   render () {
     return (
       <div className="banner-box">
         <table>
           <tbody>
             <tr>
-              <td className={'type '+this.props.story.story_type} rowSpan='2'>
+              <td className={`type ${this.props.story.story_type}`} rowSpan='2'>
               </td>
 
               <td className='title'>
@@ -21,7 +26,8 @@ export class StoryBox extends React.Component {
 
               <td className='actions' rowSpan='2'>
                 <a href="#" className ='edit'><i className="fa fa-pencil"></i></a>
-                <a href="#" className ='show'><i className="fa fa-eye"></i></a>
+                <Link to={`/story/${this.props.story.id}`}><i className="fa fa-eye"></i></Link>
+                <a href="#" onClick={this.handleRemoveStoryClick.bind(this)}><i className="fa fa-trash"></i></a>
               </td>
             </tr>
 

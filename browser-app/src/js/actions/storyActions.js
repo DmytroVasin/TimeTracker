@@ -13,15 +13,55 @@ export function fetchStories() {
   }
 }
 
-// CREATE
-export function addStory(title, description) {
+
+// SHOW
+export function showStoryAction() {
   return (dispatch) => {
     dispatch(toggleLoading(true))
-    axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: title, description: description })
+    axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json`)
+    .then(function(response) {
+      dispatch(showStory(response.data))
+      dispatch(toggleLoading(false))
+    })
+  }
+}
+
+
+// CREATE
+export function addStory(title, description, period) {
+  return (dispatch) => {
+    dispatch(toggleLoading(true))
+    axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: title, description: description, period: period })
     .then(function(response) {
       // dispatch(receiveData(response.data))
       // dispatch(toggleLoading(false))
       // dispatch(push('/'))
+    })
+  }
+}
+
+
+// EDIT
+export function updateStoryAction(id, title, description) {
+  return (dispatch) => {
+    dispatch(toggleLoading(true))
+    axios.patch("https://peaceful-dawn-52251.herokuapp.com/stories/" + id + ".json", { title: title, description: description })
+    .then(function(response) {
+      dispatch(updateStory(response))
+      dispatch(toggleLoading(false))
+    })
+  }
+}
+
+
+// DELETE
+export function removeStory(id) {
+  return (dispatch) => {
+    dispatch(toggleLoading(true))
+    axios.delete("https://peaceful-dawn-52251.herokuapp.com/stories/" + id + ".json")
+    .then(function() {
+      dispatch(deleteStory(id))
+      dispatch(toggleLoading(false))
     })
   }
 }
@@ -54,11 +94,25 @@ function setStories(stories) {
     type: 'SET_STORIES',
     payload: stories
   }
-};
+}
 
-// function receiveData(story) {
-//   return {
-//     type: 'ADD_STORY',
-//     payload: story
-//   }
-// };
+function deleteStory(story_id) {
+  return {
+    type: 'DELETE_STORY',
+    payload: story_id
+  }
+}
+
+function updateStory(story) {
+  return {
+    type: 'UPDATE_STORY',
+    payload: story
+  }
+}
+
+function showStory(story) {
+  return {
+    type: 'SHOW_STORY',
+    payload: story
+  }
+}

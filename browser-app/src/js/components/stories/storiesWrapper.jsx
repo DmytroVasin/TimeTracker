@@ -26,9 +26,9 @@ export class StoriesWrapper extends React.Component {
         {isLoading ? <Spinner />:null }
 
         <div className="stories-main">
-          <StoryPeriod title='Sprint 26' periodStories={ filteredStories.filter(story => story.period == 1) } />
-          <StoryPeriod title='Spring 27' periodStories={ filteredStories.filter(story => story.period == 2) } />
-          <StoryPeriod title='Overdue'   periodStories={ filteredStories.filter(story => story.period == 3) } />
+          <StoryPeriod title='Sprint 26' periodStories={ filteredStories.filter(story => story.period == 1) } removeStory={this.props.actions.removeStory} />
+          <StoryPeriod title='Spring 27' periodStories={ filteredStories.filter(story => story.period == 2) } removeStory={this.props.actions.removeStory} />
+          <StoryPeriod title='Overdue'   periodStories={ filteredStories.filter(story => story.period == 3) } removeStory={this.props.actions.removeStory} />
         </div>
 
       </div>
