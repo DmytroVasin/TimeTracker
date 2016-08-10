@@ -31,7 +31,6 @@ class storyPage extends Component {
 // Smart component!
 function mapStateToProps(store) {
   return {
-    isLoading: store.reducer.isLoading,
     stories: store.reducer.stories,
     statusFilter: store.reducer.statusFilter,
     sprintFilter: store.reducer.sprintFilter

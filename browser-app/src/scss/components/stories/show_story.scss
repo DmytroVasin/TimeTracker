@@ -1,0 +1,98 @@
+#story {
+  position: relative;
+  margin: 20px auto;
+  padding: 5px;
+  width: 90%;
+  background: #eef5f7;
+  border: 1px solid #cfd5da;
+  border-radius: 5px;
+
+  .story-inner {
+    padding: 25px;
+    background: white;
+    border-radius: 5px;
+
+    .notif {
+      position: relative;
+      padding: 0 50px 0 80px;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border: 5px solid;
+        border-radius: 25px;
+      }
+
+      .notif-title {
+        margin: 0 0 5px 0;
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+
+      .notif-controls {
+        // BUTTON
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        button {
+          outline: 0;
+          padding: 5px 14px;
+          color: #729fb2;
+
+          background: #deeef4;
+          border: 1px solid #bed6e3;
+          border-bottom-color: #accbd9;
+          border-radius: 15px;
+          cursor: pointer;
+          box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 4px #eef7f9;
+
+          &:active {
+            color: #6a95a9;
+
+            background: #c9dfe9;
+            border-color: #a3bed0 #b5ccda #b5ccda;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.2), 0 0 0 4px #eef7f9;
+          }
+        }
+      }
+
+      // GREEN!
+      &.notif-notice {
+        &:before {
+          background: #a7d155;
+          border-color: #8fb14f;
+        }
+
+        .notif-title {
+          &:before, &:after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 2px;
+            transform: rotate(45deg);
+          }
+
+          &:before {
+            top: 19px;
+            left: 26px;
+            width: 4px;
+            height: 12px;
+          }
+
+          &:after {
+            top: 25px;
+            left: 18px;
+            width: 8px;
+            height: 4px;
+          }
+        }
+      }
+
+    }
+  }
+}

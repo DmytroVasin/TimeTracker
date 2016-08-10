@@ -26,7 +26,7 @@ export class StoryBox extends React.Component {
 
               <td className='actions' rowSpan='2'>
                 <a href="#" className ='edit'><i className="fa fa-pencil"></i></a>
-                <Link to={`/story/${this.props.story.id}`}><i className="fa fa-eye"></i></Link>
+                <Link to={`/stories/${this.props.story.id}`}><i className="fa fa-eye"></i></Link>
                 <a href="#" onClick={this.handleRemoveStoryClick.bind(this)}><i className="fa fa-trash"></i></a>
               </td>
             </tr>

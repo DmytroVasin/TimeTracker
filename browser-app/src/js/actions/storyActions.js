@@ -15,12 +15,12 @@ export function fetchStories() {
 
 
 // SHOW
-export function showStoryAction() {
+export function getStoryRequest(id) {
   return (dispatch) => {
     dispatch(toggleLoading(true))
     axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json`)
     .then(function(response) {
-      dispatch(showStory(response.data))
+      dispatch(getStorySuccess(response.data))
       dispatch(toggleLoading(false))
     })
   }
@@ -34,15 +34,15 @@ export function addStory(title, description, period) {
     axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: title, description: description, period: period })
     .then(function(response) {
       // dispatch(receiveData(response.data))
-      // dispatch(toggleLoading(false))
-      // dispatch(push('/'))
+      dispatch(toggleLoading(false))
+      dispatch(push('/'))
     })
   }
 }
 
 
 // EDIT
-export function updateStoryAction(id, title, description) {
+export function updateStoryRequest(id, title, description) {
   return (dispatch) => {
     dispatch(toggleLoading(true))
     axios.patch("https://peaceful-dawn-52251.herokuapp.com/stories/" + id + ".json", { title: title, description: description })
@@ -110,7 +110,7 @@ function updateStory(story) {
   }
 }
 
-function showStory(story) {
+function getStorySuccess(story) {
   return {
     type: 'SHOW_STORY',
     payload: story

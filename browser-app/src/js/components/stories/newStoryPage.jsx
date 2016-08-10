@@ -2,7 +2,6 @@ import React from 'react'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router'
 
 import * as storyActions from '../../actions/storyActions'
 
@@ -22,8 +21,6 @@ export class newStoryPage extends React.Component {
 
     if (title.value && description.value) {
       this.props.actions.addStory(title.value, description.value, period.value)
-      // TODO: Can i do this in add Story?
-      hashHistory.push('/')
 
       title.value = ''
       description.value = ''

@@ -23,7 +23,6 @@ export class StoriesWrapper extends React.Component {
 
     return (
       <div id="stories-wrapper">
-        {isLoading ? <Spinner />:null }
 
         <div className="stories-main">
           <StoryPeriod title='Sprint 26' periodStories={ filteredStories.filter(story => story.period == 1) } removeStory={this.props.actions.removeStory} />

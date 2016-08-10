@@ -5,17 +5,19 @@ import { connect } from 'react-redux';
 
 import * as storyActions from '../../actions/storyActions'
 
+import { ShowStory } from './showStory.jsx'
 
 class showStoryPage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {error: ''};
+  componentWillMount() {
+    this.props.actions.getStoryRequest(76)
   }
 
   render () {
+    const story = this.props.currentStory ? <ShowStory story = { this.props.currentStory } /> : null
+
     return (
       <div className='new-story-inner'>
-        { this.props.currentStory }
+        { story }
       </div>
     )
   }
@@ -25,7 +27,6 @@ class showStoryPage extends React.Component {
 // Smart component!
 function mapStateToProps(store) {
   return {
-    isLoading: store.reducer.isLoading,
     currentStory: store.reducer.currentStory
   }
 }
