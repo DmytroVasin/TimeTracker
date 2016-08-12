@@ -5,21 +5,16 @@ import { connect } from 'react-redux';
 
 import * as storyActions from '../../actions/storyActions'
 
-import { ShowStory } from './showStory.jsx'
+import { StoryForm } from './storyForm.jsx'
 
-class showStoryPage extends React.Component {
-  // componentWillMount() {
-  //   const _id = this.props.params.id
-  //   this.props.actions.getStoryRequest(_id)
-  // }
-
+export class editStoryPage extends React.Component {
   render () {
-    const story = this.props.currentStory ? <ShowStory story={this.props.currentStory} editStoryRequest={this.props.actions.editStoryRequest} /> : null
+    var storyError = <div id='new-story-error'>Fill in values.</div>
 
     return (
-      <div className='new-story-inner'>
-        { story }
-      </div>
+      <StoryForm createOrUpdateStoryRequest={this.props.actions.updateStoryRequest}
+                 formType='Update'
+                 story={this.props.currentStory} />
     )
   }
 }
@@ -40,4 +35,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(showStoryPage)
+)(editStoryPage)

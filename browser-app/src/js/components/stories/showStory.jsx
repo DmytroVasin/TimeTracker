@@ -1,6 +1,11 @@
 import React from 'react'
 
 export class ShowStory extends React.Component {
+
+  handleEditStoryClick () {
+    this.props.editStoryRequest(this.props.story.id)
+  }
+
   render () {
     const { story } = this.props
 
@@ -14,7 +19,7 @@ export class ShowStory extends React.Component {
             <p>{story.description}</p>
 
             <div className="notif-controls">
-              <button type='submit'>Edit</button>
+              <button onClick={this.handleEditStoryClick.bind(this)}>Edit</button>
             </div>
           </div>
 

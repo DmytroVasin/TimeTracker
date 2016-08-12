@@ -25,8 +25,8 @@ const reducer = function(state=initialState, action) {
     case "SHOW_STORY":
       return Object.assign({}, state, { currentStory: action.payload })
 
-    case "UPDATE_STORY":
-      return Object.assign({}, state.map(story => story.id === action.id ? action.payload : story))
+    // case "UPDATE_STORY":
+    //   return Object.assign({}, state, { stories: state.stories.map(story => story.id === action.id ? action.payload : story))
 
     case "DELETE_STORY":
       return Object.assign({}, state, { stories: state.stories.filter(story => story.id !== action.payload) })

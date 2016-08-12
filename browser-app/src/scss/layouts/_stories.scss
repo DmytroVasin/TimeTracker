@@ -129,10 +129,11 @@
         text-align: right;
         padding-right: 2%;
 
-        a {
+        span {
           color: #808080;
           font-size: 1.2em;
           margin-right: 10px;
+          cursor: pointer;
 
           &:hover {
             color: #333333;

@@ -5,7 +5,7 @@ import { StoryBox } from './storyBox.jsx'
 export class StoryPeriod extends React.Component {
   render () {
     var storyBoxes = this.props.periodStories.map( (item) => {
-      return <StoryBox story={item} key={item.id} removeStory={this.props.removeStory}/>
+      return <StoryBox story={item} key={item.id} removeStory={this.props.removeStory} editStoryRequest={this.props.editStoryRequest} getStoryRequest={this.props.getStoryRequest} />
     })
 
     return (

@@ -5,10 +5,17 @@ export class StoryBox extends React.Component {
   constructor (props) {
     super(props);
   }
-
-  handleRemoveStoryClick (e) {
-    e.preventDefault()
+  // TODO: DRY
+  handleRemoveStoryClick () {
     this.props.removeStory(this.props.story.id)
+  }
+
+  handleEditStoryClick () {
+    this.props.editStoryRequest(this.props.story.id)
+  }
+
+  handleShowStoryClick () {
+    this.props.getStoryRequest(this.props.story.id)
   }
 
   render () {
@@ -25,9 +32,9 @@ export class StoryBox extends React.Component {
               </td>
 
               <td className='actions' rowSpan='2'>
-                <a href="#" className ='edit'><i className="fa fa-pencil"></i></a>
-                <Link to={`/stories/${this.props.story.id}`}><i className="fa fa-eye"></i></Link>
-                <a href="#" onClick={this.handleRemoveStoryClick.bind(this)}><i className="fa fa-trash"></i></a>
+                <span href='#' onClick={this.handleShowStoryClick.bind(this)}><i className='fa fa-eye'></i></span>
+                <span href='#' onClick={this.handleEditStoryClick.bind(this)}><i className='fa fa-pencil'></i></span>
+                <span href='#' onClick={this.handleRemoveStoryClick.bind(this)}><i className='fa fa-trash'></i></span>
               </td>
             </tr>
 
