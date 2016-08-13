@@ -25,9 +25,10 @@ export class StoriesWrapper extends React.Component {
       <div id="stories-wrapper">
 
         <div className="stories-main">
-          <StoryPeriod title='Unscheduled' periodStories={ filteredStories.filter(story => story.period == 0) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
-          <StoryPeriod title='Sprint 26'   periodStories={ filteredStories.filter(story => story.period == 1) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
-          <StoryPeriod title='Spring 27'   periodStories={ filteredStories.filter(story => story.period == 2) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
+          <StoryPeriod title='Unscheduled' periodStories={ filteredStories.filter(story => story.period == -1) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
+          <StoryPeriod title='String 0' periodStories={ filteredStories.filter(story => story.period == 0) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
+          <StoryPeriod title='Sprint 1'   periodStories={ filteredStories.filter(story => story.period == 1) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
+          <StoryPeriod title='Spring 2'   periodStories={ filteredStories.filter(story => story.period == 2) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
         </div>
 
       </div>

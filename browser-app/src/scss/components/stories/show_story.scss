@@ -11,24 +11,28 @@
     padding: 25px;
     background: white;
     border-radius: 5px;
+    min-height: 55px;
+
+    .notif-icon {
+      font-size: 4em;
+      position: absolute;
+
+      &.yellow { color: #CEC700; }
+      &.green { color: #02B137; }
+      &.red { color: #FF7799; }
+      &.grey { color: #826262; }
+
+      &:before {
+        display: block;
+      }
+    }
 
     .notif {
       position: relative;
-      padding: 0 50px 0 80px;
-
-      &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 40px;
-        height: 40px;
-        border: 5px solid;
-        border-radius: 25px;
-      }
+      padding: 5px 50px 0 70px;
 
       .notif-title {
-        margin: 0 0 5px 0;
+        margin: 0 0 10px 0;
         font-size: 1.3em;
         font-weight: bold;
       }
@@ -60,39 +64,6 @@
           }
         }
       }
-
-      // GREEN!
-      &.notif-notice {
-        &:before {
-          background: #a7d155;
-          border-color: #8fb14f;
-        }
-
-        .notif-title {
-          &:before, &:after {
-            content: '';
-            position: absolute;
-            background: white;
-            border-radius: 2px;
-            transform: rotate(45deg);
-          }
-
-          &:before {
-            top: 19px;
-            left: 26px;
-            width: 4px;
-            height: 12px;
-          }
-
-          &:after {
-            top: 25px;
-            left: 18px;
-            width: 8px;
-            height: 4px;
-          }
-        }
-      }
-
     }
   }
 }

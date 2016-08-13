@@ -8,11 +8,6 @@ import * as storyActions from '../../actions/storyActions'
 import { ShowStory } from './showStory.jsx'
 
 class showStoryPage extends React.Component {
-  // componentWillMount() {
-  //   const _id = this.props.params.id
-  //   this.props.actions.getStoryRequest(_id)
-  // }
-
   render () {
     const story = this.props.currentStory ? <ShowStory story={this.props.currentStory} editStoryRequest={this.props.actions.editStoryRequest} /> : null
 
