@@ -8,8 +8,13 @@ import * as storyActions from '../../actions/storyActions'
 import { ShowStory } from './showStory.jsx'
 
 class showStoryPage extends React.Component {
+  // TODO: в чем отличие конструктора от ComponenWillMount?
+  componentWillMount() {
+    this.props.actions.getStoryRequest(this.props.routeParams.id)
+  }
+
   render () {
-    const story = this.props.currentStory ? <ShowStory story={this.props.currentStory} editStoryRequest={this.props.actions.editStoryRequest} /> : null
+    const story = this.props.currentStory ? <ShowStory story={this.props.currentStory} /> : null
 
     return (
       <div className='new-story-inner'>

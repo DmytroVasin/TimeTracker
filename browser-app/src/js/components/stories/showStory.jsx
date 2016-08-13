@@ -1,10 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export class ShowStory extends React.Component {
-
-  handleEditStoryClick () {
-    this.props.editStoryRequest(this.props.story.id)
-  }
 
   getStoryTypeClass (story_type) {
     let storyClassName = 'notif-icon fa '
@@ -42,7 +39,7 @@ export class ShowStory extends React.Component {
             <p>{story.description}</p>
 
             <div className="notif-controls">
-              <button onClick={this.handleEditStoryClick.bind(this)}>Edit</button>
+              <Link to={`/stories/${this.props.story.id}/edit`}>Edit</Link>
             </div>
           </div>
 

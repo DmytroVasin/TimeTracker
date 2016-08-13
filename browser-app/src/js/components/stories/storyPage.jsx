@@ -9,6 +9,7 @@ import { StoriesSideBar } from './storiesSidebar.jsx'
 import { StoriesWrapper } from './storiesWrapper.jsx'
 
 class storyPage extends Component {
+  // TODO: можно ли так делать - или в конструкторе?
   componentWillMount() {
     this.props.actions.fetchStories()
   }

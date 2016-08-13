@@ -21,7 +21,7 @@ export function getStoryRequest(id) {
     .then(function(response) {
       dispatch(getStorySuccess(response.data))
       dispatch(toggleLoading(false))
-      dispatch(push(`/stories/${response.data.id}`))
+      // dispatch(push(`/stories/${response.data.id}`))
     })
   }
 }
@@ -46,7 +46,7 @@ export function editStoryRequest(id) {
     .then(function(response) {
       dispatch(getStorySuccess(response.data))
       dispatch(toggleLoading(false))
-      dispatch(push(`/stories/${response.data.id}/edit`))
+      // dispatch(push(`/stories/${response.data.id}/edit`))
     })
   }
 }

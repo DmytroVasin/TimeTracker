@@ -8,13 +8,18 @@ import * as storyActions from '../../actions/storyActions'
 import { StoryForm } from './storyForm.jsx'
 
 export class editStoryPage extends React.Component {
+
+  componentWillMount() {
+    this.props.actions.editStoryRequest(this.props.routeParams.id)
+  }
+
   render () {
-    var storyError = <div id='new-story-error'>Fill in values.</div>
+    const story = this.props.currentStory ? <StoryForm story={this.props.currentStory} createOrUpdateStoryRequest={this.props.actions.updateStoryRequest} formType='Update' /> : null
 
     return (
-      <StoryForm createOrUpdateStoryRequest={this.props.actions.updateStoryRequest}
-                 formType='Update'
-                 story={this.props.currentStory} />
+      <div>
+        { story }
+      </div>
     )
   }
 }

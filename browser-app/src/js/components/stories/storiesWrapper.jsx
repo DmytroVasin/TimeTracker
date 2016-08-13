@@ -18,17 +18,17 @@ export class StoriesWrapper extends React.Component {
   }
 
   render () {
-    const { stories, isLoading, statusFilter, sprintFilter } = this.props;
+    const { stories, isLoading, statusFilter, sprintFilter } = this.props
     const filteredStories = this.getFilteredStories(stories, statusFilter)
 
     return (
       <div id="stories-wrapper">
 
         <div className="stories-main">
-          <StoryPeriod title='Unscheduled' periodStories={ filteredStories.filter(story => story.period == -1) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
-          <StoryPeriod title='String 0' periodStories={ filteredStories.filter(story => story.period == 0) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
-          <StoryPeriod title='Sprint 1'   periodStories={ filteredStories.filter(story => story.period == 1) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
-          <StoryPeriod title='Spring 2'   periodStories={ filteredStories.filter(story => story.period == 2) } removeStory={this.props.actions.removeStory} editStoryRequest={this.props.actions.editStoryRequest} getStoryRequest={this.props.actions.getStoryRequest} />
+          <StoryPeriod title='Overdue'     periodStories={ filteredStories.filter(story => story.period == 0) } removeStory={this.props.actions.removeStory}  />
+          <StoryPeriod title='Sprint 1'    periodStories={ filteredStories.filter(story => story.period == 1) } removeStory={this.props.actions.removeStory}  />
+          <StoryPeriod title='Spring 2'    periodStories={ filteredStories.filter(story => story.period == 2) } removeStory={this.props.actions.removeStory}  />
+          <StoryPeriod title='Unscheduled' periodStories={ filteredStories.filter(story => story.period == -1) } removeStory={this.props.actions.removeStory} />
         </div>
 
       </div>
