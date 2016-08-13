@@ -7,14 +7,18 @@ import * as storyActions from '../../actions/storyActions'
 
 import { StoryForm } from './storyForm.jsx'
 
-export class editStoryPage extends React.Component {
+class editStoryPage extends React.Component {
 
   componentWillMount() {
-    this.props.actions.editStoryRequest(this.props.routeParams.id)
+    this.props.actions.fetchPeriods()
+    this.props.actions.getStoryRequest(this.props.routeParams.id)
   }
 
   render () {
-    const story = this.props.currentStory ? <StoryForm story={this.props.currentStory} createOrUpdateStoryRequest={this.props.actions.updateStoryRequest} formType='Update' /> : null
+    const story = this.props.isLoading ? null : <StoryForm story={this.props.currentStory}
+                                                           periods={this.props.periods}
+                                                           createOrUpdateStoryRequest={this.props.actions.updateStoryRequest}
+                                                           formType='Update' />
 
     return (
       <div>
@@ -28,7 +32,9 @@ export class editStoryPage extends React.Component {
 // Smart component!
 function mapStateToProps(store) {
   return {
-    currentStory: store.reducer.currentStory
+    currentStory: store.reducer.currentStory,
+    periods: store.reducer.periods,
+    isLoading: store.reducer.isLoading
   }
 }
 function mapDispatchToProps(dispatch) {

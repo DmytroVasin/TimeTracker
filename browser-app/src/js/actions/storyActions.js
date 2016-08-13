@@ -12,6 +12,16 @@ export function fetchStories() {
     })
   }
 }
+export function fetchPeriods() {
+  return (dispatch) => {
+    // dispatch(toggleLoading(true))
+    axios.get('https://peaceful-dawn-52251.herokuapp.com/periods.json')
+    .then(function(response) {
+      dispatch(setPeriods(response.data))
+      // dispatch(toggleLoading(false))
+    })
+  }
+}
 
 // SHOW
 export function getStoryRequest(id) {
@@ -33,18 +43,6 @@ export function createStoryRequest(story) {
     .then(function(response) {
       dispatch(toggleLoading(false))
       dispatch(push('/'))
-    })
-  }
-}
-
-// EDIT
-export function editStoryRequest(id) {
-  return (dispatch) => {
-    dispatch(toggleLoading(true))
-    axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json`)
-    .then(function(response) {
-      dispatch(getStorySuccess(response.data))
-      dispatch(toggleLoading(false))
     })
   }
 }
@@ -101,6 +99,13 @@ function setStories(stories) {
   return {
     type: 'SET_STORIES',
     payload: stories
+  }
+}
+
+function setPeriods(periods) {
+  return {
+    type: 'SET_PERIODS',
+    payload: periods
   }
 }
 

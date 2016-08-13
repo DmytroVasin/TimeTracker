@@ -17,10 +17,10 @@
       font-size: 4em;
       position: absolute;
 
-      &.yellow { color: #CEC700; }
-      &.green { color: #02B137; }
-      &.red { color: #FF7799; }
-      &.grey { color: #826262; }
+      &.in_progress { color: #CEC700; }
+      &.done { color: #02B137; }
+      &.to_estimate { color: #FF7799; }
+      &.estimated { color: #826262; }
 
       &:before {
         display: block;

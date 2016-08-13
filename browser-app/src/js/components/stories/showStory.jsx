@@ -2,22 +2,21 @@ import React from 'react'
 import { Link } from 'react-router'
 
 export class ShowStory extends React.Component {
-
   getStoryTypeClass (story_type) {
     let storyClassName = 'notif-icon fa '
 
     switch (story_type) {
-      case 'green':
-        storyClassName += 'green fa-check-circle'
+      case 'in_progress':
+        storyClassName += 'in_progress fa-exclamation-circle'
         break
-      case 'yellow':
-        storyClassName += 'yellow fa-exclamation-circle'
+      case 'estimated':
+        storyClassName += 'estimated fa-info-circle'
         break
-      case 'red':
-        storyClassName += 'red fa-times-circle'
+      case 'to_estimate':
+        storyClassName += 'to_estimate fa-times-circle'
         break
-      case 'grey':
-        storyClassName += 'grey fa-pencil-circle'
+      case 'done':
+        storyClassName += 'done fa-check-circle'
         break
     }
 

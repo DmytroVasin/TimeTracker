@@ -28,13 +28,14 @@ class showStoryPage extends React.Component {
 // Smart component!
 function mapStateToProps(store) {
   return {
-    currentStory: store.reducer.currentStory
+    currentStory: store.reducer.currentStory,
+    isLoading: store.reducer.isLoading
   }
 }
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(storyActions, dispatch)
-  };
+  }
 }
 
 export default connect(

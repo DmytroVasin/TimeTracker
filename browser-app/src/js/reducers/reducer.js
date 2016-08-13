@@ -1,12 +1,11 @@
 const initialState = {
   isLoading: false,
-  fetching: false,
-  fetched: false,
-  users: [],
-  error: null,
   statusFilter: 'all',
-  sprintFilter: '1',
+  sprintFilter: 'all',
   stories: [],
+  storiesLoading: null,
+  periods: [],
+  periodsLoading: null,
   currentStory: null
 }
 
@@ -18,6 +17,9 @@ const reducer = function(state=initialState, action) {
 
     case "SET_STORIES":
       return Object.assign({}, state, { stories: [...action.payload] })
+
+    case "SET_PERIODS":
+      return Object.assign({}, state, { periods: [...action.payload] })
 
     // case "ADD_STORY":
     //   return Object.assign({}, state, { stories: [...state.stories, action.payload] })

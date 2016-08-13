@@ -8,9 +8,15 @@ import * as storyActions from '../../actions/storyActions'
 import { StoryForm } from './storyForm.jsx'
 
 export class newStoryPage extends React.Component {
+
+  componentWillMount() {
+    this.props.actions.fetchPeriods()
+  }
+
   render () {
     return (
       <StoryForm createOrUpdateStoryRequest={this.props.actions.createStoryRequest}
+                 periods={this.props.periods}
                  formType='Create' />
     )
   }
@@ -20,6 +26,7 @@ export class newStoryPage extends React.Component {
 // Smart component!
 function mapStateToProps(store) {
   return {
+    periods: store.reducer.periods
   }
 }
 function mapDispatchToProps(dispatch) {

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 export class StoryForm extends React.Component {
   constructor(props) {
@@ -8,75 +7,69 @@ export class StoryForm extends React.Component {
     this.state = {
       error: '',
       formType: this.props.formType,
-      story: this.props.story || { title: '', description: '', period_id: '1' }
+      story: this.props.story || { title: '', description: '', period_id: '' }
     }
   }
 
-  // TODO: WAT ??
-  componentWillReceiveProps(nextProps) {
-    let newState = this.state
-    newState['story'] = nextProps.story
-    this.setState(newState)
-  }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    let story = this.state.story
 
-  handleSubmit(e) {
-    e.preventDefault()
-
-    if (this.state.story.title && this.state.story.description) {
-      this.props.createOrUpdateStoryRequest(this.state.story)
+    if (story.title && story.description && story.period_id) {
+      this.props.createOrUpdateStoryRequest(story)
     } else {
       this.setState({error: 'Fill in values.'})
     }
   }
 
-  // TODO: правильно ли так делать?
-  // TODO: DRY
-  handleTitleChange (event) {
-    let newState = this.state
-    newState['story']['title'] = event.target.value
-    this.setState(newState)
+  handleTitleChange = (event) => {
+    this.updateStory('title', event.target.value)
+  }
+  handleDescriptionChange = (event) => {
+    this.updateStory('description', event.target.value)
+  }
+  handlePeriodChange = (event) => {
+    this.updateStory('period_id', event.target.value)
   }
 
-  handleDescriptionChange (event) {
-    let newState = this.state
-    newState['story']['description'] = event.target.value
-    this.setState(newState)
+  updateStory (field, value) {
+    this.setState({
+      story: {
+        ...this.state.story,
+        [field]: value.trim()
+      }
+    })
   }
-
-  handlePeriodChange (event) {
-    let newState = this.state
-    newState['story']['period_id'] = event.target.value
-    this.setState(newState)
-  }
-
 
   render () {
-    var storyError = <div id='new-story-error'>Fill in values.</div>
+    let storyError = <div id='new-story-error'>Fill in values.</div>
+
+    let sprintOptions = this.props.periods.map( (item) => {
+      return <option key={item.id} value={item.id}>{item.name}</option>
+    })
+
 
     return (
-      <form id='new-story' onSubmit={this.handleSubmit.bind(this)}>
+      <form id='new-story' onSubmit={this.handleSubmit}>
 
         <div className='new-story-inner'>
           { this.state.error.length ? storyError : null }
 
           <div className='new-story-input'>
-            <input value={this.state.story.title} onChange={this.handleTitleChange.bind(this)} placeholder='Title' />
+            <input value={this.state.story.title} onChange={this.handleTitleChange} placeholder='Title' />
           </div>
 
           <div className='new-story-input'>
             <label className='select'>
-              <select value={this.state.story.period_id} onChange={this.handlePeriodChange.bind(this)}>
+              <select value={this.state.story.period_id} onChange={this.handlePeriodChange}>
                 <option value=''>Choose Sprint</option>
-                <option value='1'>Unscheduled</option>
-                <option value='2'>Overdue</option>
-                <option value='3'>Sprint 1</option>
-                <option value='4'>Sprint 2</option>
+                { sprintOptions }
               </select>
             </label>
           </div>
 
           <div className='new-story-input'>
-            <textarea value={this.state.story.description} onChange={this.handleDescriptionChange.bind(this)} placeholder='Description'></textarea>
+            <textarea value={this.state.story.description} onChange={this.handleDescriptionChange} placeholder='Description'></textarea>
           </div>
 
           <div className='new-story-submit'>
