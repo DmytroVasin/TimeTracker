@@ -5,7 +5,7 @@ const initialState = {
   users: [],
   error: null,
   statusFilter: 'all',
-  sprintFilter: '-1',
+  sprintFilter: '1',
   stories: [],
   currentStory: null
 }

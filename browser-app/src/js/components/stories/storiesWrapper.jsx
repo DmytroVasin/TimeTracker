@@ -9,9 +9,11 @@ export class StoriesWrapper extends React.Component {
       case 'in_progress':
         return stories.filter(story => story.story_type == 'yellow');
       case 'estimated':
-        return stories.filter(story => story.story_type == 'green');;
+        return stories.filter(story => story.story_type == 'red');
       case 'to_estimate':
-        return stories.filter(story => story.story_type == 'grey');;
+        return stories.filter(story => story.story_type == 'grey');
+      case 'done':
+        return stories.filter(story => story.story_type == 'green');
       default:
         return stories
     }
@@ -25,10 +27,10 @@ export class StoriesWrapper extends React.Component {
       <div id="stories-wrapper">
 
         <div className="stories-main">
-          <StoryPeriod title='Overdue'     periodStories={ filteredStories.filter(story => story.period == 0) } removeStory={this.props.actions.removeStory}  />
-          <StoryPeriod title='Sprint 1'    periodStories={ filteredStories.filter(story => story.period == 1) } removeStory={this.props.actions.removeStory}  />
-          <StoryPeriod title='Spring 2'    periodStories={ filteredStories.filter(story => story.period == 2) } removeStory={this.props.actions.removeStory}  />
-          <StoryPeriod title='Unscheduled' periodStories={ filteredStories.filter(story => story.period == -1) } removeStory={this.props.actions.removeStory} />
+          <StoryPeriod title='Overdue'     periodStories={ filteredStories.filter(story => story.period_id == 2) } removeStory={this.props.actions.removeStory} />
+          <StoryPeriod title='Sprint 1'    periodStories={ filteredStories.filter(story => story.period_id == 3) } removeStory={this.props.actions.removeStory} />
+          <StoryPeriod title='Spring 2'    periodStories={ filteredStories.filter(story => story.period_id == 4) } removeStory={this.props.actions.removeStory} />
+          <StoryPeriod title='Unscheduled' periodStories={ filteredStories.filter(story => story.period_id == 1) } removeStory={this.props.actions.removeStory} />
         </div>
 
       </div>

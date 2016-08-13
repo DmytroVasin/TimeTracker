@@ -21,7 +21,6 @@ export function getStoryRequest(id) {
     .then(function(response) {
       dispatch(getStorySuccess(response.data))
       dispatch(toggleLoading(false))
-      // dispatch(push(`/stories/${response.data.id}`))
     })
   }
 }
@@ -30,7 +29,7 @@ export function getStoryRequest(id) {
 export function createStoryRequest(story) {
   return (dispatch) => {
     dispatch(toggleLoading(true))
-    axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: story.title, description: story.description, period: story.period })
+    axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: story.title, description: story.description, period_id: story.period_id })
     .then(function(response) {
       dispatch(toggleLoading(false))
       dispatch(push('/'))
@@ -46,17 +45,15 @@ export function editStoryRequest(id) {
     .then(function(response) {
       dispatch(getStorySuccess(response.data))
       dispatch(toggleLoading(false))
-      // dispatch(push(`/stories/${response.data.id}/edit`))
     })
   }
 }
 
 // UPDATE
-export function updateStoryRequest(story) { // id, title, description, period
+export function updateStoryRequest(story) {
   return (dispatch) => {
     dispatch(toggleLoading(true))
-    // axios.patch('https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json', { title: title, description: description, period: period })
-    axios.patch(`https://peaceful-dawn-52251.herokuapp.com/stories/${story.id}.json`, { title: story.title, description: story.description, period: story.period })
+    axios.patch(`https://peaceful-dawn-52251.herokuapp.com/stories/${story.id}.json`, { title: story.title, description: story.description, period_id: story.period_id })
     .then(function(response) {
       dispatch(toggleLoading(false))
       dispatch(push('/'))

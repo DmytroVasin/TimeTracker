@@ -8,7 +8,7 @@ export class StoryForm extends React.Component {
     this.state = {
       error: '',
       formType: this.props.formType,
-      story: this.props.story || { title: '', description: '', period: '-1' }
+      story: this.props.story || { title: '', description: '', period_id: '1' }
     }
   }
 
@@ -45,7 +45,7 @@ export class StoryForm extends React.Component {
 
   handlePeriodChange (event) {
     let newState = this.state
-    newState['story']['period'] = event.target.value
+    newState['story']['period_id'] = event.target.value
     this.setState(newState)
   }
 
@@ -65,12 +65,12 @@ export class StoryForm extends React.Component {
 
           <div className='new-story-input'>
             <label className='select'>
-              <select value={this.state.story.period} onChange={this.handlePeriodChange.bind(this)}>
+              <select value={this.state.story.period_id} onChange={this.handlePeriodChange.bind(this)}>
                 <option value=''>Choose Sprint</option>
-                <option value='-1'>Unscheduled</option>
-                <option value='0'>Overdue</option>
-                <option value='1'>Sprint 1</option>
-                <option value='2'>Sprint 2</option>
+                <option value='1'>Unscheduled</option>
+                <option value='2'>Overdue</option>
+                <option value='3'>Sprint 1</option>
+                <option value='4'>Sprint 2</option>
               </select>
             </label>
           </div>
