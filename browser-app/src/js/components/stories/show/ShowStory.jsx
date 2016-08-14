@@ -37,19 +37,16 @@ export class ShowStory extends Component {
 
     return (
       <div id='story'>
-        <div className='story-inner'>
-          <i className={ storyType } aria-hidden="true"></i>
+        <i className={ storyType } aria-hidden="true"></i>
 
-          <div className='notif'>
-            <p className="notif-title">{story.title}</p>
+        <div className='notif'>
+          <p className='notif-title'>{story.title}</p>
 
-            <p>{story.description}</p>
+          <p>{story.description}</p>
 
-            <div className="notif-controls">
-              <Link to={`/stories/${story.id}/edit`}>Edit</Link>
-            </div>
+          <div className='notif-controls'>
+            <Link className='button' to={`/stories/${story.id}/edit`}>Edit</Link>
           </div>
-
         </div>
       </div>
     )

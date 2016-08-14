@@ -13,11 +13,15 @@ export class ShowStoryPage extends Component {
     if (loading || !story) {
       return null
     } else if (error) {
-      return <div className="new-story-inner">Error: {error}</div>
+      return <div>Error: {error}</div>
     } else {
       return (
-        <div className='new-story-inner'>
-          <ShowStory story={story} />
+        <div id='wrapperBox'>
+          <div className='wrapperInner'>
+
+            <ShowStory story={story} />
+
+          </div>
         </div>
       )
     }

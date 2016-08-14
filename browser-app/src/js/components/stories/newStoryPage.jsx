@@ -10,9 +10,15 @@ export class NewStoryPage extends Component {
 
   render () {
     return (
-      <StoryForm createOrUpdateStory={this.props.actions.createStory}
-                 periods={this.props.periods}
-                 formType='Create' />
+      <div id='wrapperBox'>
+        <div className='wrapperInner'>
+
+          <StoryForm createOrUpdateStory={this.props.actions.createStory}
+                     periods={this.props.periods}
+                     formType='Create' />
+
+        </div>
+      </div>
     )
   }
 }

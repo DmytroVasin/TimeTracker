@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { StoryForm } from './StoryForm.jsx'
 
 export class EditStoryPage extends Component {
+
   componentWillMount() {
     this.props.actions.fetchStory(this.props.routeParams.id)
     this.props.actions.fetchPeriods()
@@ -14,14 +15,20 @@ export class EditStoryPage extends Component {
     if (loading) {
       return null
     } else if (error) {
-      return <div className="container">Error: {error}</div>
+      return <div>Error: {error}</div>
     }
 
     return (
-      <StoryForm story={story}
-                 periods={this.props.periods}
-                 createOrUpdateStory={this.props.actions.updateStory}
-                 formType='Update' />
+      <div id='wrapperBox'>
+        <div className='wrapperInner'>
+
+          <StoryForm story={story}
+                     periods={this.props.periods}
+                     createOrUpdateStory={this.props.actions.updateStory}
+                     formType='Update' />
+
+        </div>
+      </div>
     )
   }
 }

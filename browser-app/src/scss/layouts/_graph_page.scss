@@ -1,109 +1,106 @@
-#new-story {
-  position: relative;
-  margin: 20px auto;
-  padding: 5px;
-  width: 92%;
-  background: #eef5f7;
-  border: 1px solid #cfd5da;
-  border-radius: 5px;
-
-  .new-story-inner {
-    padding: 20px;
-    background: white;
-    border-radius: 5px;
-  }
-}
-
-#issuetable {
+#issueTable {
   text-align: center;
 
-  .summary {
-    padding-right: 10px;
-    max-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  thead {
+    tr {
+      th {
+        font-size: 0.8em;
+        padding: 3px 5px;
+        vertical-align: middle;
+        color: #999999;
 
-    a {
-      text-decoration: none;
-      color: #326CA6;
+        &.colHeader {
+          color: #000000;
+          font-size: 1.2em;
+        }
 
-      &:hover {
-        text-decoration: underline;
+        &:last-child {
+          vertical-align: bottom;
+        }
       }
     }
   }
 
-  .summary,
-  .nav.total {
-    border: none;
-    text-align: left;
+  tbody {
+    .issueType,
+    .summary {
+      cursor: initial;
+      border: none;
+    }
+
+    .issueType {
+      width: 20px;
+
+      .in_progress { color: $in_progress; }
+      .done { color: $done; }
+      .to_estimate { color: $to_estimate; }
+      .estimated { color: $estimated; }
+    }
+
+    .summary {
+      padding-right: 10px;
+      max-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      text-align: left;
+
+      a {
+        color: #326CA6;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    td {
+      cursor: pointer;
+
+      .fa-plus {
+        font-size: 0.6em;
+        vertical-align: middle;
+      }
+    }
+
+    tr.even {
+      background-color: #F5FAFF;
+    }
   }
 
-  th {
-    font-size: 0.8em;
-    padding: 3px 5px;
-    vertical-align: middle;
-    color: #999999;
+  tfoot {
+    background-color: #E0F0FF;
+    font-weight: bold;
+    border: none;
+
+    tr {
+      td {
+        cursor: initial;
+
+        &.total {
+          padding-left: 10px;
+          border: none;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  .nonBusinessDay {
+    background-color: #FFEEDD;
+  }
+
+  .toDay {
+    background-color: #E3FEEB;
   }
 
   td {
     padding: 5px 3px;
-  }
-
-  td {
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #DDDDDD;
   }
 
   tr {
-    border-bottom: 1px solid #eee;
-  }
-  .nav {
-    // border-bottom: 1px solid #eee;
-  }
-  // .border {
-  //   border-left: 1px solid #ddd;
-  // }
-  .rowAlternate {
-    background-color: #F5FAFF;
-  }
-  .rowHeader {
-    padding: 3px 7px;
-  }
-
-  .issuetype {
-    width: 20px;
-    border: none;
-    .in_progress { color: $in_progress; }
-    .done { color: $done; }
-    .to_estimate { color: $to_estimate; }
-    .estimated { color: $estimated; }
-  }
-  .colHeader {
-    color: #000;
-    font-size: 1.2em;
-  }
-
-  .rowFooter {
-    background-color: #E0F0FF;
-    font-weight: bold;
-    border: none;
-    padding-left: 10px;
-  }
-  .businessDay {
-  }
-  .nonBusinessDay {
-    background-color: #ffeedd;
-  }
-  .toDay {
-    background-color: #e3feeb;
-  }
-  #slider-prev {
-    position: absolute;
-    left: 5px;
-    bottom: 0px;
-  }
-  .total {
-
+    border-bottom: 1px solid #EEEEEE;
   }
 }

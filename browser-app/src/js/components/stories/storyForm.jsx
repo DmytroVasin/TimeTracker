@@ -59,40 +59,37 @@ export class StoryForm extends Component {
 
 
     return (
-      <form id='new-story' onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
+        { this.state.error.length ? storyError : null }
 
-        <div className='new-story-inner'>
-          { this.state.error.length ? storyError : null }
+        <div className='new-story-input'>
+          <input value={this.state.story.title} onChange={this.handleTitleChange} placeholder='Title' />
+        </div>
 
-          <div className='new-story-input'>
-            <input value={this.state.story.title} onChange={this.handleTitleChange} placeholder='Title' />
-          </div>
+        <div className='new-story-input'>
+          <label className='select'>
+            <select value={this.state.story.period_id} onChange={this.handlePeriodChange}>
+              <option value=''>Choose Sprint</option>
+              { sprintOptions }
+            </select>
+          </label>
+        </div>
 
-          <div className='new-story-input'>
-            <label className='select'>
-              <select value={this.state.story.period_id} onChange={this.handlePeriodChange}>
-                <option value=''>Choose Sprint</option>
-                { sprintOptions }
-              </select>
-            </label>
-          </div>
+        <div className='new-story-input'>
+          <label className='select'>
+            <select value={this.state.story.story_type} onChange={this.handleTypeChange}>
+              <option value=''>Choose Type</option>
+              { storyTypesOptions }
+            </select>
+          </label>
+        </div>
 
-          <div className='new-story-input'>
-            <label className='select'>
-              <select value={this.state.story.story_type} onChange={this.handleTypeChange}>
-                <option value=''>Choose Type</option>
-                { storyTypesOptions }
-              </select>
-            </label>
-          </div>
+        <div className='new-story-input'>
+          <textarea value={this.state.story.description} onChange={this.handleDescriptionChange} placeholder='Description'></textarea>
+        </div>
 
-          <div className='new-story-input'>
-            <textarea value={this.state.story.description} onChange={this.handleDescriptionChange} placeholder='Description'></textarea>
-          </div>
-
-          <div className='new-story-submit'>
-            <button type='submit'>{this.state.formType} Story</button>
-          </div>
+        <div className='formSubmit'>
+          <button type='submit' className='button'>{this.state.formType} Story</button>
         </div>
 
       </form>

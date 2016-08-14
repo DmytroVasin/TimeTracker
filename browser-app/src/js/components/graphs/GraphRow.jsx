@@ -7,13 +7,13 @@ export class GraphRow extends Component {
     const { story, index } = this.props
 
     return (
-      <tr className={index % 2 == 0 ? null : 'rowAlternate'}>
+      <tr className={index % 2 == 0 ? null : 'even'}>
 
-        <td className='nav issuetype'>
+        <td className='issueType'>
           <i className={`fa fa-file-text ${story.story_type}`}></i>
         </td>
 
-        <td className='nav summary' colSpan='2' width='100%'>
+        <td className='summary' colSpan='2'>
           <Link to={`/stories/${story.id}`}>{story.title}</Link>
         </td>
 

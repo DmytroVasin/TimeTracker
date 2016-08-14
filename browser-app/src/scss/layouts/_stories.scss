@@ -1,15 +1,10 @@
 @import
-  "components/stories/new_story",
-  "components/stories/show_story";
+"components/stories/new_story",
+"components/stories/show_story";
 
-  // "components/stories/story_box",
-  // "components/stories/story_footer";
-
-
-// "components/stories/stories_sidebar"
 #stories-sidebar {
   border: none;
-  box-shadow: inset -7px 0 25px -7px #bdbdbd;
+  box-shadow: inset -7px 0 25px -7px #BDBDBD;
 
   .sidebar-title {
     padding: 10px;
@@ -55,9 +50,10 @@
         border-radius: 3em;
         color: #333333;
         font-size: 0.8em;
+        min-width: 13px;
 
-padding: 0 5px;
-    text-align: center;
+        padding: 0 5px;
+        text-align: center;
         border: 1px solid #838383;
       }
     }
