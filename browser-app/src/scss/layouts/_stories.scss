@@ -25,7 +25,7 @@
 
   .sidebar-list {
     li {
-      padding: 5px 10px;
+      padding: 5px 10px 5px 5px;
       cursor: pointer;
 
       &.selected {
@@ -33,7 +33,7 @@
         color: #000000;
 
         .badge {
-          color: black;
+          color: #000000;
           border: 1px solid #838383;
         }
       }
@@ -43,24 +43,21 @@
         text-align: right;
         margin-right: 10px;
 
-        &.in_progress { color: #CEC700; }
-        &.done { color: #02B137; }
-        &.to_estimate { color: #FF7799; }
-        &.estimated { color: #826262; }
+        &.in_progress { color: $in_progress; }
+        &.done { color: $done; }
+        &.to_estimate { color: $to_estimate; }
+        &.estimated { color: $estimated; }
       }
 
       .badge {
         float: right;
         background: #E9E9E9;
         border-radius: 3em;
-        color: #333;
+        color: #333333;
         font-size: 0.8em;
-        line-height: 0.99;
-        margin: 0;
-        min-height: 1em;
-        min-width: 1em;
-        padding: 3px;
-        text-align: center;
+
+padding: 0 5px;
+    text-align: center;
         border: 1px solid #838383;
       }
     }
@@ -93,17 +90,21 @@
       &.type {
         width: 5%;
 
-        &.in_progress { background-color: #CEC700; }
-        &.done { background-color: #02B137; }
-        &.to_estimate { background-color: #FF7799; }
-        &.estimated { background-color: #826262; }
+        &.in_progress { background-color: $in_progress; }
+        &.done { background-color: $done; }
+        &.to_estimate { background-color: $to_estimate; }
+        &.estimated { background-color: $estimated; }
       }
 
       &.title {
         vertical-align: middle;
         padding-top: 15px;
+        max-width: 0;
 
         p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           color: #36474F;
           font-size: 1.2em;
           font-weight: bold;

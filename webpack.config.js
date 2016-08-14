@@ -4,6 +4,10 @@ module.exports = {
   entry: './entry.jsx',
   context: __dirname + '/browser-app/src/js',
 
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+
   output: {
     path: __dirname + '/browser-app/dist/js',
     filename: 'entry.js',

@@ -10,7 +10,7 @@ export class ShowStoryPage extends Component {
   render () {
     const { story, loading, error } = this.props.activeStory
 
-    if (loading) {
+    if (loading || !story) {
       return null
     } else if (error) {
       return <div className="new-story-inner">Error: {error}</div>

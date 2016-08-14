@@ -2,13 +2,13 @@
   position: relative;
   margin: 20px auto;
   padding: 5px;
-  width: 90%;
+  width: 92%;
   background: #eef5f7;
   border: 1px solid #cfd5da;
   border-radius: 5px;
 
   .story-inner {
-    padding: 25px;
+    padding: 20px;
     background: white;
     border-radius: 5px;
     min-height: 55px;
@@ -17,10 +17,10 @@
       font-size: 4em;
       position: absolute;
 
-      &.in_progress { color: #CEC700; }
-      &.done { color: #02B137; }
-      &.to_estimate { color: #FF7799; }
-      &.estimated { color: #826262; }
+      &.in_progress { color: $in_progress; }
+      &.done { color: $done; }
+      &.to_estimate { color: $to_estimate; }
+      &.estimated { color: $estimated; }
 
       &:before {
         display: block;

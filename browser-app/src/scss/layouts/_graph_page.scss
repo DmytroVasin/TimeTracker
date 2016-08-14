@@ -1,68 +1,94 @@
+#new-story {
+  position: relative;
+  margin: 20px auto;
+  padding: 5px;
+  width: 92%;
+  background: #eef5f7;
+  border: 1px solid #cfd5da;
+  border-radius: 5px;
+
+  .new-story-inner {
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+  }
+}
+
 #issuetable {
-  width: 90%;
-  margin: 20px auto 0;
   text-align: center;
 
-  .issuekey a,
-  .summary a {
-    color: #326CA6;
+  .summary {
+    padding-right: 10px;
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    a {
+      text-decoration: none;
+      color: #326CA6;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
-  .summary, .nav.total {
+  .summary,
+  .nav.total {
+    border: none;
     text-align: left;
   }
 
-  .issuekey {
-    white-space: nowrap;
-  }
   th {
+    font-size: 0.8em;
+    padding: 3px 5px;
+    vertical-align: middle;
     color: #999999;
   }
 
   td {
     padding: 5px 3px;
-    white-space: nowrap;
   }
-  .nav {
-    border-bottom: 1px solid #eee;
-  }
-  .border {
+
+  td {
     border-left: 1px solid #ddd;
   }
+
+  tr {
+    border-bottom: 1px solid #eee;
+  }
+  .nav {
+    // border-bottom: 1px solid #eee;
+  }
+  // .border {
+  //   border-left: 1px solid #ddd;
+  // }
   .rowAlternate {
     background-color: #F5FAFF;
   }
-  .rowNormal {
-  }
   .rowHeader {
-    color: #999999;
     padding: 3px 7px;
-  }
-  .rowHeader,
-  .rowNormal,
-  .rowAlternate,
-  .rowFooter {
-    // display: table-row;
   }
 
-  .nav,
-  .total,
-  .issuetype,
-  .issuekey,
-  .summary,
-  .priority {
-    // display: table-cell;
-    padding: 3px 7px;
+  .issuetype {
+    width: 20px;
+    border: none;
+    .in_progress { color: $in_progress; }
+    .done { color: $done; }
+    .to_estimate { color: $to_estimate; }
+    .estimated { color: $estimated; }
   }
   .colHeader {
     color: #000;
     font-size: 1.2em;
   }
-  .rowHeader th, .issuetable .colHeaderLink {
-    border-bottom: 1px solid #BBBBBB;
-  }
+
   .rowFooter {
     background-color: #E0F0FF;
+    font-weight: bold;
+    border: none;
+    padding-left: 10px;
   }
   .businessDay {
   }
@@ -78,12 +104,6 @@
     bottom: 0px;
   }
   .total {
-    color: red;
-  }
-  .aui-button.aui-button-link {
-    color: #333333;
-  }
-  a.fa {
-    text-decoration: none;
+
   }
 }

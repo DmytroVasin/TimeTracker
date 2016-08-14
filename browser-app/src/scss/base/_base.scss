@@ -1,3 +1,8 @@
+$to_estimate: #b0b0b0;
+$estimated:   #31bee1;
+$in_progress: #CEC700;
+$done:        #02B137;
+
 html {
   height: 100%;
 }
@@ -11,7 +16,7 @@ body {
   font-family: 'lato', helvetica, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.4em;
   overflow-x: hidden;
 }
 

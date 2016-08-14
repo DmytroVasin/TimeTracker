@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export class SidebarPeriods extends Component {
 
   getIcon(status) {
-    console.log(status)
     switch (status) {
       case 'Backlog':
         return 'fa fa-sitemap'

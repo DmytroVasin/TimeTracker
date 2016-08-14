@@ -66,7 +66,7 @@ function fetchPeriodsFailure(error) {
 
 
 export function fetchStory(id) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch(fetchStoryRequest())
     axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json`)
     .then(function(response) {

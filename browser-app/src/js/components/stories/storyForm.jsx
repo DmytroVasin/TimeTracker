@@ -51,7 +51,7 @@ export class StoryForm extends Component {
       return <option key={item.id} value={item.id}>{item.name}</option>
     })
 
-    let storyTypes = { 'in_progress': 'In Progress', 'estimated': 'Estimated', 'to_estimate': 'To Estimate', 'done': 'Done' }
+    let storyTypes = { 'to_estimate': 'To Estimate', 'estimated': 'Estimated', 'in_progress': 'In Progress', 'done': 'Done' }
 
     let storyTypesOptions = Object.keys(storyTypes).map( (key) => {
       return <option key={key} value={key}>{storyTypes[key]}</option>

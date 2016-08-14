@@ -6,7 +6,7 @@ export class ShowStory extends Component {
     super(props)
 
     this.state = {
-      story: this.props.story || { title: '', description: '', period_id: '', story_type: 'to_estimate' }
+      story: this.props.story
     }
   }
 

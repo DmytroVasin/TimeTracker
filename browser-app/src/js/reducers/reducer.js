@@ -3,7 +3,7 @@ const initialState = {
   sprintFilter: 'all',
 
   activeStory: {
-    story: { title: '', description: '', period_id: '', story_type: 'to_estimate' },
+    story: null,
     error: null,
     loading: false
   },

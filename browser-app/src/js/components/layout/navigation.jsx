@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-export class Navigation extends React.Component {
+export class Navigation extends Component {
   render() {
     return (
       <div id='header'>
