@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export class StoryForm extends React.Component {
+export class StoryForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       error: '',
       formType: this.props.formType,
-      story: this.props.story || { title: '', description: '', period_id: '' }
+      story: this.props.story || { title: '', description: '', period_id: '', story_type: '' }
     }
   }
 
@@ -15,8 +15,8 @@ export class StoryForm extends React.Component {
     event.preventDefault()
     let story = this.state.story
 
-    if (story.title && story.description && story.period_id) {
-      this.props.createOrUpdateStoryRequest(story)
+    if (story.title && story.description && story.period_id && story.story_type) {
+      this.props.createOrUpdateStory(story)
     } else {
       this.setState({error: 'Fill in values.'})
     }
@@ -31,12 +31,15 @@ export class StoryForm extends React.Component {
   handlePeriodChange = (event) => {
     this.updateStory('period_id', event.target.value)
   }
+  handleTypeChange = (event) => {
+    this.updateStory('story_type', event.target.value)
+  }
 
   updateStory (field, value) {
     this.setState({
       story: {
         ...this.state.story,
-        [field]: value.trim()
+        [field]: value
       }
     })
   }
@@ -46,6 +49,12 @@ export class StoryForm extends React.Component {
 
     let sprintOptions = this.props.periods.map( (item) => {
       return <option key={item.id} value={item.id}>{item.name}</option>
+    })
+
+    let storyTypes = { 'in_progress': 'In Progress', 'estimated': 'Estimated', 'to_estimate': 'To Estimate', 'done': 'Done' }
+
+    let storyTypesOptions = Object.keys(storyTypes).map( (key) => {
+      return <option key={key} value={key}>{storyTypes[key]}</option>
     })
 
 
@@ -64,6 +73,15 @@ export class StoryForm extends React.Component {
               <select value={this.state.story.period_id} onChange={this.handlePeriodChange}>
                 <option value=''>Choose Sprint</option>
                 { sprintOptions }
+              </select>
+            </label>
+          </div>
+
+          <div className='new-story-input'>
+            <label className='select'>
+              <select value={this.state.story.story_type} onChange={this.handleTypeChange}>
+                <option value=''>Choose Type</option>
+                { storyTypesOptions }
               </select>
             </label>
           </div>

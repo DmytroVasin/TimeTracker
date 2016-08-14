@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { StoryPeriod } from './storyPeriod.jsx'
-import { Spinner } from '../layout/spinner.jsx';
+import { StoryPeriod } from './StoryPeriod.jsx'
+import { Spinner } from '../../layout/spinner.jsx';
 
 export class StoriesWrapper extends React.Component {
   getFilteredStories(stories, statusFilter) {
@@ -37,7 +37,7 @@ export class StoriesWrapper extends React.Component {
       return <StoryPeriod key={item.id}
                           title={item.name}
                           periodStories={ filteredStories.filter(story => story.period_id == item.id) }
-                          removeStory={this.props.removeStory} />
+                          deleteStory={this.props.deleteStory} />
     })
 
     return (

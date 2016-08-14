@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { SidebarPeriods } from './sidebarPeriods.jsx'
-import { SidebarStatuses } from './sidebarStatuses.jsx'
+import { SidebarPeriods } from './SidebarPeriods.jsx'
+import { SidebarStatuses } from './SidebarStatuses.jsx'
 
 export class StoriesSideBar extends React.Component {
 

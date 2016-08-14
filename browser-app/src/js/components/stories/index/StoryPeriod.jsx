@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { StoryBox } from './storyBox.jsx'
+import { StoryBox } from './StoryBox.jsx'
 
 export class StoryPeriod extends React.Component {
   render () {
     var storyBoxes = this.props.periodStories.map( (item) => {
-      return <StoryBox story={item} key={item.id} removeStory={this.props.removeStory} />
+      return <StoryBox story={item} key={item.id} deleteStory={this.props.deleteStory} />
     })
 
     return (

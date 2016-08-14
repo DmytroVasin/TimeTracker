@@ -1,76 +1,199 @@
 import axios from 'axios'
 import { push } from 'react-router-redux';
 
-// INDEX
 export function fetchStories() {
   return (dispatch) => {
-    dispatch(toggleLoading(true))
+    dispatch(fetchStoriesRequest())
     axios.get('https://peaceful-dawn-52251.herokuapp.com/stories.json')
     .then(function(response) {
-      dispatch(setStories(response.data))
-      dispatch(toggleLoading(false))
+      dispatch(fetchStoriesSuccess(response.data))
+    })
+    .catch(function (error) {
+      dispatch(fetchStoriesFailure(error.message))
     })
   }
 }
+function fetchStoriesRequest() {
+  return {
+    type: 'FETCH_STORIES_REQUEST'
+  }
+}
+function fetchStoriesSuccess(stories) {
+  return {
+    type: 'FETCH_STORIES_SUCCESS',
+    payload: stories
+  }
+}
+function fetchStoriesFailure(error) {
+  return {
+    type: 'FETCH_STORIES_FAILURE',
+    payload: error
+  }
+}
+
+
+
 export function fetchPeriods() {
   return (dispatch) => {
-    // dispatch(toggleLoading(true))
+    dispatch(fetchPeriodsRequest())
     axios.get('https://peaceful-dawn-52251.herokuapp.com/periods.json')
     .then(function(response) {
-      dispatch(setPeriods(response.data))
-      // dispatch(toggleLoading(false))
+      dispatch(fetchPeriodsSuccess(response.data))
+    })
+    .catch(function (error) {
+      dispatch(fetchPeriodsFailure(error.message))
     })
   }
 }
+function fetchPeriodsRequest() {
+  return {
+    type: 'FETCH_PERIODS_REQUEST'
+  }
+}
+function fetchPeriodsSuccess(periods) {
+  return {
+    type: 'FETCH_PERIODS_SUCCESS',
+    payload: periods
+  }
+}
+function fetchPeriodsFailure(error) {
+  return {
+    type: 'FETCH_PERIODS_FAILURE',
+    payload: error
+  }
+}
 
-// SHOW
-export function getStoryRequest(id) {
+
+
+export function fetchStory(id) {
   return (dispatch) => {
-    dispatch(toggleLoading(true))
+    dispatch(fetchStoryRequest())
     axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json`)
     .then(function(response) {
-      dispatch(getStorySuccess(response.data))
-      dispatch(toggleLoading(false))
+      dispatch(fetchStorySuccess(response.data))
+    })
+    .catch(function (error) {
+      dispatch(fetchStoryFailure(error.message))
     })
   }
 }
-
-// CREATE
-export function createStoryRequest(story) {
-  return (dispatch) => {
-    dispatch(toggleLoading(true))
-    axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: story.title, description: story.description, period_id: story.period_id })
-    .then(function(response) {
-      dispatch(toggleLoading(false))
-      dispatch(push('/'))
-    })
+function fetchStoryRequest() {
+  return {
+    type: 'FETCH_STORY_REQUEST'
   }
 }
-
-// UPDATE
-export function updateStoryRequest(story) {
-  return (dispatch) => {
-    dispatch(toggleLoading(true))
-    axios.patch(`https://peaceful-dawn-52251.herokuapp.com/stories/${story.id}.json`, { title: story.title, description: story.description, period_id: story.period_id })
-    .then(function(response) {
-      dispatch(toggleLoading(false))
-      dispatch(push('/'))
-    })
+function fetchStorySuccess(story) {
+  return {
+    type: 'FETCH_STORY_SUCCESS',
+    payload: story
+  }
+}
+function fetchStoryFailure(error) {
+  return {
+    type: 'FETCH_STORY_FAILURE',
+    payload: error
   }
 }
 
 
-// DELETE
-export function removeStory(id) {
+
+export function deleteStory(id) {
   return (dispatch) => {
-    dispatch(toggleLoading(true))
+    dispatch(deleteStoryRequest())
     axios.delete(`https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json`)
-    .then(function() {
-      dispatch(deleteStory(id))
-      dispatch(toggleLoading(false))
+    .then(function(response) {
+      dispatch(deleteStorySuccess(response.data))
+    })
+    .catch(function (error) {
+      dispatch(deleteStoryFailure(error.message))
     })
   }
 }
+function deleteStoryRequest() {
+  return {
+    type: 'DELETE_STORY_REQUEST'
+  }
+}
+function deleteStorySuccess(story) {
+  return {
+    type: 'DELETE_STORY_SUCCESS',
+    payload: story
+  }
+}
+function deleteStoryFailure(error) {
+  return {
+    type: 'DELETE_STORY_FAILURE',
+    payload: error
+  }
+}
+
+
+
+export function createStory(story) {
+  return (dispatch) => {
+    dispatch(createStoryRequest())
+    axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: story.title, description: story.description, period_id: story.period_id, story_type: story.story_type })
+    .then(function(response) {
+      dispatch(createStorySuccess(response.data))
+      dispatch(push('/'))
+    })
+    .catch(function (error) {
+      dispatch(createStoryFailure(error.message))
+    })
+  }
+}
+function createStoryRequest() {
+  return {
+    type: 'CREATE_STORY_REQUEST'
+  }
+}
+function createStorySuccess(story) {
+  return {
+    type: 'CREATE_STORY_SUCCESS',
+    payload: story
+  }
+}
+function createStoryFailure(error) {
+  return {
+    type: 'CREATE_STORY_FAILURE',
+    payload: error
+  }
+}
+
+
+
+export function updateStory(story) {
+  return (dispatch) => {
+    dispatch(updateStoryRequest())
+    axios.patch(`https://peaceful-dawn-52251.herokuapp.com/stories/${story.id}.json`, { title: story.title, description: story.description, period_id: story.period_id, story_type: story.story_type })
+    .then(function(response) {
+      dispatch(updateStorySuccess(response.data))
+      dispatch(push('/'))
+    })
+    .catch(function (error) {
+      dispatch(updateStoryFailure(error.message))
+    })
+  }
+}
+function updateStoryRequest() {
+  return {
+    type: 'UPDATE_STORY_REQUEST'
+  }
+}
+function updateStorySuccess(story) {
+  return {
+    type: 'UPDATE_STORY_SUCCESS',
+    payload: story
+  }
+}
+function updateStoryFailure(error) {
+  return {
+    type: 'UPDATE_STORY_FAILURE',
+    payload: error
+  }
+}
+
+
 
 export function setStatusFilter(filter) {
   return {
@@ -79,46 +202,11 @@ export function setStatusFilter(filter) {
   }
 }
 
+
+
 export function setSprintFilter(filter) {
   return {
     type: 'SET_SPRINT_FILTER',
     payload: filter
-  }
-}
-
-
-
-function toggleLoading(value) {
-  return {
-    type: 'LOADING_DATA',
-    payload: value
-  }
-}
-
-function setStories(stories) {
-  return {
-    type: 'SET_STORIES',
-    payload: stories
-  }
-}
-
-function setPeriods(periods) {
-  return {
-    type: 'SET_PERIODS',
-    payload: periods
-  }
-}
-
-function deleteStory(story_id) {
-  return {
-    type: 'DELETE_STORY',
-    payload: story_id
-  }
-}
-
-function getStorySuccess(story) {
-  return {
-    type: 'SHOW_STORY',
-    payload: story
   }
 }

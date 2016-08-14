@@ -1,44 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux';
+import { ShowStory } from './show/ShowStory.jsx'
 
-import * as storyActions from '../../actions/storyActions'
-
-import { ShowStory } from './showStory.jsx'
-
-class showStoryPage extends React.Component {
-  // TODO: в чем отличие конструктора от ComponenWillMount?
+export class ShowStoryPage extends Component {
   componentWillMount() {
-    this.props.actions.getStoryRequest(this.props.routeParams.id)
+    this.props.actions.fetchStory(this.props.routeParams.id)
   }
 
   render () {
-    const story = this.props.currentStory ? <ShowStory story={this.props.currentStory} /> : null
+    const { story, loading, error } = this.props.activeStory
 
-    return (
-      <div className='new-story-inner'>
-        { story }
-      </div>
-    )
+    if (loading) {
+      return null
+    } else if (error) {
+      return <div className="new-story-inner">Error: {error}</div>
+    } else {
+      return (
+        <div className='new-story-inner'>
+          <ShowStory story={story} />
+        </div>
+      )
+    }
   }
 }
-
-
-// Smart component!
-function mapStateToProps(store) {
-  return {
-    currentStory: store.reducer.currentStory,
-    isLoading: store.reducer.isLoading
-  }
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(storyActions, dispatch)
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(showStoryPage)

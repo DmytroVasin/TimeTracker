@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router'
 
 export class StoryBox extends React.Component {
-  handleRemoveStoryClick (e) {
+  handledeleteStoryClick (e) {
     e.preventDefault()
-    this.props.removeStory(this.props.story.id)
+    this.props.deleteStory(this.props.story.id)
   }
 
   render () {
@@ -23,7 +23,7 @@ export class StoryBox extends React.Component {
               <td className='actions' rowSpan='2'>
                 <Link to={`/stories/${this.props.story.id}`}><i className='fa fa-eye'></i></Link>
                 <Link to={`/stories/${this.props.story.id}/edit`}><i className='fa fa-pencil'></i></Link>
-                <a href='#' onClick={this.handleRemoveStoryClick.bind(this)}><i className='fa fa-trash'></i></a>
+                <a href='#' onClick={this.handledeleteStoryClick.bind(this)}><i className='fa fa-trash'></i></a>
               </td>
             </tr>
 

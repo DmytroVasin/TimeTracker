@@ -4,16 +4,19 @@ import { connect } from 'react-redux';
 
 class Spinner extends React.Component {
   render() {
+    let globalLoading = this.props.storiesLoading || this.props.periodsLoading || this.props.activeStoryLoading
+
     return (
-      this.props.isLoading ? <div className='loading'>Loading&#8230;</div> : null
+      globalLoading ? <div className='loading'></div> : null
     )
   }
 }
 
-// Smart component!
 function mapStateToProps(store) {
   return {
-    isLoading: store.reducer.isLoading
+    storiesLoading: store.reducer.storyList.loading,
+    periodsLoading: store.reducer.periodList.loading,
+    activeStoryLoading: store.reducer.activeStory.loading
   }
 }
 
