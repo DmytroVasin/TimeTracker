@@ -2,23 +2,28 @@ import React, { Component } from 'react'
 
 import { GraphRow } from './GraphRow'
 
+import { InlineDialog } from './InlineDialog'
+
 export class GraphPage extends Component {
+
   componentWillMount() {
     this.props.actions.fetchStories()
   }
 
   render() {
     if (this.props.stories.length == 0) {
-      return null;
+      return null
     }
 
     let storyRows = this.props.stories.map( (story, index) => {
-      return <GraphRow key={story.id} story={story} index={index} />
+      return <GraphRow key={story.id} story={story} index={index} handleAddTime={this.props.actions.setAddTime} />
     })
 
     return (
       <div id='wrapperBox'>
         <div className='wrapperInner'>
+
+          <InlineDialog />
 
           <table id='issueTable' cellSpacing='0' cellPadding='3'>
             <thead>

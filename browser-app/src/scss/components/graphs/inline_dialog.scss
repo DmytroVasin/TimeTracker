@@ -1,0 +1,167 @@
+.inlineDialog {
+  color: #777777;
+  position: absolute;
+  border: 2px solid #E0F0FF;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  background-color: #FFFFFF;
+  padding: 5px 10px;
+
+  width: 250px;
+
+  .new-story-input {
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 5px;
+    background: #eef7f9;
+    border-radius: 2px;
+
+    input,
+    textarea {
+      display: block;
+      width: 100%;
+      height: 29px;
+      padding: 5px 10px;
+      color: #4d5a5e;
+      background: white;
+      border: 1px solid #cfdfe3;
+      border-radius: 2px;
+
+      &:focus {
+        border-color: #93c2ec;
+        outline: 0;
+        box-shadow: 0 0 0 8px #e1ecf5;
+      }
+    }
+
+    textarea {
+      padding: 4px 8px;
+      min-height: 90px;
+      resize: none;
+    }
+
+    .select {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      background: white;
+      border: 1px solid #d2e2e7;
+      border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+      select {
+        position: relative;
+        width: 100%;
+        height: 29px;
+        padding: 5px 10px;
+        color: #80989f;
+        background: transparent;
+        border: 0;
+
+        &:focus {
+          color: #4d5a5e;
+          outline: 0;
+        }
+      }
+    }
+  }
+
+
+  .new-story-input {
+    float: left;
+    margin: 0px;
+    padding: 3px;
+
+    padding: 3px;
+    width: 70%;
+    box-sizing: border-box;
+
+    input {
+      padding: 0px 5px;
+      height: 20px;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    margin-left: -6px;
+    width: 1px;
+    height: 1px;
+    border: outset transparent;
+    border-width: 12px 14px 0;
+    border-top-style: solid;
+    margin-top: -8px;
+    bottom: -11px;
+    border-top-color: #ffffff;
+
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    margin-left: -6px;
+    width: 1px;
+    height: 1px;
+    border: outset transparent;
+    border-width: 12px 14px 0;
+    border-top-style: solid;
+    margin-top: -8px;
+    bottom: -13px;
+    border-top-color: #E0F0FF;
+  }
+
+  .input-row {
+    @include clearfix;
+    margin-bottom: 5px;
+
+    .input-row-title {
+      float: left;
+      width: 75px;
+      padding: 3px 0;
+    }
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  .timeTitle {
+    margin-bottom: 5px;
+  }
+
+
+  .downloads {
+    border-bottom: 1px solid #E0F0FF;
+    margin-bottom: 5px;
+
+    .download {
+      @include clearfix;
+      padding: 0 0 5px 0;
+
+      .taskTime {
+        padding-right: 5px;
+        border-right: 1px solid #E0F0FF;
+      }
+
+      .taskTitle {
+        padding-left: 5px;
+      }
+
+      .fa {
+        line-height: 21px;
+        margin: 0 5px 0 0;
+        float: right;
+        color: #FF0000;
+        cursor: pointer;
+      }
+
+      span {
+        float: left;
+      }
+    }
+  }
+}

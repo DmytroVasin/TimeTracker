@@ -24,7 +24,6 @@
   tbody {
     .issueType,
     .summary {
-      cursor: initial;
       border: none;
     }
 
@@ -56,11 +55,25 @@
     }
 
     td {
-      cursor: pointer;
+      &.grid {
+        cursor: pointer;
 
-      .fa-plus {
-        font-size: 0.6em;
-        vertical-align: middle;
+        .spentTime {
+          font-size: 0.8em;
+        }
+
+        .fa-plus {
+          display: none;
+          font-size: 0.8em;
+          vertical-align: top;
+          text-align: left;
+        }
+
+        &:hover {
+          .fa-plus {
+            display: block;
+          }
+        }
       }
     }
 
@@ -76,8 +89,6 @@
 
     tr {
       td {
-        cursor: initial;
-
         &.total {
           padding-left: 10px;
           border: none;
