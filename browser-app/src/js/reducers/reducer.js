@@ -18,6 +18,15 @@ const initialState = {
     periods: [],
     error: null,
     loading: false
+  },
+
+  graphDialog: {
+    show: false,
+    taskList: {
+      tasks: [],
+      error: null,
+      loading: false
+    }
   }
 }
 
@@ -92,6 +101,36 @@ const reducer = function(state=initialState, action) {
       return { ...state, periodList: {periods: action.payload, error: null, loading: false} }
     case 'FETCH_PERIODS_FAILURE':
       return { ...state, periodList: {periods: [], error: action.payload, loading: false} }
+
+
+
+
+
+    case 'CREATE_TASKS_REQUEST':
+      return { ...state, graphDialog: {tasks: [], error: null, loading: true} }
+    case 'CREATE_TASKS_SUCCESS':
+      return { ...state,
+        graphDialog: {tasks: [...state.graphDialog.tasks, action.payload], error: null, loading: false }
+      }
+    case 'CREATE_TASKS_FAILURE':
+      return { ...state, graphDialog: {tasks: [], error: action.payload, loading: false} }
+
+
+
+
+
+
+    case 'TOGGLE_DIALOG':
+      return { ...state, graphDialog: { ...state.graphDialog, show: action.payload } }
+    case 'FETCH_STORY_TASKS_REQUEST':
+      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: null, loading: true}} }
+    case 'FETCH_STORY_TASKS_SUCCESS':
+      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: action.payload, error: null, loading: false}} }
+    case 'FETCH_STORY_TASKS_FAILURE':
+      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: action.payload, loading: false}} }
+
+
+
 
     default:
       return state

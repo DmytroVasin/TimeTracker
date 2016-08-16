@@ -3,6 +3,8 @@
 
   thead {
     tr {
+      line-height: 1em;
+
       th {
         font-size: 0.8em;
         padding: 3px 5px;
@@ -107,11 +109,12 @@
   }
 
   td {
-    padding: 5px 3px;
+    padding: 0 3px;
     border-left: 1px solid #DDDDDD;
   }
 
   tr {
+    line-height: 2em;
     border-bottom: 1px solid #EEEEEE;
   }
 }

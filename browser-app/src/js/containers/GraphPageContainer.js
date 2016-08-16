@@ -7,7 +7,8 @@ import { GraphPage } from '../components/graphs/GraphPage.jsx';
 
 function mapStateToProps(store) {
   return {
-    stories: store.reducer.storyList.stories
+    stories: store.reducer.storyList.stories,
+    graphDialog: store.reducer.graphDialog
   }
 }
 

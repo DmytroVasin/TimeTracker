@@ -3,8 +3,12 @@ import { Link } from 'react-router'
 
 export class GraphRow extends Component {
 
+  openAddTimeDialog(day) {
+    this.props.openGraphTimeDialog(this.props.story.id)
+  }
+
   render() {
-    const { story, index, setAddTime } = this.props
+    const { story, index } = this.props
 
     return (
       <tr className={index % 2 == 0 ? null : 'even'}>
@@ -17,31 +21,31 @@ export class GraphRow extends Component {
           <Link to={`/stories/${story.id}`}>{story.title}</Link>
         </td>
 
-        <td onClick={() => setAddTime(story.id, 0)} className='grid'>
+        <td onClick={() => this.openAddTimeDialog(0)} className='grid'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => setAddTime(story.id, 1)} className='grid'>
+        <td onClick={() => this.openAddTimeDialog(1)} className='grid'>
           <span className='spentTime'>4h</span>
         </td>
 
-        <td onClick={() => setAddTime(story.id, 2)} className='grid'>
+        <td onClick={() => this.openAddTimeDialog(2)} className='grid'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => setAddTime(story.id, 3)} className='grid toDay'>
+        <td onClick={() => this.openAddTimeDialog(3)} className='grid toDay'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => setAddTime(story.id, 4)} className='grid'>
+        <td onClick={() => this.openAddTimeDialog(4)} className='grid'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => setAddTime(story.id, 5)} className='grid nonBusinessDay'>
+        <td onClick={() => this.openAddTimeDialog(5)} className='grid nonBusinessDay'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => setAddTime(story.id, 6)} className='grid nonBusinessDay'>
+        <td onClick={() => this.openAddTimeDialog(6)} className='grid nonBusinessDay'>
           <span className='fa fa-plus'></span>
         </td>
 

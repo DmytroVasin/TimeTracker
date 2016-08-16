@@ -1,14 +1,21 @@
+.inlineDialogWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5)
+}
+
 .inlineDialog {
+  top: 155px;
+  right: 175px;
+
   color: #777777;
   position: absolute;
   border: 2px solid #E0F0FF;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-
   background-color: #FFFFFF;
   padding: 5px 10px;
-
   width: 250px;
 
   .new-story-input {
@@ -68,7 +75,6 @@
     }
   }
 
-
   .new-story-input {
     float: left;
     margin: 0px;
@@ -82,37 +88,6 @@
       padding: 0px 5px;
       height: 20px;
     }
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    margin-left: -6px;
-    width: 1px;
-    height: 1px;
-    border: outset transparent;
-    border-width: 12px 14px 0;
-    border-top-style: solid;
-    margin-top: -8px;
-    bottom: -11px;
-    border-top-color: #ffffff;
-
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    margin-left: -6px;
-    width: 1px;
-    height: 1px;
-    border: outset transparent;
-    border-width: 12px 14px 0;
-    border-top-style: solid;
-    margin-top: -8px;
-    bottom: -13px;
-    border-top-color: #E0F0FF;
   }
 
   .input-row {
@@ -137,10 +112,13 @@
   .downloads {
     border-bottom: 1px solid #E0F0FF;
     margin-bottom: 5px;
+    padding-bottom: 5px;
 
     .download {
+      display: flex;
+      flex-flow: row;
+
       @include clearfix;
-      padding: 0 0 5px 0;
 
       .taskTime {
         padding-right: 5px;
@@ -149,19 +127,44 @@
 
       .taskTitle {
         padding-left: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.8em;
       }
 
       .fa {
         line-height: 21px;
         margin: 0 5px 0 0;
-        float: right;
         color: #FF0000;
         cursor: pointer;
-      }
-
-      span {
-        float: left;
+        flex: 10%;
+        text-align: right;
       }
     }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    left: 84%;
+    width: 1px;
+    height: 1px;
+    border: outset transparent;
+    border-width: 12px 14px 14px;
+    border-bottom-style: solid;
+  }
+  &:after {
+    top: -26px;
+    border-bottom-color: #FFFFFF;
+  }
+  &:before {
+        top: -28px;
+    border-bottom-color: #E0F0FF;
   }
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { GraphRow } from './GraphRow'
-
 import { InlineDialog } from './InlineDialog'
 
 export class GraphPage extends Component {
@@ -16,14 +15,16 @@ export class GraphPage extends Component {
     }
 
     let storyRows = this.props.stories.map( (story, index) => {
-      return <GraphRow key={story.id} story={story} index={index} handleAddTime={this.props.actions.setAddTime} />
+      return <GraphRow key={story.id} story={story} index={index} openGraphTimeDialog={this.props.actions.openGraphTimeDialog} />
     })
 
     return (
       <div id='wrapperBox'>
         <div className='wrapperInner'>
 
-          <InlineDialog />
+          <InlineDialog graphDialog={this.props.graphDialog}
+                        createTask={this.props.actions.createTask}
+                        clearStoriesTasks={this.props.actions.clearStoriesTasks} />
 
           <table id='issueTable' cellSpacing='0' cellPadding='3'>
             <thead>

@@ -213,6 +213,79 @@ export function setSprintFilter(filter) {
 
 
 
-// export function setAddTime(storyId, day) {
+export function clearStoriesTasks() {
+  return (dispatch) => {
+    dispatch(toggleDialog(false))
+    dispatch(fetchStoriesTasksSuccess([]))
+  }
+}
 
-// }
+export function openGraphTimeDialog(storyId) {
+  return (dispatch) => {
+    dispatch(toggleDialog(true))
+    dispatch(fetchStoriesTasksRequest())
+    axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`)
+    .then(function(response) {
+      dispatch(fetchStoriesTasksSuccess(response.data))
+    })
+    .catch(function (error) {
+      dispatch(fetchStoriesTasksFailure(error.message))
+    })
+  }
+}
+function toggleDialog(dialogState) {
+  return {
+    type: 'TOGGLE_DIALOG',
+    payload: dialogState
+  }
+}
+function fetchStoriesTasksRequest() {
+  return {
+    type: 'FETCH_STORY_TASKS_REQUEST'
+  }
+}
+function fetchStoriesTasksSuccess(tasks) {
+  return {
+    type: 'FETCH_STORY_TASKS_SUCCESS',
+    payload: tasks
+  }
+}
+function fetchStoriesTasksFailure(error) {
+  return {
+    type: 'FETCH_STORY_TASKS_FAILURE',
+    payload: error
+  }
+}
+
+
+
+export function createTask(storyId, task) {
+  return (dispatch) => {
+    dispatch(createTaskRequest())
+    axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { time: task.time, comment: task.comment })
+    .then(function(response) {
+      dispatch(createTaskSuccess(response.data))
+      dispatch(push('/graph'))
+    })
+    .catch(function (error) {
+      dispatch(createTaskFailure(error.message))
+    })
+  }
+}
+function createTaskRequest() {
+  return {
+    type: 'CREATE_TASK_REQUEST'
+  }
+}
+function createTaskSuccess(task) {
+  return {
+    type: 'CREATE_TASK_SUCCESS',
+    payload: task
+  }
+}
+function createTaskFailure(error) {
+  return {
+    type: 'CREATE_TASK_FAILURE',
+    payload: error
+  }
+}

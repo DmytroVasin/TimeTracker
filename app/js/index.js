@@ -11,7 +11,7 @@ let optionsWindow;
 
 const createApp = function () {
   const reactDevToolsname = BrowserWindow.addDevToolsExtension("/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/0.15.0_0")
-  const reduxDevToolsname = BrowserWindow.addDevToolsExtension("/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.0_0")
+  const reduxDevToolsname = BrowserWindow.addDevToolsExtension("/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.0.1_0")
   // const reactDevToolsname = BrowserWindow.addDevToolsExtension("/Users/vasin/Library/Application Support/Google/Chrome/Profile 1/Extensions/fmkadmapgofadopljbjfkapdkoienihi/0.15.0_0")
   // const reduxDevToolsname = BrowserWindow.addDevToolsExtension("/Users/vasin/Library/Application Support/Google/Chrome/Profile 1/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.0_0")
 
