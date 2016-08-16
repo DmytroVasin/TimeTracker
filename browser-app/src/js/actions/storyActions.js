@@ -213,16 +213,16 @@ export function setSprintFilter(filter) {
 
 
 
-export function clearStoriesTasks() {
+export function hideDialog() {
   return (dispatch) => {
-    dispatch(toggleDialog(false))
+    dispatch(toggleDialog(false, null))
     dispatch(fetchStoriesTasksSuccess([]))
   }
 }
 
-export function openGraphTimeDialog(storyId) {
+export function openGraphDialog(storyId) {
   return (dispatch) => {
-    dispatch(toggleDialog(true))
+    dispatch(toggleDialog(true, storyId))
     dispatch(fetchStoriesTasksRequest())
     axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`)
     .then(function(response) {
@@ -233,10 +233,10 @@ export function openGraphTimeDialog(storyId) {
     })
   }
 }
-function toggleDialog(dialogState) {
+function toggleDialog(visiability, storyId) {
   return {
     type: 'TOGGLE_DIALOG',
-    payload: dialogState
+    payload: {visiability: visiability, storyId: storyId}
   }
 }
 function fetchStoriesTasksRequest() {
@@ -261,20 +261,13 @@ function fetchStoriesTasksFailure(error) {
 
 export function createTask(storyId, task) {
   return (dispatch) => {
-    dispatch(createTaskRequest())
     axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { time: task.time, comment: task.comment })
     .then(function(response) {
       dispatch(createTaskSuccess(response.data))
-      dispatch(push('/graph'))
     })
     .catch(function (error) {
       dispatch(createTaskFailure(error.message))
     })
-  }
-}
-function createTaskRequest() {
-  return {
-    type: 'CREATE_TASK_REQUEST'
   }
 }
 function createTaskSuccess(task) {
@@ -286,6 +279,33 @@ function createTaskSuccess(task) {
 function createTaskFailure(error) {
   return {
     type: 'CREATE_TASK_FAILURE',
+    payload: error
+  }
+}
+
+
+
+
+export function deleteTask(storyId, taskId) {
+  return (dispatch) => {
+    axios.delete(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks/${taskId}.json`)
+    .then(function(response) {
+      dispatch(deleteTaskSuccess(response.data))
+    })
+    .catch(function (error) {
+      dispatch(deleteTaskFailure(error.message))
+    })
+  }
+}
+function deleteTaskSuccess(task) {
+  return {
+    type: 'DELETE_TASK_SUCCESS',
+    payload: task
+  }
+}
+function deleteTaskFailure(error) {
+  return {
+    type: 'DELETE_TASK_FAILURE',
     payload: error
   }
 }

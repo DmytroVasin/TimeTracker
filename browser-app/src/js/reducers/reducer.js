@@ -22,6 +22,7 @@ const initialState = {
 
   graphDialog: {
     show: false,
+    storyId: null,
     taskList: {
       tasks: [],
       error: null,
@@ -106,22 +107,20 @@ const reducer = function(state=initialState, action) {
 
 
 
-    case 'CREATE_TASKS_REQUEST':
-      return { ...state, graphDialog: {tasks: [], error: null, loading: true} }
-    case 'CREATE_TASKS_SUCCESS':
-      return { ...state,
-        graphDialog: {tasks: [...state.graphDialog.tasks, action.payload], error: null, loading: false }
-      }
-    case 'CREATE_TASKS_FAILURE':
+    case 'CREATE_TASK_SUCCESS':
+      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [...state.graphDialog.taskList.tasks, action.payload], error: null, loading: false}} }
+    case 'CREATE_TASK_FAILURE':
       return { ...state, graphDialog: {tasks: [], error: action.payload, loading: false} }
 
-
-
-
+    case 'DELETE_TASK_SUCCESS':
+      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [...state.graphDialog.taskList.tasks.filter(task => task.id !== action.payload.id)], error: null, loading: false}} }
+    case 'DELETE_TASK_FAILURE':
+      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: state.graphDialog.taskList.tasks, error: action.payload, loading: false}} }
 
 
     case 'TOGGLE_DIALOG':
-      return { ...state, graphDialog: { ...state.graphDialog, show: action.payload } }
+      return { ...state, graphDialog: { ...state.graphDialog, show: action.payload.visiability, storyId: action.payload.storyId } }
+
     case 'FETCH_STORY_TASKS_REQUEST':
       return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: null, loading: true}} }
     case 'FETCH_STORY_TASKS_SUCCESS':

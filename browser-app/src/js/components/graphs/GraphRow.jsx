@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export class GraphRow extends Component {
 
   openAddTimeDialog(day) {
-    this.props.openGraphTimeDialog(this.props.story.id)
+    this.props.openGraphDialog(this.props.story.id)
   }
 
   render() {

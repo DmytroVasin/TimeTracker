@@ -34,21 +34,24 @@ export class InlineDialog extends Component {
     let task = this.state.task
 
     if (task.time && task.comment) {
-      this.props.createTask(91, task)
+      this.props.createTask(this.props.graphDialog.storyId, task)
 
-      // this.props.createTask(this.props.storyId, task)
       this.setState({error: '', task: { time: '', comment: ''}})
     } else {
       this.setState({error: 'Fill in values.'})
     }
   }
 
-  closeDialog = () => {
-    this.props.clearStoriesTasks()
+  hideDialog = () => {
+    this.props.hideDialog()
   }
 
   handleNotCloseDialog = (e) => {
     e.stopPropagation()
+  }
+
+  deleteTask = (taskId) => {
+    this.props.deleteTask(this.props.graphDialog.storyId, taskId)
   }
 
   render() {
@@ -59,10 +62,10 @@ export class InlineDialog extends Component {
     }
 
     return (
-      <div className='inlineDialogWrapper' onClick={this.closeDialog} >
+      <div className='inlineDialogWrapper' onClick={this.hideDialog} >
         <div className='inlineDialog' onClick={this.handleNotCloseDialog} >
 
-          <ListOfTasks taskList={taskList} />
+          <ListOfTasks taskList={taskList} deleteTask={this.deleteTask.bind(this)} />
 
           <form onSubmit={this.handleSubmit}>
             <div className='timeTitle'>Log Work for 08/Jul/16</div>

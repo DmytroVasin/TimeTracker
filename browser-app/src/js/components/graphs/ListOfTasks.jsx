@@ -16,7 +16,7 @@ export class ListOfTasks extends React.Component {
       return  <li key={task.id} className='download'>
                 <span className='taskTime'>3h</span>
                 <span className='taskTitle'>{task.comment}</span>
-                <span className='fa fa-trash-o'></span>
+                <span className='fa fa-trash-o' onClick={() => this.props.deleteTask(task.id) } ></span>
               </li>
     })
 

@@ -15,7 +15,10 @@ export class GraphPage extends Component {
     }
 
     let storyRows = this.props.stories.map( (story, index) => {
-      return <GraphRow key={story.id} story={story} index={index} openGraphTimeDialog={this.props.actions.openGraphTimeDialog} />
+      return <GraphRow key={story.id}
+                       story={story}
+                       index={index}
+                       openGraphDialog={this.props.actions.openGraphDialog} />
     })
 
     return (
@@ -24,7 +27,8 @@ export class GraphPage extends Component {
 
           <InlineDialog graphDialog={this.props.graphDialog}
                         createTask={this.props.actions.createTask}
-                        clearStoriesTasks={this.props.actions.clearStoriesTasks} />
+                        hideDialog={this.props.actions.hideDialog}
+                        deleteTask={this.props.actions.deleteTask} />
 
           <table id='issueTable' cellSpacing='0' cellPadding='3'>
             <thead>
