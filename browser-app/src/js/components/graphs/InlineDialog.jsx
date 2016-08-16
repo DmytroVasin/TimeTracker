@@ -55,15 +55,20 @@ export class InlineDialog extends Component {
   }
 
   render() {
-    const { show, taskList } = this.props.graphDialog
+    const { show, taskList, coordinates } = this.props.graphDialog
 
     if (!show || taskList.loading) {
       return null
     }
 
+    let dialogStyle = {
+      top: coordinates.positionTop,
+      right: coordinates.positionRight
+    };
+
     return (
       <div className='inlineDialogWrapper' onClick={this.hideDialog} >
-        <div className='inlineDialog' onClick={this.handleNotCloseDialog} >
+        <div className='inlineDialog' onClick={this.handleNotCloseDialog} style={dialogStyle} >
 
           <ListOfTasks taskList={taskList} deleteTask={this.deleteTask.bind(this)} />
 

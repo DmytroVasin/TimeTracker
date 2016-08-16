@@ -3,8 +3,13 @@ import { Link } from 'react-router'
 
 export class GraphRow extends Component {
 
-  openAddTimeDialog(day) {
-    this.props.openGraphDialog(this.props.story.id)
+  openAddTimeDialog(event) {
+    let rect = event.currentTarget.getClientRects()[0]
+
+    let positionTop = rect.top - 18
+    let positionRight = window.innerWidth - rect.right + rect.width + 3
+
+    this.props.openGraphDialog(this.props.story.id, {positionTop: positionTop, positionRight: positionRight})
   }
 
   render() {
@@ -21,31 +26,31 @@ export class GraphRow extends Component {
           <Link to={`/stories/${story.id}`}>{story.title}</Link>
         </td>
 
-        <td onClick={() => this.openAddTimeDialog(0)} className='grid'>
+        <td onClick={this.openAddTimeDialog.bind(this)} className='grid'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => this.openAddTimeDialog(1)} className='grid'>
+        <td onClick={this.openAddTimeDialog.bind(this)} className='grid'>
           <span className='spentTime'>4h</span>
         </td>
 
-        <td onClick={() => this.openAddTimeDialog(2)} className='grid'>
+        <td onClick={this.openAddTimeDialog.bind(this)} className='grid'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => this.openAddTimeDialog(3)} className='grid toDay'>
+        <td onClick={this.openAddTimeDialog.bind(this)} className='grid toDay'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => this.openAddTimeDialog(4)} className='grid'>
+        <td onClick={this.openAddTimeDialog.bind(this)} className='grid'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => this.openAddTimeDialog(5)} className='grid nonBusinessDay'>
+        <td onClick={this.openAddTimeDialog.bind(this)} className='grid nonBusinessDay'>
           <span className='fa fa-plus'></span>
         </td>
 
-        <td onClick={() => this.openAddTimeDialog(6)} className='grid nonBusinessDay'>
+        <td onClick={this.openAddTimeDialog.bind(this)} className='grid nonBusinessDay'>
           <span className='fa fa-plus'></span>
         </td>
 

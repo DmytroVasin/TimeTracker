@@ -1,5 +1,5 @@
 .inlineDialogWrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -148,23 +148,22 @@
     display: none;
   }
 
-
   &:after, &:before {
     content: '';
     position: absolute;
-    left: 84%;
+    top: 18px;
     width: 1px;
     height: 1px;
     border: outset transparent;
-    border-width: 12px 14px 14px;
-    border-bottom-style: solid;
+    border-width: 14px 14px 14px;
+    border-left-style: solid;
   }
   &:after {
-    top: -26px;
-    border-bottom-color: #FFFFFF;
+    right: -27px;
+    border-left-color: #FFFFFF;
   }
   &:before {
-        top: -28px;
-    border-bottom-color: #E0F0FF;
+    right: -30px;
+    border-left-color: #E0F0FF;
   }
 }

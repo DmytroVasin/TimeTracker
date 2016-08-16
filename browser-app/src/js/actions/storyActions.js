@@ -220,9 +220,10 @@ export function hideDialog() {
   }
 }
 
-export function openGraphDialog(storyId) {
+export function openGraphDialog(storyId, coordinates) {
   return (dispatch) => {
     dispatch(toggleDialog(true, storyId))
+    dispatch(setDialogPosition(coordinates))
     dispatch(fetchStoriesTasksRequest())
     axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`)
     .then(function(response) {
@@ -237,6 +238,12 @@ function toggleDialog(visiability, storyId) {
   return {
     type: 'TOGGLE_DIALOG',
     payload: {visiability: visiability, storyId: storyId}
+  }
+}
+function setDialogPosition(coordinates) {
+  return {
+    type: 'SET_DIALOG_POSITION',
+    payload: {positionTop: coordinates.positionTop, positionRight: coordinates.positionRight}
   }
 }
 function fetchStoriesTasksRequest() {

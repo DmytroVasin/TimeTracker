@@ -27,6 +27,10 @@ const initialState = {
       tasks: [],
       error: null,
       loading: false
+    },
+    coordinates: {
+      top: '305',
+      right: '295'
     }
   }
 }
@@ -120,6 +124,8 @@ const reducer = function(state=initialState, action) {
 
     case 'TOGGLE_DIALOG':
       return { ...state, graphDialog: { ...state.graphDialog, show: action.payload.visiability, storyId: action.payload.storyId } }
+    case 'SET_DIALOG_POSITION':
+      return { ...state, graphDialog: { ...state.graphDialog, coordinates: { positionTop: action.payload.positionTop, positionRight: action.payload.positionRight }} }
 
     case 'FETCH_STORY_TASKS_REQUEST':
       return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: null, loading: true}} }
