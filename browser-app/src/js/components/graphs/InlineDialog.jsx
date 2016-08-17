@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { ListOfTasks } from './ListOfTasks'
+import { InlineDialogTasks } from './InlineDialogTasks'
 
 export class InlineDialog extends Component {
   constructor(props) {
@@ -70,7 +70,7 @@ export class InlineDialog extends Component {
       <div className='inlineDialogWrapper' onClick={this.hideDialog} >
         <div className='inlineDialog' onClick={this.handleNotCloseDialog} style={dialogStyle} >
 
-          <ListOfTasks taskList={taskList} deleteTask={this.deleteTask.bind(this)} />
+          <InlineDialogTasks taskList={taskList} deleteTask={this.deleteTask.bind(this)} />
 
           <form onSubmit={this.handleSubmit}>
             <div className='timeTitle'>Log Work for 08/Jul/16</div>

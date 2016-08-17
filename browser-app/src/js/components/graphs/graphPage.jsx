@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
-import { GraphRow } from './GraphRow'
 import { InlineDialog } from './InlineDialog'
 import { GraphHeader } from './GraphHeader'
+import { GraphBody } from './GraphBody'
+import { GraphFooter } from './GraphFooter'
 
 export class GraphPage extends Component {
 
@@ -15,13 +16,6 @@ export class GraphPage extends Component {
       return null
     }
 
-    let storyRows = this.props.stories.map( (story, index) => {
-      return <GraphRow key={story.id}
-                       story={story}
-                       index={index}
-                       openGraphDialog={this.props.actions.openGraphDialog} />
-    })
-
     return (
       <div id='wrapperBox'>
         <div className='wrapperInner'>
@@ -31,28 +25,11 @@ export class GraphPage extends Component {
                         hideDialog={this.props.actions.hideDialog}
                         deleteTask={this.props.actions.deleteTask} />
 
-          <table id='issueTable' cellSpacing='0' cellPadding='3'>
+          <table id='issuesTable' cellSpacing='0' cellPadding='3'>
             <GraphHeader />
-
-            <tbody>
-              { storyRows }
-            </tbody>
-
-            <tfoot>
-              <tr>
-                <td colSpan='3' className='total'>Total:</td>
-                <td>8h</td>
-                <td></td>
-                <td></td>
-                <td>8h</td>
-                <td>8h</td>
-                <td>8h</td>
-                <td>2h</td>
-                <td>64h</td>
-              </tr>
-            </tfoot>
+            <GraphBody openGraphDialog={this.props.actions.openGraphDialog} stories={this.props.stories} />
+            <GraphFooter />
           </table>
-
         </div>
       </div>
     )

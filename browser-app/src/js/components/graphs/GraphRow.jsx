@@ -13,7 +13,7 @@ export class GraphRow extends Component {
     let positionTop = rect.top - 18
     let positionRight = window.innerWidth - rect.right + rect.width + 3
 
-    let taskDate = moment().startOf('isoWeek').isoWeekday(2).format('ddd D/MMM')
+    let taskDate = moment().startOf('isoWeek').isoWeekday(2).format('YY MM DD')
 
     this.props.openGraphDialog(this.props.story.id, taskDate, {positionTop: positionTop, positionRight: positionRight})
   }

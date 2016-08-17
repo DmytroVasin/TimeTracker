@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class ListOfTasks extends React.Component {
+export class InlineDialogTasks extends React.Component {
 
   render () {
     const { tasks, error } = this.props.taskList
