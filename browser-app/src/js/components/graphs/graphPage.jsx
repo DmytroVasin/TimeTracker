@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { GraphRow } from './GraphRow'
 import { InlineDialog } from './InlineDialog'
+import { GraphHeader } from './GraphHeader'
 
 export class GraphPage extends Component {
 
@@ -31,23 +32,12 @@ export class GraphPage extends Component {
                         deleteTask={this.props.actions.deleteTask} />
 
           <table id='issueTable' cellSpacing='0' cellPadding='3'>
-            <thead>
-              <tr>
-                <th className='colHeader' colSpan='3'>Timesheet</th>
-                <th><span>Mon 11/Jul</span></th>
-                <th><span>Tue 12/Jul</span></th>
-                <th><span>Wed 13/Jul</span></th>
-                <th className='toDay'><span>Thu 14/Jul</span></th>
-                <th><span>Fri 15/Jul</span></th>
-                <th className='nonBusinessDay'><span>Sat 16/Jul</span></th>
-                <th className='nonBusinessDay'><span>Sun 17/Jul</span></th>
-                <th>Total</th>
-              </tr>
-            </thead>
+            <GraphHeader />
 
             <tbody>
               { storyRows }
             </tbody>
+
             <tfoot>
               <tr>
                 <td colSpan='3' className='total'>Total:</td>

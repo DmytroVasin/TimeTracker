@@ -8,7 +8,8 @@
     "watch": "webpack-dev-server --hot --inline"
   },
   "dependencies": {
-    "electron-is-dev": "0.1.1"
+    "electron-is-dev": "0.1.1",
+    "moment": "^2.14.1"
   },
   "devDependencies": {
     "axios": "^0.13.1",

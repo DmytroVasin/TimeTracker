@@ -20,6 +20,21 @@ const initialState = {
     loading: false
   },
 
+
+  graphList: {
+    stories: [{
+      id: null,
+      title: null,
+      greedLog: {
+        'Mon 17/Aug': [],
+        'Tuh 18/Aug': [],
+        'Wed 19/Aug': []
+      }
+    }],
+    error: null,
+    loading: false
+  },
+
   graphDialog: {
     show: false,
     storyId: null,
