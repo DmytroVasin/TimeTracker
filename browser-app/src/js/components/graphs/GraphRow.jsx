@@ -1,9 +1,6 @@
-// TODO: тут должно быть?
-// TODO: Duplication
-const moment = require('moment')
-
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import moment from 'moment'
 
 import { GraphCell } from './GraphCell'
 

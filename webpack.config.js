@@ -13,7 +13,7 @@ module.exports = {
     filename: 'entry.js',
     publicPath: 'http://localhost:8080/browser-app/dist/js/'
   },
-
+  devtool: 'source-map',
   module: {
     loaders: [
       {

@@ -1,7 +1,5 @@
-// TODO: тут должно быть?
-const moment = require('moment')
-
 import React, { Component } from 'react'
+import moment from 'moment'
 
 export class GraphHeader extends Component {
 
