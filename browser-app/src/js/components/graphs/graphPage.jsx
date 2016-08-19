@@ -28,7 +28,7 @@ export class GraphPage extends Component {
           <table id='issuesTable' cellSpacing='0' cellPadding='3'>
             <GraphHeader />
             <GraphBody openGraphDialog={this.props.actions.openGraphDialog} graph={this.props.graph} />
-            <GraphFooter />
+            <GraphFooter graph={this.props.graph} />
           </table>
         </div>
       </div>

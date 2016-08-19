@@ -21,7 +21,7 @@ const initialState = {
   },
 
 
-  graph: {
+  graphTable: {
     graph: [],
     error: null,
     loading: false
@@ -131,7 +131,7 @@ const reducer = function(state=initialState, action) {
       let _task    = action.payload.task
       let _newGraph = []
 
-      _newGraph = state.graph.graph.map( (story) => {
+      _newGraph = state.graphTable.graph.map( (story) => {
         if (story.id === _storyId) {
           if (story.log_work[_task.task_date]) {
             story.log_work[_task.task_date] = story.log_work[_task.task_date].concat([_task])
@@ -139,9 +139,11 @@ const reducer = function(state=initialState, action) {
             story.log_work[_task.task_date] = [_task]
           }
         }
+
+        return story
       })
 
-      return { ...state, graph: { ...state.graph, graph: { graph: newGraph, error: null, loading: false}} }
+      return { ...state, graphTable: { ...state.graphTable, graph: _newGraph, error: null, loading: false }}
 
 
     case 'DELETE_TASK_SUCCESS':
@@ -169,11 +171,11 @@ const reducer = function(state=initialState, action) {
 
 
     case 'FETCH_GRAPH_REQUEST':
-      return { ...state, graph: {graph: [], error: null, loading: true} }
+      return { ...state, graphTable: {graph: [], error: null, loading: true} }
     case 'FETCH_GRAPH_SUCCESS':
-      return { ...state, graph: {graph: action.payload, error: null, loading: false} }
+      return { ...state, graphTable: {graph: action.payload, error: null, loading: false} }
     case 'FETCH_GRAPH_FAILURE':
-      return { ...state, graph: {graph: [], error: action.payload, loading: false} }
+      return { ...state, graphTable: {graph: [], error: action.payload, loading: false} }
 
 
 
