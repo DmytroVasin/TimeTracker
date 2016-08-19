@@ -21,20 +21,6 @@ const initialState = {
   },
 
 
-  graphList: {
-    stories: [{
-      id: null,
-      title: null,
-      greedLog: {
-        'Mon 17/Aug': [],
-        'Tuh 18/Aug': [],
-        'Wed 19/Aug': []
-      }
-    }],
-    error: null,
-    loading: false
-  },
-
   graph: {
     graph: [],
     error: null,
@@ -139,6 +125,24 @@ const reducer = function(state=initialState, action) {
       return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [...state.graphDialog.taskList.tasks, action.payload], error: null, loading: false}} }
     case 'CREATE_TASK_FAILURE':
       return { ...state, graphDialog: {tasks: [], error: action.payload, loading: false} }
+
+    case 'UPDATE_GRAPH_LIST':
+      let _storyId = action.payload.storyId
+      let _task    = action.payload.task
+      let _newGraph = []
+
+      _newGraph = state.graph.graph.map( (story) => {
+        if (story.id === _storyId) {
+          if (story.log_work[_task.task_date]) {
+            story.log_work[_task.task_date] = story.log_work[_task.task_date].concat([_task])
+          } else {
+            story.log_work[_task.task_date] = [_task]
+          }
+        }
+      })
+
+      return { ...state, graph: { ...state.graph, graph: { graph: newGraph, error: null, loading: false}} }
+
 
     case 'DELETE_TASK_SUCCESS':
       return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [...state.graphDialog.taskList.tasks.filter(task => task.id !== action.payload.id)], error: null, loading: false}} }

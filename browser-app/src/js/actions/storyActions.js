@@ -279,6 +279,7 @@ export function createTask(storyId, task) {
     axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { minutes: task.minutes, comment: task.comment, task_date: task.task_date })
     .then(function(response) {
       dispatch(createTaskSuccess(response.data))
+      dispatch(updateGraphList({ storyId: storyId, task: response.data }))
     })
     .catch(function (error) {
       dispatch(createTaskFailure(error.message))
@@ -295,6 +296,12 @@ function createTaskFailure(error) {
   return {
     type: 'CREATE_TASK_FAILURE',
     payload: error
+  }
+}
+function updateGraphList(object) {
+  return {
+    type: 'UPDATE_GRAPH_LIST',
+    payload: object
   }
 }
 
