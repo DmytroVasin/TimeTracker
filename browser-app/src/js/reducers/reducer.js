@@ -46,7 +46,7 @@ const initialState = {
   graphDialog: {
     show: false,
     storyId: null,
-    dialogTitleDate: '08/Jul/16',
+    dialogDate: null,
     taskList: {
       tasks: [],
       error: null,
@@ -151,7 +151,7 @@ const reducer = function(state=initialState, action) {
     case 'SET_DIALOG_POSITION':
       return { ...state, graphDialog: { ...state.graphDialog, coordinates: { positionTop: action.payload.positionTop, positionRight: action.payload.positionRight }} }
     case 'SET_DIALOG_TITLE_DATE':
-      return { ...state, graphDialog: { ...state.graphDialog, dialogTitleDate: action.payload } }
+      return { ...state, graphDialog: { ...state.graphDialog, dialogDate: action.payload } }
 
     case 'FETCH_STORY_TASKS_REQUEST':
       return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: null, loading: true}} }

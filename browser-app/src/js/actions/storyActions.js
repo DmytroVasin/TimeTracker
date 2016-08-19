@@ -220,11 +220,11 @@ export function hideDialog() {
   }
 }
 
-export function openGraphDialog(storyId, dialogTitleDate, coordinates, currentCellTasks) {
+export function openGraphDialog(storyId, dialogDate, coordinates, currentCellTasks) {
   return (dispatch) => {
     dispatch(toggleDialog(true, storyId))
     dispatch(setDialogPosition(coordinates))
-    dispatch(setDialogTitleDate(dialogTitleDate))
+    dispatch(setdialogDateTitle(dialogDate))
     dispatch(fetchStoriesTasksSuccess(currentCellTasks))
 
     // axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json?task_date=${taskDate}`)
@@ -242,10 +242,10 @@ function toggleDialog(visiability, storyId) {
     payload: {visiability: visiability, storyId: storyId}
   }
 }
-function setDialogTitleDate(dialogTitleDate) {
+function setdialogDateTitle(dialogDate) {
   return {
     type: 'SET_DIALOG_TITLE_DATE',
-    payload: dialogTitleDate
+    payload: dialogDate
   }
 }
 function setDialogPosition(coordinates) {
@@ -276,7 +276,7 @@ function fetchStoriesTasksFailure(error) {
 
 export function createTask(storyId, task) {
   return (dispatch) => {
-    axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { time: task.time, comment: task.comment })
+    axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { time: task.time, comment: task.comment, task_date: task.task_date })
     .then(function(response) {
       dispatch(createTaskSuccess(response.data))
     })

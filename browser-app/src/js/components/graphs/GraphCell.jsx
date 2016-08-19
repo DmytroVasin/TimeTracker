@@ -6,15 +6,15 @@ import React, { Component } from 'react'
 
 export class GraphCell extends Component {
 
-  openAddTimeDialog(event, asdads) {
+  openAddTimeDialog(currentDayNumber, event) {
     let rect = event.currentTarget.getClientRects()[0]
 
     let positionTop = rect.top - 18
     let positionRight = window.innerWidth - rect.right + rect.width + 3
 
-    let dialogTitleDate = moment().startOf('isoWeek').isoWeekday(this.props.day).format('YYYY/MM/DD')
+    let dialogDate = moment().isoWeekday( parseInt(this.props.day) ).format('YYYY/MM/DD')
 
-    this.props.openGraphDialog(this.props.storyId, dialogTitleDate, {positionTop: positionTop, positionRight: positionRight}, this.props.dayTasks)
+    this.props.openGraphDialog(this.props.storyId, dialogDate, {positionTop: positionTop, positionRight: positionRight}, this.props.dayTasks)
   }
 
 
@@ -48,7 +48,7 @@ export class GraphCell extends Component {
     }
 
     return (
-      <td onClick={this.openAddTimeDialog.bind(this)} className={ this.cellClassName() }>
+      <td onClick={ this.openAddTimeDialog.bind(this, '10') } className={ this.cellClassName() }>
         {timer}
       </td>
     )

@@ -13,7 +13,8 @@ export class InlineDialog extends Component {
   }
 
   handleTimeChange = (event) => {
-    this.updateTask('time', event.target.value)
+    let numbersOnly = /[^0-9]+/g
+    this.updateTask( 'time', event.target.value.replace(numbersOnly, '') )
   }
 
   handleCommentChange = (event) => {
@@ -34,7 +35,7 @@ export class InlineDialog extends Component {
     let task = this.state.task
 
     if (task.time && task.comment) {
-      this.props.createTask(this.props.graphDialog.storyId, task)
+      this.props.createTask(this.props.graphDialog.storyId, { ...task, task_date: this.props.graphDialog.dialogDate })
 
       this.setState({error: '', task: { time: '', comment: ''}})
     } else {
@@ -55,7 +56,7 @@ export class InlineDialog extends Component {
   }
 
   render() {
-    const { show, taskList, coordinates } = this.props.graphDialog
+    const { show, taskList, coordinates, dialogDate } = this.props.graphDialog
 
     if (!show || taskList.loading) {
       return null
@@ -73,7 +74,7 @@ export class InlineDialog extends Component {
           <InlineDialogTasks taskList={taskList} deleteTask={this.deleteTask.bind(this)} />
 
           <form onSubmit={this.handleSubmit}>
-            <div className='timeTitle'>Log Work for {this.props.graphDialog.dialogTitleDate}</div>
+            <div className='timeTitle'>Log Work for {dialogDate}</div>
 
             <div className='input-row'>
               <div className='input-row-title'>Spent:</div>
