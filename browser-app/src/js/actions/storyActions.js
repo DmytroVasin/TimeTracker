@@ -220,24 +220,32 @@ export function hideDialog() {
   }
 }
 
-export function openGraphDialog(storyId, taskDate, coordinates) {
+export function openGraphDialog(storyId, dialogTitleDate, coordinates, currentCellTasks) {
   return (dispatch) => {
     dispatch(toggleDialog(true, storyId))
     dispatch(setDialogPosition(coordinates))
-    dispatch(fetchStoriesTasksRequest())
-    axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json?task_date=${taskDate}`)
-    .then(function(response) {
-      dispatch(fetchStoriesTasksSuccess(response.data))
-    })
-    .catch(function (error) {
-      dispatch(fetchStoriesTasksFailure(error.message))
-    })
+    dispatch(setDialogTitleDate(dialogTitleDate))
+    dispatch(fetchStoriesTasksSuccess(currentCellTasks))
+
+    // axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json?task_date=${taskDate}`)
+    // .then(function(response) {
+    //   dispatch(fetchStoriesTasksSuccess(response.data))
+    // })
+    // .catch(function (error) {
+    //   dispatch(fetchStoriesTasksFailure(error.message))
+    // })
   }
 }
 function toggleDialog(visiability, storyId) {
   return {
     type: 'TOGGLE_DIALOG',
     payload: {visiability: visiability, storyId: storyId}
+  }
+}
+function setDialogTitleDate(dialogTitleDate) {
+  return {
+    type: 'SET_DIALOG_TITLE_DATE',
+    payload: dialogTitleDate
   }
 }
 function setDialogPosition(coordinates) {
@@ -316,3 +324,37 @@ function deleteTaskFailure(error) {
     payload: error
   }
 }
+
+
+
+
+export function fetchGraph() {
+  return (dispatch) => {
+    dispatch(fetchGraphRequest())
+    axios.get('https://peaceful-dawn-52251.herokuapp.com/graph.json')
+    .then(function(response) {
+      dispatch(fetchGraphSuccess(response.data))
+    })
+    .catch(function (error) {
+      dispatch(fetchGraphFailure(error.message))
+    })
+  }
+}
+function fetchGraphRequest() {
+  return {
+    type: 'FETCH_GRAPH_REQUEST'
+  }
+}
+function fetchGraphSuccess(graph) {
+  return {
+    type: 'FETCH_GRAPH_SUCCESS',
+    payload: graph
+  }
+}
+function fetchGraphFailure(error) {
+  return {
+    type: 'FETCH_GRAPH_FAILURE',
+    payload: error
+  }
+}
+

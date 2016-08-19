@@ -73,7 +73,7 @@ export class InlineDialog extends Component {
           <InlineDialogTasks taskList={taskList} deleteTask={this.deleteTask.bind(this)} />
 
           <form onSubmit={this.handleSubmit}>
-            <div className='timeTitle'>Log Work for 08/Jul/16</div>
+            <div className='timeTitle'>Log Work for {this.props.graphDialog.dialogTitleDate}</div>
 
             <div className='input-row'>
               <div className='input-row-title'>Spent:</div>

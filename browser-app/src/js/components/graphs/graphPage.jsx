@@ -8,11 +8,11 @@ import { GraphFooter } from './GraphFooter'
 export class GraphPage extends Component {
 
   componentWillMount() {
-    this.props.actions.fetchStories()
+    this.props.actions.fetchGraph()
   }
 
   render() {
-    if (this.props.stories.length == 0) {
+    if (this.props.graph.length == 0) {
       return null
     }
 
@@ -27,7 +27,7 @@ export class GraphPage extends Component {
 
           <table id='issuesTable' cellSpacing='0' cellPadding='3'>
             <GraphHeader />
-            <GraphBody openGraphDialog={this.props.actions.openGraphDialog} stories={this.props.stories} />
+            <GraphBody openGraphDialog={this.props.actions.openGraphDialog} graph={this.props.graph} />
             <GraphFooter />
           </table>
         </div>

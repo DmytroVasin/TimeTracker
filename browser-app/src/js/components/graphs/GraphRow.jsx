@@ -5,26 +5,19 @@ const moment = require('moment')
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
+import { GraphCell } from './GraphCell'
+
 export class GraphRow extends Component {
 
-  openAddTimeDialog(event) {
-    let rect = event.currentTarget.getClientRects()[0]
+  todayTasks = (day) => {
+    let weekTasks = this.props.story.log_work
+    let currentDay = moment().startOf('isoWeek').isoWeekday(day).format('YYYY/MM/DD')
 
-    let positionTop = rect.top - 18
-    let positionRight = window.innerWidth - rect.right + rect.width + 3
-
-    let taskDate = moment().startOf('isoWeek').isoWeekday(2).format('YY MM DD')
-
-    this.props.openGraphDialog(this.props.story.id, taskDate, {positionTop: positionTop, positionRight: positionRight})
-  }
-
-  // Duplication!
-  isToDay = (dayNumber) => {
-    if (dayNumber == moment().isoWeekday()) {
-      return 'toDay'
+    if (weekTasks[currentDay]) {
+      return weekTasks[currentDay]
+    } else {
+      return []
     }
-
-    null
   }
 
   render() {
@@ -41,33 +34,13 @@ export class GraphRow extends Component {
           <Link to={`/stories/${story.id}`}>{story.title}</Link>
         </td>
 
-        <td onClick={this.openAddTimeDialog.bind(this)} className={`grid ${this.isToDay(1)}`}>
-          <span className='fa fa-plus'></span>
-        </td>
-
-        <td onClick={this.openAddTimeDialog.bind(this)} className={`grid ${this.isToDay(2)}`}>
-          <span className='spentTime'>4h</span>
-        </td>
-
-        <td onClick={this.openAddTimeDialog.bind(this)} className={`grid ${this.isToDay(3)}`}>
-          <span className='fa fa-plus'></span>
-        </td>
-
-        <td onClick={this.openAddTimeDialog.bind(this)} className={`grid ${this.isToDay(4)}`}>
-          <span className='fa fa-plus'></span>
-        </td>
-
-        <td onClick={this.openAddTimeDialog.bind(this)} className={`grid ${this.isToDay(5)}`}>
-          <span className='fa fa-plus'></span>
-        </td>
-
-        <td onClick={this.openAddTimeDialog.bind(this)} className={`grid nonBusinessDay ${this.isToDay(6)}`}>
-          <span className='fa fa-plus'></span>
-        </td>
-
-        <td onClick={this.openAddTimeDialog.bind(this)} className={`grid nonBusinessDay ${this.isToDay(7)}`}>
-          <span className='fa fa-plus'></span>
-        </td>
+        <GraphCell dayTasks={ this.todayTasks(1) } day='1' isDayOff='false' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
+        <GraphCell dayTasks={ this.todayTasks(2) } day='2' isDayOff='false' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
+        <GraphCell dayTasks={ this.todayTasks(3) } day='3' isDayOff='false' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
+        <GraphCell dayTasks={ this.todayTasks(4) } day='4' isDayOff='false' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
+        <GraphCell dayTasks={ this.todayTasks(5) } day='5' isDayOff='false' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
+        <GraphCell dayTasks={ this.todayTasks(6) } day='6' isDayOff='true' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
+        <GraphCell dayTasks={ this.todayTasks(7) } day='7' isDayOff='true' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
 
         <td className='total'>2h</td>
       </tr>

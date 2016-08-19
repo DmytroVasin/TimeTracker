@@ -35,9 +35,18 @@ const initialState = {
     loading: false
   },
 
+  graph: {
+    graph: [],
+    error: null,
+    loading: false
+  },
+
+
+
   graphDialog: {
     show: false,
     storyId: null,
+    dialogTitleDate: '08/Jul/16',
     taskList: {
       tasks: [],
       error: null,
@@ -141,6 +150,8 @@ const reducer = function(state=initialState, action) {
       return { ...state, graphDialog: { ...state.graphDialog, show: action.payload.visiability, storyId: action.payload.storyId } }
     case 'SET_DIALOG_POSITION':
       return { ...state, graphDialog: { ...state.graphDialog, coordinates: { positionTop: action.payload.positionTop, positionRight: action.payload.positionRight }} }
+    case 'SET_DIALOG_TITLE_DATE':
+      return { ...state, graphDialog: { ...state.graphDialog, dialogTitleDate: action.payload } }
 
     case 'FETCH_STORY_TASKS_REQUEST':
       return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: null, loading: true}} }
@@ -148,6 +159,17 @@ const reducer = function(state=initialState, action) {
       return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: action.payload, error: null, loading: false}} }
     case 'FETCH_STORY_TASKS_FAILURE':
       return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: action.payload, loading: false}} }
+
+
+
+
+
+    case 'FETCH_GRAPH_REQUEST':
+      return { ...state, graph: {graph: [], error: null, loading: true} }
+    case 'FETCH_GRAPH_SUCCESS':
+      return { ...state, graph: {graph: action.payload, error: null, loading: false} }
+    case 'FETCH_GRAPH_FAILURE':
+      return { ...state, graph: {graph: [], error: action.payload, loading: false} }
 
 
 
