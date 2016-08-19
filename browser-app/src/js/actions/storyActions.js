@@ -276,7 +276,7 @@ function fetchStoriesTasksFailure(error) {
 
 export function createTask(storyId, task) {
   return (dispatch) => {
-    axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { time: task.time, comment: task.comment, task_date: task.task_date })
+    axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { minutes: task.minutes, comment: task.comment, task_date: task.task_date })
     .then(function(response) {
       dispatch(createTaskSuccess(response.data))
     })

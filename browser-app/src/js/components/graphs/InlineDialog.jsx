@@ -8,13 +8,13 @@ export class InlineDialog extends Component {
 
     this.state = {
       error: '',
-      task: { time: '', comment: '' }
+      task: { minutes: '', comment: '' }
     }
   }
 
-  handleTimeChange = (event) => {
+  handleMinutesChange = (event) => {
     let numbersOnly = /[^0-9]+/g
-    this.updateTask( 'time', event.target.value.replace(numbersOnly, '') )
+    this.updateTask( 'minutes', event.target.value.replace(numbersOnly, '') )
   }
 
   handleCommentChange = (event) => {
@@ -34,10 +34,10 @@ export class InlineDialog extends Component {
     event.preventDefault()
     let task = this.state.task
 
-    if (task.time && task.comment) {
+    if (task.minutes && task.comment) {
       this.props.createTask(this.props.graphDialog.storyId, { ...task, task_date: this.props.graphDialog.dialogDate })
 
-      this.setState({error: '', task: { time: '', comment: ''}})
+      this.setState({error: '', task: { minutes: '', comment: ''}})
     } else {
       this.setState({error: 'Fill in values.'})
     }
@@ -79,7 +79,7 @@ export class InlineDialog extends Component {
             <div className='input-row'>
               <div className='input-row-title'>Spent:</div>
               <div className='new-story-input'>
-                <input value={this.state.task.time} onChange={this.handleTimeChange} />
+                <input value={this.state.task.minutes} onChange={this.handleMinutesChange} />
               </div>
             </div>
 

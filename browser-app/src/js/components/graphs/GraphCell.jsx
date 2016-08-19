@@ -37,7 +37,7 @@ export class GraphCell extends Component {
     if ( dayTasks.length ) {
       let hoursWorked = 0
       dayTasks.forEach( (task) => {
-        hoursWorked += Number.parseInt(task.time)
+        hoursWorked += Number.parseInt(task.minutes)
       })
       timer = <span className='spentTime'>{hoursWorked}</span>
     } else {

@@ -14,7 +14,7 @@ export class InlineDialogTasks extends React.Component {
 
     let listItems = this.props.taskList.tasks.map( (task) => {
       return  <li key={task.id} className='download'>
-                <span className='taskTime'>3h</span>
+                <span className='taskMinutes'>{task.minutes}</span>
                 <span className='taskTitle'>{task.comment}</span>
                 <span className='fa fa-trash-o' onClick={() => this.props.deleteTask(task.id) } ></span>
               </li>
@@ -27,4 +27,3 @@ export class InlineDialogTasks extends React.Component {
     )
   }
 }
-
