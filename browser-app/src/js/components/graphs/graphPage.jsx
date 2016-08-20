@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 
-import { InlineDialog } from './InlineDialog'
-import { GraphHeader } from './GraphHeader'
-import { GraphBody } from './GraphBody'
-import { GraphFooter } from './GraphFooter'
+import { InlineDialog } from './dialog/InlineDialog'
+import { GraphTable } from './table/GraphTable'
 
 export class GraphPage extends Component {
 
@@ -17,19 +15,17 @@ export class GraphPage extends Component {
     }
 
     return (
-      <div id='wrapperBox'>
-        <div className='wrapperInner'>
+      <div id='contentWrapper'>
+        <div className='contentBox'>
 
           <InlineDialog graphDialog={this.props.graphDialog}
                         createTask={this.props.actions.createTask}
-                        hideDialog={this.props.actions.hideDialog}
-                        deleteTask={this.props.actions.deleteTask} />
+                        deleteTask={this.props.actions.deleteTask}
+                        hideDialog={this.props.actions.hideDialog} />
 
-          <table id='issuesTable' cellSpacing='0' cellPadding='3'>
-            <GraphHeader />
-            <GraphBody openGraphDialog={this.props.actions.openGraphDialog} graph={this.props.graph} />
-            <GraphFooter graph={this.props.graph} />
-          </table>
+          <GraphTable openGraphDialog={this.props.actions.openGraphDialog}
+                      graph={this.props.graph} />
+
         </div>
       </div>
     )

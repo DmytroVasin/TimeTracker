@@ -7,14 +7,12 @@ export class InlineDialog extends Component {
     super(props)
 
     this.state = {
-      error: '',
-      task: { minutes: '', comment: '' }
+      task: {minutes: '', comment: ''}
     }
   }
 
   handleMinutesChange = (event) => {
-    let numbersOnly = /[^0-9]+/g
-    this.updateTask( 'minutes', event.target.value.replace(numbersOnly, '') )
+    this.updateTask('minutes', event.target.value.replace(/[^0-9]+/g, ''))
   }
 
   handleCommentChange = (event) => {
@@ -22,12 +20,7 @@ export class InlineDialog extends Component {
   }
 
   updateTask (field, value) {
-    this.setState({
-      task: {
-        ...this.state.task,
-        [field]: value
-      }
-    })
+    this.setState({ task: {...this.state.task, [field]: value} })
   }
 
   handleSubmit = (event) => {
@@ -37,9 +30,7 @@ export class InlineDialog extends Component {
     if (task.minutes && task.comment) {
       this.props.createTask(this.props.graphDialog.storyId, { ...task, task_date: this.props.graphDialog.dialogDate })
 
-      this.setState({error: '', task: { minutes: '', comment: ''}})
-    } else {
-      this.setState({error: 'Fill in values.'})
+      this.setState({task: { minutes: '', comment: ''}})
     }
   }
 
@@ -51,46 +42,40 @@ export class InlineDialog extends Component {
     e.stopPropagation()
   }
 
-  deleteTask = (taskId) => {
-    this.props.deleteTask(this.props.graphDialog.storyId, taskId)
-  }
-
   render() {
-    const { show, taskList, coordinates, dialogDate } = this.props.graphDialog
+    const { show, tasksList, coordinates, dialogDate } = this.props.graphDialog
 
-    if (!show || taskList.loading) {
-      return null
-    }
+    if (!show) return null
 
     let dialogStyle = {
       top: coordinates.positionTop,
       right: coordinates.positionRight
-    };
+    }
 
     return (
-      <div className='inlineDialogWrapper' onClick={this.hideDialog} >
-        <div className='inlineDialog' onClick={this.handleNotCloseDialog} style={dialogStyle} >
+      <div className='inline-dialog-container' onClick={this.hideDialog} >
+        <div className='inline-dialog' onClick={this.handleNotCloseDialog} style={dialogStyle} >
 
-          <InlineDialogTasks taskList={taskList} deleteTask={this.deleteTask.bind(this)} />
+          <InlineDialogTasks tasksList={tasksList} storyId={this.props.graphDialog.storyId} deleteTask={this.props.deleteTask} />
 
-          <form onSubmit={this.handleSubmit}>
-            <div className='timeTitle'>Log Work for {dialogDate}</div>
+          <form onSubmit={this.handleSubmit} className='dialog-form' >
+            <div className='dialog-form-title'>Log Work for {dialogDate}</div>
 
             <div className='input-row'>
               <div className='input-row-title'>Spent:</div>
-              <div className='new-story-input'>
+              <div className='input-row-input'>
                 <input value={this.state.task.minutes} onChange={this.handleMinutesChange} />
               </div>
             </div>
 
             <div className='input-row'>
               <div className='input-row-title'>Comment:</div>
-              <div className='new-story-input'>
+              <div className='input-row-input'>
                 <input value={this.state.task.comment} onChange={this.handleCommentChange} />
               </div>
             </div>
 
-            <button type='submit' className='hidden'>Submit</button>
+            <button className='dialog-form-submit' type='submit'>Submit</button>
           </form>
         </div>
       </div>

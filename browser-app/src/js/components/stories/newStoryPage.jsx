@@ -10,8 +10,8 @@ export class NewStoryPage extends Component {
 
   render () {
     return (
-      <div id='wrapperBox'>
-        <div className='wrapperInner'>
+      <div id='contentWrapper'>
+        <div className='contentBox'>
 
           <StoryForm createOrUpdateStory={this.props.actions.createStory}
                      periods={this.props.periods}

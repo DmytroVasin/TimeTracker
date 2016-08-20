@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 import moment from 'moment'
+import { minutesToHour } from '../../../utils/chartMinutesDisplayer'
 
 import { GraphCell } from './GraphCell'
 
@@ -30,17 +31,9 @@ export class GraphRow extends Component {
 
     })
 
-    return this.minutesToHour(_rowTotalMinutes)
+    return minutesToHour(_rowTotalMinutes)
   }
 
-  // DUPLICATION
-  minutesToHour = (minutes) => {
-    let _hours, _nearestHalfHour
-    _hours = (minutes / 60).toFixed(2)
-
-    _nearestHalfHour = Math.round(_hours*2)/2
-    return _nearestHalfHour + 'h'
-  }
 
   render() {
     const { story, index } = this.props

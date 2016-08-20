@@ -30,11 +30,7 @@ const initialState = {
     show: false,
     storyId: null,
     dialogDate: null,
-    taskList: {
-      tasks: [],
-      error: null,
-      loading: false
-    },
+    tasksList: [],
     coordinates: {
       top: null,
       right: null
@@ -119,7 +115,7 @@ const reducer = function(state=initialState, action) {
 
 
     case 'CREATE_TASK_SUCCESS':
-      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [...state.graphDialog.taskList.tasks, action.payload], error: null, loading: false}} }
+      return { ...state, graphDialog: { ...state.graphDialog, tasksList: [...state.graphDialog.tasksList, action.payload] } }
     case 'CREATE_TASK_FAILURE':
       return { ...state, graphDialog: {tasks: [], error: action.payload, loading: false} }
 
@@ -160,9 +156,9 @@ const reducer = function(state=initialState, action) {
 
 
     case 'DELETE_TASK_SUCCESS':
-      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [...state.graphDialog.taskList.tasks.filter(task => task.id !== action.payload.id)], error: null, loading: false}} }
+      return { ...state, graphDialog: { ...state.graphDialog, tasksList: [...state.graphDialog.tasksList.filter(task => task.id !== action.payload.id)] } }
     case 'DELETE_TASK_FAILURE':
-      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: state.graphDialog.taskList.tasks, error: action.payload, loading: false}} }
+      return { ...state, graphDialog: { ...state.graphDialog, tasksList: state.graphDialog.tasksList } }
 
 
     case 'TOGGLE_DIALOG':
@@ -172,12 +168,8 @@ const reducer = function(state=initialState, action) {
     case 'SET_DIALOG_TITLE_DATE':
       return { ...state, graphDialog: { ...state.graphDialog, dialogDate: action.payload } }
 
-    case 'FETCH_STORY_TASKS_REQUEST':
-      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: null, loading: true}} }
-    case 'FETCH_STORY_TASKS_SUCCESS':
-      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: action.payload, error: null, loading: false}} }
-    case 'FETCH_STORY_TASKS_FAILURE':
-      return { ...state, graphDialog: { ...state.graphDialog, taskList: {tasks: [], error: action.payload, loading: false}} }
+    case 'SET_DIALOG_TASKS_LIST':
+      return { ...state, graphDialog: { ...state.graphDialog, tasksList: action.payload } }
 
 
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import moment from 'moment'
+import { minutesToHour } from '../../../utils/chartMinutesDisplayer'
 
 export class GraphFooter extends Component {
 
@@ -22,7 +23,7 @@ export class GraphFooter extends Component {
 
     })
 
-    return this.minutesToHour(_columnTotalMinutes)
+    return minutesToHour(_columnTotalMinutes)
   }
 
   fullTotal = () => {
@@ -39,15 +40,7 @@ export class GraphFooter extends Component {
 
     })
 
-    return this.minutesToHour(_fullTotalMinutes)
-  }
-
-  minutesToHour = (minutes) => {
-    let _hours, _nearestHalfHour
-    _hours = (minutes / 60).toFixed(2)
-
-    _nearestHalfHour = Math.round(_hours*2)/2
-    return _nearestHalfHour + 'h'
+    return minutesToHour(_fullTotalMinutes)
   }
 
   render() {

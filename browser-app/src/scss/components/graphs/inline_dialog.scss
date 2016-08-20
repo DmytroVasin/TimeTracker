@@ -1,4 +1,4 @@
-.inlineDialogWrapper {
+.inline-dialog-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,125 +7,29 @@
   background-color: rgba(255, 255, 255, 0.5)
 }
 
-.inlineDialog {
-  top: 155px;
-  right: 175px;
-
-  color: #777777;
+.inline-dialog {
   position: absolute;
+  color: #777777;
   border: 2px solid #E0F0FF;
   background-color: #FFFFFF;
   padding: 5px 10px;
   width: 250px;
 
-  .new-story-input {
-    overflow: hidden;
-    margin-bottom: 20px;
-    padding: 5px;
-    background: #eef7f9;
-    border-radius: 2px;
-
-    input,
-    textarea {
-      display: block;
-      width: 100%;
-      height: 29px;
-      padding: 5px 10px;
-      color: #4d5a5e;
-      background: white;
-      border: 1px solid #cfdfe3;
-      border-radius: 2px;
-
-      &:focus {
-        border-color: #93c2ec;
-        outline: 0;
-        box-shadow: 0 0 0 8px #e1ecf5;
-      }
-    }
-
-    textarea {
-      padding: 4px 8px;
-      min-height: 90px;
-      resize: none;
-    }
-
-    .select {
-      display: block;
-      position: relative;
-      overflow: hidden;
-      background: white;
-      border: 1px solid #d2e2e7;
-      border-radius: 2px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
-
-      select {
-        position: relative;
-        width: 100%;
-        height: 29px;
-        padding: 5px 10px;
-        color: #80989f;
-        background: transparent;
-        border: 0;
-
-        &:focus {
-          color: #4d5a5e;
-          outline: 0;
-        }
-      }
-    }
-  }
-
-  .new-story-input {
-    float: left;
-    margin: 0px;
-    padding: 3px;
-
-    padding: 3px;
-    width: 70%;
-    box-sizing: border-box;
-
-    input {
-      padding: 0px 5px;
-      height: 20px;
-    }
-  }
-
-  .input-row {
-    @include clearfix;
-    margin-bottom: 5px;
-
-    .input-row-title {
-      float: left;
-      width: 75px;
-      padding: 3px 0;
-    }
-    &:last-child {
-      margin: 0;
-    }
-  }
-
-  .timeTitle {
-    margin-bottom: 5px;
-  }
-
-
-  .downloads {
+  .tasks-list {
     border-bottom: 1px solid #E0F0FF;
     margin-bottom: 5px;
     padding-bottom: 5px;
 
-    .download {
+    .task {
       display: flex;
       flex-flow: row;
 
-      @include clearfix;
-
-      .taskMinutes {
+      .task-minutes {
         padding-right: 5px;
         border-right: 1px solid #E0F0FF;
       }
 
-      .taskTitle {
+      .task-title {
         padding-left: 5px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -133,37 +37,76 @@
         font-size: 0.8em;
       }
 
-      .fa {
+      .task-delete {
+        flex: 10%;
         line-height: 21px;
         margin: 0 5px 0 0;
-        color: #FF0000;
         cursor: pointer;
-        flex: 10%;
         text-align: right;
+        color: #FF0000;
       }
     }
   }
 
-  .hidden {
-    display: none;
+  .dialog-form {
+    .dialog-form-title {
+      margin-bottom: 5px;
+    }
+
+    .input-row {
+      display: flex;
+      flex-flow: row;
+      margin-bottom: 5px;
+
+      .input-row-title {
+        min-width: 75px;
+        padding: 3px 0;
+      }
+
+      .input-row-input {
+        overflow: hidden;
+        background: #eef7f9;
+        padding: 3px;
+        width: 100%;
+        box-sizing: border-box;
+
+        input {
+          width: 100%;
+          border: 1px solid #CFDFE3;
+          padding: 0px 5px;
+          height: 20px;
+          color: inherit;
+
+          &:focus {
+            border-color: #93C2EC;
+            box-shadow: 0 0 0 3px #E1ECF5;
+          }
+        }
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    .dialog-form-submit {
+      display: none;
+    }
   }
 
   &:after, &:before {
     content: '';
     position: absolute;
     top: 18px;
-    width: 1px;
-    height: 1px;
     border: outset transparent;
     border-width: 14px 14px 14px;
-    border-left-style: solid;
-  }
-  &:after {
-    right: -27px;
-    border-left-color: #FFFFFF;
   }
   &:before {
     right: -30px;
     border-left-color: #E0F0FF;
+  }
+  &:after {
+    right: -27px;
+    border-left-color: #FFFFFF;
   }
 }

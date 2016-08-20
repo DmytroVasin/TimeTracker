@@ -19,8 +19,8 @@ export class ShowStoryPage extends Component {
     }
 
     return (
-      <div id='wrapperBox'>
-        <div className='wrapperInner'>
+      <div id='contentWrapper'>
+        <div className='contentBox'>
 
           <ShowStory story={story} />
 

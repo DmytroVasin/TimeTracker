@@ -23,13 +23,17 @@ body {
 input, textarea, select, label {
   box-sizing: border-box;
   font-size: 12px;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 a {
   text-decoration: none;
 }
 
-#wrapperBox {
+#contentWrapper {
   position: relative;
   margin: 20px auto;
   padding: 5px;
@@ -38,7 +42,7 @@ a {
   border: 1px solid #CFD5DA;
   border-radius: 5px;
 
-  .wrapperInner {
+  .contentBox {
     padding: 20px;
     background: white;
     border-radius: 5px;
