@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+
 import moment from 'moment'
 
 import { GraphCell } from './GraphCell'
@@ -15,6 +16,30 @@ export class GraphRow extends Component {
     } else {
       return []
     }
+  }
+
+  rowTotal = () => {
+    let _rowTotalMinutes = 0
+    let _logWork = this.props.story.log_work
+
+    Object.keys(_logWork).forEach( (key) => {
+
+      _logWork[key].map( (task) => {
+        _rowTotalMinutes += task.minutes
+      })
+
+    })
+
+    return this.minutesToHour(_rowTotalMinutes)
+  }
+
+  // DUPLICATION
+  minutesToHour = (minutes) => {
+    let _hours, _nearestHalfHour
+    _hours = (minutes / 60).toFixed(2)
+
+    _nearestHalfHour = Math.round(_hours*2)/2
+    return _nearestHalfHour + 'h'
   }
 
   render() {
@@ -39,7 +64,7 @@ export class GraphRow extends Component {
         <GraphCell dayTasks={ this.todayTasks(6) } day='6' isDayOff='true' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
         <GraphCell dayTasks={ this.todayTasks(7) } day='7' isDayOff='true' openGraphDialog={this.props.openGraphDialog} storyId={this.props.story.id}/>
 
-        <td className='total'>2h</td>
+        <td>{ this.rowTotal() }</td>
       </tr>
     )
   }
