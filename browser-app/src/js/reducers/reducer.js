@@ -20,14 +20,11 @@ const initialState = {
     loading: false
   },
 
-
   graphTable: {
     graph: [],
     error: null,
     loading: false
   },
-
-
 
   graphDialog: {
     show: false,
@@ -39,8 +36,8 @@ const initialState = {
       loading: false
     },
     coordinates: {
-      top: '305',
-      right: '295'
+      top: null,
+      right: null
     }
   }
 }
@@ -126,24 +123,40 @@ const reducer = function(state=initialState, action) {
     case 'CREATE_TASK_FAILURE':
       return { ...state, graphDialog: {tasks: [], error: action.payload, loading: false} }
 
-    case 'UPDATE_GRAPH_LIST':
-      let _storyId = action.payload.storyId
-      let _task    = action.payload.task
-      let _newGraph = []
+    case 'ADD_TASK_TO_GRAPH_LIST':
+      // REWRITE!!
+      let _a_storyId = action.payload.storyId
+      let _a_task    = action.payload.task
+      let _a_newGraph = []
 
-      _newGraph = state.graphTable.graph.map( (story) => {
-        if (story.id === _storyId) {
-          if (story.log_work[_task.task_date]) {
-            story.log_work[_task.task_date] = story.log_work[_task.task_date].concat([_task])
+      _a_newGraph = state.graphTable.graph.map( (story) => {
+        if (story.id === _a_storyId) {
+          if (story.log_work[_a_task.task_date]) {
+            story.log_work[_a_task.task_date] = story.log_work[_a_task.task_date].concat([_a_task])
           } else {
-            story.log_work[_task.task_date] = [_task]
+            story.log_work[_a_task.task_date] = [_a_task]
           }
         }
 
         return story
       })
 
-      return { ...state, graphTable: { ...state.graphTable, graph: _newGraph, error: null, loading: false }}
+      return { ...state, graphTable: { ...state.graphTable, graph: _a_newGraph, error: null, loading: false }}
+
+    case 'DELETE_TASK_FROM_GRAPH_LIST':
+      let _d_storyId = action.payload.storyId
+      let _d_task    = action.payload.task
+      let _d_newGraph = []
+
+      _d_newGraph = state.graphTable.graph.map( (story) => {
+        if (story.id === _d_storyId) {
+          story.log_work[_d_task.task_date] = story.log_work[_d_task.task_date].filter(task => task.id !== _d_task.id)
+        }
+
+        return story
+      })
+
+      return { ...state, graphTable: { ...state.graphTable, graph: _d_newGraph, error: null, loading: false }}
 
 
     case 'DELETE_TASK_SUCCESS':

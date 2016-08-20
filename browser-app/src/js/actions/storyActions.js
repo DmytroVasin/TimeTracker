@@ -279,7 +279,7 @@ export function createTask(storyId, task) {
     axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { minutes: task.minutes, comment: task.comment, task_date: task.task_date })
     .then(function(response) {
       dispatch(createTaskSuccess(response.data))
-      dispatch(updateGraphList({ storyId: storyId, task: response.data }))
+      dispatch(addTaskToGraphList({ storyId: storyId, task: response.data }))
     })
     .catch(function (error) {
       dispatch(createTaskFailure(error.message))
@@ -298,9 +298,16 @@ function createTaskFailure(error) {
     payload: error
   }
 }
-function updateGraphList(object) {
+function addTaskToGraphList(object) {
   return {
-    type: 'UPDATE_GRAPH_LIST',
+    type: 'ADD_TASK_TO_GRAPH_LIST',
+    payload: object
+  }
+}
+
+function deleteTaskFromGraphList(object) {
+  return {
+    type: 'DELETE_TASK_FROM_GRAPH_LIST',
     payload: object
   }
 }
@@ -313,6 +320,7 @@ export function deleteTask(storyId, taskId) {
     axios.delete(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks/${taskId}.json`)
     .then(function(response) {
       dispatch(deleteTaskSuccess(response.data))
+      dispatch(deleteTaskFromGraphList({ storyId: storyId, task: response.data }))
     })
     .catch(function (error) {
       dispatch(deleteTaskFailure(error.message))
