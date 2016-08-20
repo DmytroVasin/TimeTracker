@@ -31,6 +31,7 @@ const initialState = {
     storyId: null,
     dialogDate: null,
     tasksList: [],
+    error: null,
     coordinates: {
       top: null,
       right: null
@@ -50,74 +51,101 @@ const reducer = function(state=initialState, action) {
 
 
     case 'FETCH_STORIES_REQUEST':
-      return { ...state, storyList: {stories: [], error: null, loading: true} }
+      return { ...state, storyList: {stories: [], error: null, loading: true }}
     case 'FETCH_STORIES_SUCCESS':
-      return { ...state, storyList: {stories: action.payload, error: null, loading: false} }
+      return { ...state, storyList: {stories: action.payload, error: null, loading: false }}
     case 'FETCH_STORIES_FAILURE':
-      return { ...state, storyList: {stories: [], error: action.payload, loading: false} }
+      return { ...state, storyList: {stories: [], error: action.payload, loading: false }}
 
 
 
     case 'FETCH_STORY_REQUEST':
-      return { ...state, activeStory: {story: null, error: null, loading: true} }
+      return { ...state, activeStory: {story: null, error: null, loading: true }}
     case 'FETCH_STORY_SUCCESS':
-      return { ...state, activeStory: {story: action.payload, error: null, loading: false} }
+      return { ...state, activeStory: {story: action.payload, error: null, loading: false }}
     case 'FETCH_STORY_FAILURE':
-      return { ...state, activeStory: {story: null, error: action.payload, loading: false} }
+      return { ...state, activeStory: {story: null, error: action.payload, loading: false }}
 
 
 
     case 'UPDATE_STORY_REQUEST':
-      return { ...state, activeStory: {story: null, error: null, loading: true} }
+      return { ...state, activeStory: {story: null, error: null, loading: true }}
     case 'UPDATE_STORY_SUCCESS':
       return { ...state,
         storyList: {stories: state.storyList.stories.map(story => story.id === action.payload.id ? action.payload : story), error: null, loading: false },
         activeStory: {story: action.payload, error: null, loading: false}
       }
     case 'UPDATE_STORY_FAILURE':
-      return { ...state, activeStory: {story: null, error: action.payload, loading: false} }
+      return { ...state, activeStory: {story: null, error: action.payload, loading: false }}
 
 
 
     case 'CREATE_STORY_REQUEST':
-      return { ...state, activeStory: {story: null, error: null, loading: true} }
+      return { ...state, activeStory: {story: null, error: null, loading: true }}
     case 'CREATE_STORY_SUCCESS':
       return { ...state,
         storyList: {stories: [...state.storyList.stories, action.payload], error: null, loading: false },
         activeStory: {story: action.payload, error: null, loading: false}
       }
     case 'CREATE_STORY_FAILURE':
-      return { ...state, activeStory: {story: null, error: action.payload, loading: false} }
+      return { ...state, activeStory: {story: null, error: action.payload, loading: false }}
 
 
 
     case 'DELETE_STORY_REQUEST':
-      return { ...state, active: {story: null, error: null, loading: true} }
+      return { ...state, active: {story: null, error: null, loading: true }}
     case 'DELETE_STORY_SUCCESS':
       return { ...state,
         storyList: {stories: state.storyList.stories.filter(story => story.id !== action.payload.id), error: null, loading: false },
         activeStory: {story: action.payload, error: null, loading: false}
       }
     case 'DELETE_STORY_FAILURE':
-      return { ...state, active: {story: null, error: action.payload, loading: false} }
+      return { ...state, active: {story: null, error: action.payload, loading: false }}
 
 
 
     case 'FETCH_PERIODS_REQUEST':
-      return { ...state, periodList: {periods: [], error: null, loading: true} }
+      return { ...state, periodList: { periods: [], error: null, loading: true }}
     case 'FETCH_PERIODS_SUCCESS':
-      return { ...state, periodList: {periods: action.payload, error: null, loading: false} }
+      return { ...state, periodList: { periods: action.payload, error: null, loading: false }}
     case 'FETCH_PERIODS_FAILURE':
-      return { ...state, periodList: {periods: [], error: action.payload, loading: false} }
+      return { ...state, periodList: { periods: [], error: action.payload, loading: false }}
 
 
 
+
+    case 'FETCH_GRAPH_REQUEST':
+      return { ...state, graphTable: { graph: [], error: null, loading: true }}
+    case 'FETCH_GRAPH_SUCCESS':
+      return { ...state, graphTable: { graph: action.payload, error: null, loading: false }}
+    case 'FETCH_GRAPH_FAILURE':
+      return { ...state, graphTable: { graph: [], error: action.payload, loading: false }}
+
+
+
+    case 'TOGGLE_DIALOG':
+      return { ...state, graphDialog: { ...state.graphDialog, show: action.payload }}
+    case 'SET_DIALOG_POSITION':
+      return { ...state, graphDialog: { ...state.graphDialog, coordinates: { positionTop: action.payload.positionTop, positionRight: action.payload.positionRight }}}
+    case 'SET_DIALOG_STORY_ID':
+      return { ...state, graphDialog: { ...state.graphDialog, storyId: action.payload }}
+    case 'SET_DIALOG_TITLE_DATE':
+      return { ...state, graphDialog: { ...state.graphDialog, dialogDate: action.payload }}
+    case 'SET_DIALOG_TASKS_LIST':
+      return { ...state, graphDialog: { ...state.graphDialog, tasksList: action.payload }}
 
 
     case 'CREATE_TASK_SUCCESS':
-      return { ...state, graphDialog: { ...state.graphDialog, tasksList: [...state.graphDialog.tasksList, action.payload] } }
+      return { ...state, graphDialog: { ...state.graphDialog, tasksList: [...state.graphDialog.tasksList, action.payload] }}
     case 'CREATE_TASK_FAILURE':
-      return { ...state, graphDialog: {tasks: [], error: action.payload, loading: false} }
+      return { ...state, graphDialog: { tasksList: [], error: action.payload }}
+
+
+    case 'DELETE_TASK_SUCCESS':
+      return { ...state, graphDialog: { ...state.graphDialog, tasksList: [...state.graphDialog.tasksList.filter(task => task.id !== action.payload.id)] }}
+    case 'DELETE_TASK_FAILURE':
+      return { ...state, graphDialog: { tasksList: [], error: action.payload }}
+
 
     case 'ADD_TASK_TO_GRAPH_LIST':
       // REWRITE!!
@@ -138,7 +166,6 @@ const reducer = function(state=initialState, action) {
       })
 
       return { ...state, graphTable: { ...state.graphTable, graph: _a_newGraph, error: null, loading: false }}
-
     case 'DELETE_TASK_FROM_GRAPH_LIST':
       let _d_storyId = action.payload.storyId
       let _d_task    = action.payload.task
@@ -153,35 +180,6 @@ const reducer = function(state=initialState, action) {
       })
 
       return { ...state, graphTable: { ...state.graphTable, graph: _d_newGraph, error: null, loading: false }}
-
-
-    case 'DELETE_TASK_SUCCESS':
-      return { ...state, graphDialog: { ...state.graphDialog, tasksList: [...state.graphDialog.tasksList.filter(task => task.id !== action.payload.id)] } }
-    case 'DELETE_TASK_FAILURE':
-      return { ...state, graphDialog: { ...state.graphDialog, tasksList: state.graphDialog.tasksList } }
-
-
-    case 'TOGGLE_DIALOG':
-      return { ...state, graphDialog: { ...state.graphDialog, show: action.payload.visiability, storyId: action.payload.storyId } }
-    case 'SET_DIALOG_POSITION':
-      return { ...state, graphDialog: { ...state.graphDialog, coordinates: { positionTop: action.payload.positionTop, positionRight: action.payload.positionRight }} }
-    case 'SET_DIALOG_TITLE_DATE':
-      return { ...state, graphDialog: { ...state.graphDialog, dialogDate: action.payload } }
-
-    case 'SET_DIALOG_TASKS_LIST':
-      return { ...state, graphDialog: { ...state.graphDialog, tasksList: action.payload } }
-
-
-
-
-
-    case 'FETCH_GRAPH_REQUEST':
-      return { ...state, graphTable: {graph: [], error: null, loading: true} }
-    case 'FETCH_GRAPH_SUCCESS':
-      return { ...state, graphTable: {graph: action.payload, error: null, loading: false} }
-    case 'FETCH_GRAPH_FAILURE':
-      return { ...state, graphTable: {graph: [], error: action.payload, loading: false} }
-
 
 
 

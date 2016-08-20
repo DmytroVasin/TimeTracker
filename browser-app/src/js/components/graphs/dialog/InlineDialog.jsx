@@ -34,8 +34,8 @@ export class InlineDialog extends Component {
     }
   }
 
-  hideDialog = () => {
-    this.props.hideDialog()
+  hideGraphDialog = () => {
+    this.props.hideGraphDialog()
   }
 
   handleNotCloseDialog = (e) => {
@@ -53,7 +53,7 @@ export class InlineDialog extends Component {
     }
 
     return (
-      <div className='inline-dialog-container' onClick={this.hideDialog} >
+      <div className='inline-dialog-container' onClick={this.hideGraphDialog} >
         <div className='inline-dialog' onClick={this.handleNotCloseDialog} style={dialogStyle} >
 
           <InlineDialogTasks tasksList={tasksList} storyId={this.props.graphDialog.storyId} deleteTask={this.props.deleteTask} />

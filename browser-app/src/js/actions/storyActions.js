@@ -1,6 +1,21 @@
 import axios from 'axios'
 import { push } from 'react-router-redux';
 
+export function setStatusFilter(filter) {
+  return {
+    type: 'SET_STATUS_FILTER',
+    payload: filter
+  }
+}
+export function setSprintFilter(filter) {
+  return {
+    type: 'SET_SPRINT_FILTER',
+    payload: filter
+  }
+}
+
+
+
 export function fetchStories() {
   return (dispatch) => {
     dispatch(fetchStoriesRequest())
@@ -195,154 +210,6 @@ function updateStoryFailure(error) {
 
 
 
-export function setStatusFilter(filter) {
-  return {
-    type: 'SET_STATUS_FILTER',
-    payload: filter
-  }
-}
-
-
-
-export function setSprintFilter(filter) {
-  return {
-    type: 'SET_SPRINT_FILTER',
-    payload: filter
-  }
-}
-
-
-
-export function hideDialog() {
-  return (dispatch) => {
-    dispatch(toggleDialog(false, null))
-    dispatch(setDialogTasksList([]))
-  }
-}
-
-export function openGraphDialog(storyId, dialogDate, coordinates, currentCellTasks) {
-  return (dispatch) => {
-    dispatch(toggleDialog(true, storyId))
-    dispatch(setDialogPosition(coordinates))
-    dispatch(setdialogDateTitle(dialogDate))
-    dispatch(setDialogTasksList(currentCellTasks))
-
-    // axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json?task_date=${taskDate}`)
-    // .then(function(response) {
-    //   dispatch(fetchStoriesTasksSuccess(response.data))
-    // })
-    // .catch(function (error) {
-    //   dispatch(fetchStoriesTasksFailure(error.message))
-    // })
-  }
-}
-function toggleDialog(visiability, storyId) {
-  return {
-    type: 'TOGGLE_DIALOG',
-    payload: {visiability: visiability, storyId: storyId}
-  }
-}
-function setdialogDateTitle(dialogDate) {
-  return {
-    type: 'SET_DIALOG_TITLE_DATE',
-    payload: dialogDate
-  }
-}
-function setDialogPosition(coordinates) {
-  return {
-    type: 'SET_DIALOG_POSITION',
-    payload: {positionTop: coordinates.positionTop, positionRight: coordinates.positionRight}
-  }
-}
-// function fetchStoriesTasksRequest() {
-//   return {
-//     type: 'FETCH_STORY_TASKS_REQUEST'
-//   }
-// }
-function setDialogTasksList(tasks) {
-  return {
-    type: 'SET_DIALOG_TASKS_LIST',
-    payload: tasks
-  }
-}
-// function fetchStoriesTasksFailure(error) {
-//   return {
-//     type: 'FETCH_STORY_TASKS_FAILURE',
-//     payload: error
-//   }
-// }
-
-
-
-export function createTask(storyId, task) {
-  return (dispatch) => {
-    axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { minutes: task.minutes, comment: task.comment, task_date: task.task_date })
-    .then(function(response) {
-      dispatch(createTaskSuccess(response.data))
-      dispatch(addTaskToGraphList({ storyId: storyId, task: response.data }))
-    })
-    .catch(function (error) {
-      dispatch(createTaskFailure(error.message))
-    })
-  }
-}
-function createTaskSuccess(task) {
-  return {
-    type: 'CREATE_TASK_SUCCESS',
-    payload: task
-  }
-}
-function createTaskFailure(error) {
-  return {
-    type: 'CREATE_TASK_FAILURE',
-    payload: error
-  }
-}
-function addTaskToGraphList(object) {
-  return {
-    type: 'ADD_TASK_TO_GRAPH_LIST',
-    payload: object
-  }
-}
-
-function deleteTaskFromGraphList(object) {
-  return {
-    type: 'DELETE_TASK_FROM_GRAPH_LIST',
-    payload: object
-  }
-}
-
-
-
-
-export function deleteTask(storyId, taskId) {
-  return (dispatch) => {
-    axios.delete(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks/${taskId}.json`)
-    .then(function(response) {
-      dispatch(deleteTaskSuccess(response.data))
-      dispatch(deleteTaskFromGraphList({ storyId: storyId, task: response.data }))
-    })
-    .catch(function (error) {
-      dispatch(deleteTaskFailure(error.message))
-    })
-  }
-}
-function deleteTaskSuccess(task) {
-  return {
-    type: 'DELETE_TASK_SUCCESS',
-    payload: task
-  }
-}
-function deleteTaskFailure(error) {
-  return {
-    type: 'DELETE_TASK_FAILURE',
-    payload: error
-  }
-}
-
-
-
-
 export function fetchGraph() {
   return (dispatch) => {
     dispatch(fetchGraphRequest())
@@ -373,3 +240,115 @@ function fetchGraphFailure(error) {
   }
 }
 
+
+
+export function openGraphDialog(storyId, dialogDate, coordinates, tasks) {
+  return (dispatch) => {
+    dispatch(setDialogPosition(coordinates))
+    dispatch(toggleDialog(true))
+    dispatch(setDialogStoryId(storyId))
+    dispatch(setdialogDateTitle(dialogDate))
+    dispatch(setDialogTasksList(tasks))
+  }
+}
+export function hideGraphDialog() {
+  return (dispatch) => {
+    dispatch(toggleDialog(false))
+    dispatch(setDialogStoryId(null))
+    dispatch(setDialogTasksList([]))
+  }
+}
+function setDialogPosition(coordinates) {
+  return {
+    type: 'SET_DIALOG_POSITION',
+    payload: {positionTop: coordinates.positionTop, positionRight: coordinates.positionRight}
+  }
+}
+function toggleDialog(visiability) {
+  return {
+    type: 'TOGGLE_DIALOG',
+    payload: visiability
+  }
+}
+function setDialogStoryId(storyId) {
+  return {
+    type: 'SET_DIALOG_STORY_ID',
+    payload: storyId
+  }
+}
+function setdialogDateTitle(dialogDate) {
+  return {
+    type: 'SET_DIALOG_TITLE_DATE',
+    payload: dialogDate
+  }
+}
+function setDialogTasksList(tasks) {
+  return {
+    type: 'SET_DIALOG_TASKS_LIST',
+    payload: tasks
+  }
+}
+
+
+export function createTask(storyId, task) {
+  return (dispatch) => {
+    axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { minutes: task.minutes, comment: task.comment, task_date: task.task_date })
+    .then(function(response) {
+      dispatch(createTaskSuccess(response.data))
+      dispatch(addTaskToGraphTable({ storyId: storyId, task: response.data }))
+    })
+    .catch(function (error) {
+      dispatch(createTaskFailure(error.message))
+    })
+  }
+}
+function createTaskSuccess(task) {
+  return {
+    type: 'CREATE_TASK_SUCCESS',
+    payload: task
+  }
+}
+function createTaskFailure(error) {
+  return {
+    type: 'CREATE_TASK_FAILURE',
+    payload: error
+  }
+}
+function addTaskToGraphTable(object) {
+  return {
+    type: 'ADD_TASK_TO_GRAPH_LIST',
+    payload: object
+  }
+}
+
+
+export function deleteTask(storyId, taskId) {
+  return (dispatch) => {
+    axios.delete(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks/${taskId}.json`)
+    .then(function(response) {
+      dispatch(deleteTaskSuccess(response.data))
+      dispatch(deleteTaskFromGraphTable({ storyId: storyId, task: response.data }))
+    })
+    .catch(function (error) {
+      dispatch(deleteTaskFailure(error.message))
+    })
+  }
+}
+function deleteTaskSuccess(task) {
+  return {
+    type: 'DELETE_TASK_SUCCESS',
+    payload: task
+  }
+}
+function deleteTaskFailure(error) {
+  return {
+    type: 'DELETE_TASK_FAILURE',
+    payload: error
+  }
+}
+function deleteTaskFromGraphTable(object) {
+  return {
+    type: 'DELETE_TASK_FROM_GRAPH_LIST',
+    payload: object
+  }
+}

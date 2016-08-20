@@ -21,7 +21,7 @@ export class GraphPage extends Component {
           <InlineDialog graphDialog={this.props.graphDialog}
                         createTask={this.props.actions.createTask}
                         deleteTask={this.props.actions.deleteTask}
-                        hideDialog={this.props.actions.hideDialog} />
+                        hideGraphDialog={this.props.actions.hideGraphDialog} />
 
           <GraphTable openGraphDialog={this.props.actions.openGraphDialog}
                       graph={this.props.graph} />
