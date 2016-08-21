@@ -21,7 +21,7 @@ let Menu = function() {
         {
           label: 'About App',
           click: function() {
-            app.emit('show-about')
+            // app.emit('show-about')
           }
         },
         {
