@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' type='text/css' href='http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+    <link rel='stylesheet' href='../css/time_tracker_page.css'>
+
+    <script src='../js/time_tracker_page.js'></script>
+
+    <script>
+      // const alertOnlineStatus = () => {
+      //   console.log(navigator.onLine ? 'online' : 'offline')
+      // }
+
+      // window.addEventListener('online',  alertOnlineStatus)
+      // window.addEventListener('offline',  alertOnlineStatus)
+
+      // alertOnlineStatus()
+    </script>
+
+  </head>
+
+  <body>
+    <div class='window'>
+      <div class='window-controls'>
+        <div class='window-controls-buttons'>
+          <a href='#' class='close' id='hideTimeTrackerBtn'>close</a>
+          <a href='#' class='minimize'>minimize</a>
+          <a href='#' class='maximize'>maximize</a>
+        </div>
+
+        <div class='window-controls-title'>Time Tracker</div>
+      </div>
+
+      <div class='window-container'>
+        <div id='react-root'></div>
+      </div>
+    </div>
+
+    <!-- <script src='http://localhost:8080/browser-app/dist/js/entry.js'></script> -->
+    <script src='../../../browser-app/dist/js/entry.js'></script>
+  </body>
+</html>

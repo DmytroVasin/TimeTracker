@@ -1,5 +1,4 @@
-const {remote, ipcRenderer} = require('electron');
-const {dialog} = remote;
+const {ipcRenderer} = require('electron');
 
 window.$ = window.jQuery = require('jquery');
 

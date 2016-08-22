@@ -9,13 +9,11 @@ const menuTemplate = require('./menu');
 
 const {app, BrowserWindow, ipcMain, Menu} = electron;
 
-
 let mainWindow;
 let aboutWindow;
 
-
 let mb = menubar({
-  dir: path.join(__dirname, '../tray'),
+  index: 'file://' + path.join(__dirname, '../pages/views/tray_page.html'),
   preloadWindow: true,
   tooltip: 'Time Tracker',
   height: 200,
@@ -56,18 +54,19 @@ const createMainAppWindow = function () {
     show: false,
     frame: false
   })
-  _mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/views/index.html');
+  _mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/pages/views/time_tracker_page.html');
   return _mainWindow;
 }
 
 const createAboutWindow = function () {
   var _aboutWindow = new BrowserWindow({
     width: 300,
-    height: 340,
-    show: true,
-    frame: false
+    height: 336,
+    frame: false,
+    show: false,
+    // resizable: false
   })
-  _aboutWindow.loadURL('file://' + path.join(__dirname, '..') + '/tray/options.html');
+  _aboutWindow.loadURL('file://' + path.join(__dirname, '..') + '/pages/views/about_page.html');
   return _aboutWindow;
 }
 
