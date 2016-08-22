@@ -1,54 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Second Page</title>
-
-    <style>
-      html, body {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        overflow: hidden;
-      }
-
-      body {
-        font-family: -apple-system, "Helvetica Neue", Helvetica, sans-serif;
-      }
-
-      .message {
-        position: absolute;
-        width: 500px;
-        height: 250px;
-        top: 50%;
-        left: 50%;
-        color: #777;
-        font-weight: 200;
-        text-align: center;
-        margin-top: -125px;
-        margin-left: -250px;
-      }
-
-      .message h1 {
-        font-size: 50px;
-        font-weight: 100;
-        color: #333;
-      }
-
-      .message div {
-        margin-bottom: 10px;
-      }
-    </style>
-
-    <script src="options.js"></script>
+    <link rel="stylesheet" type="text/css" href='http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css'>
+    <link rel="stylesheet" href='./options.css'>
+    <script src='options.js'></script>
   </head>
 
   <body>
-    <div class="message">
-      <h1 id="title">Options App</h1>
-      <div id="details">built with Electron v 2.2.2</div>
-      <small id="versions">running on Node v 213 and Chromium v 123</small>
+    <div class='window'>
+      <nav class='control-window'>
+        <a href="#finder" class="close" data-rel="close" id='hideAboutBtn'>close</a>
+        <a href="#" class='deactivate'>deactivate</a>
+        <a href="#" class='deactivate'>deactivate</a>
+      </nav>
 
-      <button id="hideAboutBtn">Cancel</button>
+      <div class='titleInside'>About Time Tracker</div>
+
+      <div class='container'>
+        <div class='container-inside'>
+          <img src="finder.png" alt='Finder'>
+          <div class='about-this'>
+            <div class='vers'>Version 0.0.1</div>
+
+            <p><strong>Time Tracker</strong></p>
+            <p>App is based on Electron, React, Redux + Rails as a back end.</p>
+
+            <p><strong>Back End API:</strong></p>
+            <p>https://peaceful-dawn-52251.herokuapp.com</p>
+
+            <div class='copyright'>
+              <div>Github: https://github.com/DmytroVasin</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

@@ -53,7 +53,8 @@ const createMainAppWindow = function () {
   var _mainWindow = new BrowserWindow({
     width: 1300,
     height: 800,
-    show: false
+    show: false,
+    frame: false
   })
   _mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/views/index.html');
   return _mainWindow;
@@ -62,8 +63,8 @@ const createMainAppWindow = function () {
 const createAboutWindow = function () {
   var _aboutWindow = new BrowserWindow({
     width: 300,
-    height: 500,
-    show: false,
+    height: 340,
+    show: true,
     frame: false
   })
   _aboutWindow.loadURL('file://' + path.join(__dirname, '..') + '/tray/options.html');
@@ -99,7 +100,7 @@ const installExtentions = function () {
   } else {
     ext_path = '/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions'
   };
-  BrowserWindow.addDevToolsExtension(`${ext_path}/fmkadmapgofadopljbjfkapdkoienihi/0.15.1_0`)
+  BrowserWindow.addDevToolsExtension(`${ext_path}/fmkadmapgofadopljbjfkapdkoienihi/0.15.3_0`)
   BrowserWindow.addDevToolsExtension(`${ext_path}/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.2_0`)
 }
 
