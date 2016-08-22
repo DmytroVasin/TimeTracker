@@ -56,7 +56,6 @@ const createMainAppWindow = function () {
     show: false
   })
   _mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/views/index.html');
-
   return _mainWindow;
 }
 
@@ -67,8 +66,7 @@ const createAboutWindow = function () {
     show: false,
     frame: false
   })
-  _aboutWindow.loadURL('file://' + path.join(__dirname, '..') + '/tray//options.html');
-
+  _aboutWindow.loadURL('file://' + path.join(__dirname, '..') + '/tray/options.html');
   return _aboutWindow;
 }
 
@@ -77,9 +75,11 @@ const createAboutWindow = function () {
 // Custom events MAIN WINDOW
 ipcMain.on('show-main-window-event', function() {
   mainWindow.show();
+  app.dock.show();
 });
 ipcMain.on('hide-main-window-event', function() {
   mainWindow.hide();
+  app.dock.hide();
 });
 
 
@@ -93,7 +93,7 @@ ipcMain.on('hide-about-window-event', function() {
 
 // Only for dev!
 const installExtentions = function () {
-  let home = true;
+  let home = false;
   if(home == true){
     ext_path = '/Users/vasin/Library/Application Support/Google/Chrome/Profile 1/Extensions'
   } else {

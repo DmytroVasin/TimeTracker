@@ -2,8 +2,7 @@
 
 const path = require('path');
 
-const {remote, ipcRenderer} = require('electron');
-const {BrowserWindow} = remote;
+const {ipcRenderer} = require('electron');
 window.$ = window.jQuery = require('jquery');
 
 $(document).ready(function() {
