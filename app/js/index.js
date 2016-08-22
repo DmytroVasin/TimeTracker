@@ -1,3 +1,5 @@
+// TODO: How to recompile this into ES6?
+
 const isDev = require('electron-is-dev');
 
 const menubar = require('menubar');
@@ -28,18 +30,15 @@ mb.app.on('quit', () => {
 
 
 app.on('ready', function () {
-  BrowserWindow.addDevToolsExtension("/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/0.15.1_0")
-  BrowserWindow.addDevToolsExtension("/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.2_0")
-
-  createApp();
+  installExtentions();
+  mainWindow = createMainAppWindow();
   aboutWindow = createAboutWindow();
   Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate()) );
 })
 
 
 ipcMain.on('quit-app', function() {
-  BrowserWindow.removeDevToolsExtension("React Developer Tools")
-  BrowserWindow.removeDevToolsExtension("Redux DevTools")
+  uninstallExtentions();
 
   console.log('QUIT APP ...')
 
@@ -50,19 +49,15 @@ ipcMain.on('quit-app', function() {
 });
 
 
-const createApp = function () {
-  function createMainAppWindow(){
-    var _mainWindow = new BrowserWindow({
-      width: 1300,
-      height: 800,
-      show: false
-    })
-    _mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/views/index.html');
+const createMainAppWindow = function () {
+  var _mainWindow = new BrowserWindow({
+    width: 1300,
+    height: 800,
+    show: false
+  })
+  _mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/views/index.html');
 
-    return _mainWindow;
-  }
-
-  mainWindow = createMainAppWindow()
+  return _mainWindow;
 }
 
 const createAboutWindow = function () {
@@ -95,3 +90,20 @@ ipcMain.on('show-about-window-event', function() {
 ipcMain.on('hide-about-window-event', function() {
   aboutWindow.hide();
 });
+
+// Only for dev!
+const installExtentions = function () {
+  let home = true;
+  if(home == true){
+    ext_path = '/Users/vasin/Library/Application Support/Google/Chrome/Profile 1/Extensions'
+  } else {
+    ext_path = '/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions'
+  };
+  BrowserWindow.addDevToolsExtension(`${ext_path}/fmkadmapgofadopljbjfkapdkoienihi/0.15.1_0`)
+  BrowserWindow.addDevToolsExtension(`${ext_path}/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.2_0`)
+}
+
+const uninstallExtentions = function () {
+  BrowserWindow.removeDevToolsExtension("React Developer Tools")
+  BrowserWindow.removeDevToolsExtension("Redux DevTools")
+}

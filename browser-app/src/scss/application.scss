@@ -2,6 +2,9 @@
   "utils/mixins";
 
 @import
+  "utils/offline_modal";
+
+@import
   "base/base",
   "base/sync",
   "base/navigation";
