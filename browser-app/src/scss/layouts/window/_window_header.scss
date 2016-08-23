@@ -39,44 +39,35 @@ body {
   width: 13px;
   height: 13px;
   border-radius: 100%;
+  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions .btn.close {
   background-image: url(../images/close-normal.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions:hover .btn.close {
   background-image: url(../images/close-hover.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions .btn.close:active {
   background-image: url(../images/close-press.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions .btn.minimize {
   background-image: url(../images/min-normal.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions:hover .btn.minimize {
   background-image: url(../images/min-hover.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions .btn.minimize:active {
   background-image: url(../images/min-press.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions .btn.maximize {
   background-image: url(../images/max-normal.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions:hover .btn.maximize {
   background-image: url(../images/max-hover.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions .btn.maximize:active {
   background-image: url(../images/max-press.png);
-  background-size: 13px 13px;
 }
 .window-controls .window-controls-actions .btn.deactivate {
   background-image: url(../images/disabled.png);
-  background-size: 13px 13px;
 }
