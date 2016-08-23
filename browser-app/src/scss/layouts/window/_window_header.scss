@@ -1,73 +1,63 @@
-body {
-  color: #333;
-  font-family: -apple-system, "Helvetica Neue", Helvetica, sans-serif;
-}
-
-.window {
-  position: relative;
-}
-
 .window-controls {
   background-image: linear-gradient(to bottom, #e9e9e9 0, #c2c2c2 100%);
   color: #4d494d;
   text-align: center;
   border-top: 1px solid #f3f1f3;
   border-bottom: 1px solid #b1aeb1;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  user-select: none;
+  -webkit-user-select: none;
   cursor: default;
-}
 
-.window-controls .window-controls-title {
-  cursor: default;
-  -webkit-app-region: drag;
-  font-size: 0.9em;
-  line-height: 21px;
-  text-align: center;
-}
+  .window-controls-title {
+    -webkit-app-region: drag;
+    cursor: default;
+    font-size: 0.9em;
+    line-height: 21px;
+    text-align: center;
+  }
 
-.window-controls .window-controls-actions {
-  position: absolute;
-  left: 4px;
-  top: 4px;
-  display: flex;
-}
-.window-controls .window-controls-actions .btn {
-  cursor: pointer;
-  margin: 0 4px;
-  width: 13px;
-  height: 13px;
-  border-radius: 100%;
-  background-size: 13px 13px;
-}
-.window-controls .window-controls-actions .btn.close {
-  background-image: url(../images/close-normal.png);
-}
-.window-controls .window-controls-actions:hover .btn.close {
-  background-image: url(../images/close-hover.png);
-}
-.window-controls .window-controls-actions .btn.close:active {
-  background-image: url(../images/close-press.png);
-}
-.window-controls .window-controls-actions .btn.minimize {
-  background-image: url(../images/min-normal.png);
-}
-.window-controls .window-controls-actions:hover .btn.minimize {
-  background-image: url(../images/min-hover.png);
-}
-.window-controls .window-controls-actions .btn.minimize:active {
-  background-image: url(../images/min-press.png);
-}
-.window-controls .window-controls-actions .btn.maximize {
-  background-image: url(../images/max-normal.png);
-}
-.window-controls .window-controls-actions:hover .btn.maximize {
-  background-image: url(../images/max-hover.png);
-}
-.window-controls .window-controls-actions .btn.maximize:active {
-  background-image: url(../images/max-press.png);
-}
-.window-controls .window-controls-actions .btn.deactivate {
-  background-image: url(../images/disabled.png);
+  .window-controls-actions {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    display: flex;
+
+    .btn {
+      cursor: pointer;
+      margin: 0 4px;
+      width: 13px;
+      height: 13px;
+      border-radius: 100%;
+      background-size: 13px 13px;
+    }
+  }
+  .window-controls-actions .btn.close {
+    background-image: url(../images/close-normal.png);
+  }
+  .window-controls-actions:hover .btn.close {
+    background-image: url(../images/close-hover.png);
+  }
+  .window-controls-actions .btn.close:active {
+    background-image: url(../images/close-press.png);
+  }
+  .window-controls-actions .btn.minimize {
+    background-image: url(../images/min-normal.png);
+  }
+  .window-controls-actions:hover .btn.minimize {
+    background-image: url(../images/min-hover.png);
+  }
+  .window-controls-actions .btn.minimize:active {
+    background-image: url(../images/min-press.png);
+  }
+  .window-controls-actions .btn.maximize {
+    background-image: url(../images/max-normal.png);
+  }
+  .window-controls-actions:hover .btn.maximize {
+    background-image: url(../images/max-hover.png);
+  }
+  .window-controls-actions .btn.maximize:active {
+    background-image: url(../images/max-press.png);
+  }
+  .window-controls-actions .btn.deactivate {
+    background-image: url(../images/disabled.png);
+  }
 }

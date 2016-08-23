@@ -81,6 +81,16 @@ ipcMain.on('hide-main-window-event', function() {
   mainWindow.hide();
   app.dock.hide();
 });
+ipcMain.on('minimize-main-window-event', function() {
+  mainWindow.minimize();
+});
+ipcMain.on('toggle-maximize-main-window-event', function() {
+  if( mainWindow.isMaximized() ){
+    mainWindow.unmaximize();
+  } else {
+    mainWindow.maximize();
+  }
+});
 
 
 // Custom events ABOUT WINDOW
