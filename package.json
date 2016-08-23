@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "electron-is-dev": "0.1.1",
+    "electron-positioner": "^3.0.0",
+    "file-loader": "^0.9.0",
     "jquery": "^3.1.0",
     "menubar": "^5.1.0",
     "moment": "^2.14.1",

@@ -1,6 +1,7 @@
 // TODO: How to recompile this into ES6?
-
 const isDev = require('electron-is-dev');
+
+const Positioner = require('electron-positioner')
 
 const menubar = require('menubar');
 const path = require('path');
@@ -96,6 +97,9 @@ ipcMain.on('toggle-maximize-main-window-event', function() {
 // Custom events ABOUT WINDOW
 ipcMain.on('show-about-window-event', function() {
   aboutWindow.show();
+  // Move window to center
+  this.positioner = new Positioner(aboutWindow);
+  this.positioner.move('center');
 });
 ipcMain.on('hide-about-window-event', function() {
   aboutWindow.hide();
