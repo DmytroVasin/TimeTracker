@@ -9,20 +9,23 @@ html {
 
 body {
   height: 100%;
-  min-width: 800px;
-  background: #e4ecef;
   color: #333;
-  margin: 0;
   font-size: 14px;
   font-weight: 400;
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
   line-height: 1.4em;
-  overflow-x: hidden;
-  font-family: -apple-system, "Helvetica Neue", Helvetica, sans-serif;
+
+  #react-root {
+    height: 100%;
+
+    .window {
+      height: 100%;
+      position: relative;
+      background: #e4ecef;
+    }
+  }
 }
 
-.window {
-  position: relative;
-}
 
 input, textarea, select, label {
   box-sizing: border-box;

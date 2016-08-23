@@ -53,7 +53,9 @@ const createMainAppWindow = function () {
     width: 1300,
     height: 800,
     show: false,
-    frame: false
+    frame: false,
+    minWidth: 800,
+    minHeight: 600,
   })
   _mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/pages/views/time_tracker_page.html');
   return _mainWindow;

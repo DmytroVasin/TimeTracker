@@ -5,7 +5,7 @@ export class Navigation extends Component {
   render() {
     return (
       <div id='header'>
-        <span className='project_name'>Project Name</span>
+        <span className='project_name'>Lost Angels Project</span>
 
         <ul>
           <li><Link to='/'>Stories</Link></li>
