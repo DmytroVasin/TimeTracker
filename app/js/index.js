@@ -18,7 +18,7 @@ let mb = menubar({
   tooltip: 'Time Tracker',
   height: 200,
   width: 225,
-  icon: path.join(__dirname, '../icons/IconTemplate.png')
+  icon: path.join(__dirname, '../icons/timeTrackerIcon_22.png')
 });
 
 mb.app.on('quit', () => {

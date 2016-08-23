@@ -60,13 +60,16 @@ footer {
   border-top: 1px solid #c2c0c2;
   -webkit-app-region: drag
 }
+
 .toolbar-actions {
   margin-top: 4px;
   margin-bottom: 3px;
   padding-right: 3px;
   padding-left: 3px;
-  padding-bottom: 3px;
   -webkit-app-region: drag
+}
+.toolbar-footer .toolbar-actions {
+  margin-bottom: 5px;
 }
 
 .toolbar-actions>.btn,.toolbar-actions>.btn-group {
