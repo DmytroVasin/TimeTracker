@@ -16,7 +16,7 @@ class MainWindow {
     this.window.loadURL('file://' + path.join(__dirname, '..') + '/pages/views/time_tracker_page.html');
 
     this.window.webContents.on('did-finish-load', () => {
-      this.window.show();
+      // this.window.show();
     });
   }
 }
