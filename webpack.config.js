@@ -1,7 +1,10 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './entry.jsx',
+  entry: {
+    main: './main.jsx',
+    about: './about.jsx'
+  },
   context: __dirname + '/browser-app/src/js',
 
   resolve: {
@@ -10,7 +13,7 @@ module.exports = {
 
   output: {
     path: __dirname + '/browser-app/dist/js',
-    filename: 'entry.js',
+    filename: '[name].js',
     publicPath: 'http://localhost:8080/browser-app/dist/js/'
   },
   devtool: 'source-map',

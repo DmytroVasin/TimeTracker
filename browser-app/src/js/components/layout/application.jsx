@@ -2,7 +2,7 @@ import '../../../scss/application.scss'
 
 import React, { Component } from 'react'
 
-import { WindowHeader } from './window/WindowHeader.jsx'
+import { WindowHeaderMainContainer } from '../../containers/WindowHeaderMainContainer'
 import { Navigation } from './navigation.jsx'
 import { ModalRoot } from './modalRoot.jsx'
 import Spinner from '../layout/spinner.jsx';
@@ -11,7 +11,7 @@ export default class Application extends Component {
   render() {
     return (
       <div className='window'>
-        <WindowHeader />
+        <WindowHeaderMainContainer />
 
         <ModalRoot />
         <Navigation />

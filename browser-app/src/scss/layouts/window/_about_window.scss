@@ -1,0 +1,30 @@
+.about-container {
+  padding:20px 30px;
+  text-align:center;
+
+  img {
+    margin:0 0 5px 0;
+  }
+  .version {
+    color: #848484;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+  }
+  .about {
+    font-size: 10px;
+    line-height: 14px;
+  }
+  .about p {
+    margin: 5px 0;
+  }
+  .about p strong {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .copyright {
+    font-size: 11px;
+    margin-top: 15px;
+    color: #848484;
+  }
+}
