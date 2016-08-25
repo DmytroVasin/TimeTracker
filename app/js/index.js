@@ -85,7 +85,7 @@ const installExtentions = function () {
     ext_path = '/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions'
   };
   BrowserWindow.addDevToolsExtension(`${ext_path}/fmkadmapgofadopljbjfkapdkoienihi/0.15.3_0`)
-  BrowserWindow.addDevToolsExtension(`${ext_path}/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.4_0`)
+  BrowserWindow.addDevToolsExtension(`${ext_path}/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.5_0`)
 }
 
 const uninstallExtentions = function () {
