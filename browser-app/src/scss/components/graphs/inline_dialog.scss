@@ -1,0 +1,112 @@
+.inline-dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5)
+}
+
+.inline-dialog {
+  position: absolute;
+  color: #777777;
+  border: 2px solid #E0F0FF;
+  background-color: #FFFFFF;
+  padding: 5px 10px;
+  width: 250px;
+
+  .tasks-list {
+    border-bottom: 1px solid #E0F0FF;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+
+    .task {
+      display: flex;
+      flex-flow: row;
+
+      .task-minutes {
+        padding-right: 5px;
+        border-right: 1px solid #E0F0FF;
+      }
+
+      .task-title {
+        padding-left: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.8em;
+      }
+
+      .task-delete {
+        flex: 10%;
+        line-height: 21px;
+        margin: 0 5px 0 0;
+        cursor: pointer;
+        text-align: right;
+        color: #FF0000;
+      }
+    }
+  }
+
+  .dialog-form {
+    .dialog-form-title {
+      margin-bottom: 5px;
+    }
+
+    .input-row {
+      display: flex;
+      flex-flow: row;
+      margin-bottom: 5px;
+
+      .input-row-title {
+        min-width: 75px;
+        padding: 3px 0;
+      }
+
+      .input-row-input {
+        overflow: hidden;
+        background: #eef7f9;
+        padding: 3px;
+        width: 100%;
+        box-sizing: border-box;
+
+        input {
+          width: 100%;
+          border: 1px solid #CFDFE3;
+          padding: 0px 5px;
+          height: 20px;
+          color: inherit;
+
+          &:focus {
+            border-color: #93C2EC;
+            box-shadow: 0 0 0 3px #E1ECF5;
+          }
+        }
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    .dialog-form-submit {
+      display: none;
+    }
+  }
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    border: outset transparent;
+    border-width: 14px 14px 14px;
+  }
+  &:before {
+    right: -30px;
+    border-left-color: #E0F0FF;
+  }
+  &:after {
+    right: -27px;
+    border-left-color: #FFFFFF;
+  }
+}

@@ -5,6 +5,7 @@ import { render } from 'react-dom'
 
 import { WindowHeaderAboutContainer } from './containers/WindowHeaderAboutContainer'
 
+const timeTrackerUrl = require('../images/time-tracker.png');
 
 class About extends Component {
   render() {
@@ -14,7 +15,7 @@ class About extends Component {
 
         <div className='window-container'>
           <div className='about-container'>
-            <img src='../images/time-tracker.png' alt='Time Tracker' />
+            <img src={timeTrackerUrl} alt='Time Tracker' />
 
             <div className='about'>
               <div className='version'>Version 0.0.1</div>
