@@ -5,9 +5,9 @@ class MainWindow {
   constructor() {
 
     this.window = new BrowserWindow({
+      show: false,
       width: 1300,
       height: 800,
-      show: false,
       frame: false,
       minWidth: 800,
       minHeight: 600,

@@ -3,39 +3,29 @@ const isDev = require('electron-is-dev');
 
 const Positioner = require('electron-positioner')
 
-const menubar = require('menubar');
 const path = require('path');
 const electron = require('electron');
 const menuTemplate = require('./menu');
 
 const MainWindow = require('./MainWindow');
 const AboutWindow = require('./AboutWindow');
+const TrayWindow = require('./TrayWindow');
+const TrayIcon = require('./TrayIcon');
 
-const {app, BrowserWindow, ipcMain, Menu} = electron;
+const {app, BrowserWindow, ipcMain, Menu, Tray} = electron;
 
+let tray = null;
 let main = null;
 let about = null;
-
-let mb = menubar({
-  index: 'file://' + path.join(__dirname, '../pages/views/tray_page.html'),
-  preloadWindow: true,
-  tooltip: 'Time Tracker',
-  height: 200,
-  width: 225,
-  icon: path.join(__dirname, '../icons/timeTrackerIcon_22.png')
-});
-
-mb.app.on('quit', () => {
-  console.log('mb.app.on')
-  mb = null;
-});
-
 
 app.on('ready', function () {
   installExtentions();
 
+  tray = new TrayWindow();
   main = new MainWindow();
   about = new AboutWindow();
+
+  new TrayIcon(tray.window);
 
   Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate()) );
 })
@@ -48,7 +38,8 @@ ipcMain.on('quit-app', function() {
 
   main.window.close();
   about.window.close();
-  mb.app.quit();
+  tray.window.close();
+
   app.quit();
 });
 

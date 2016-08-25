@@ -6,10 +6,10 @@ class AboutWindow {
   constructor() {
 
     this.window = new BrowserWindow({
+      show: false,
       width: 300,
       height: 336,
       frame: false,
-      show: false,
       // resizable: false
     })
 
@@ -17,6 +17,10 @@ class AboutWindow {
 
     this.positioner = new Positioner(this.window);
     this.positioner.move('center');
+
+    this.window.on('blur', () => {
+      this.window.hide();
+    });
   }
 }
 

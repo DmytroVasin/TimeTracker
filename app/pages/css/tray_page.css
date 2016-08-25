@@ -1,5 +1,6 @@
 * {
   -webkit-user-select: none;
+  -webkit-app-region: no-drag;
 }
 
 body {
@@ -12,27 +13,12 @@ body {
   cursor: pointer;
 }
 
-
-* {
-  -webkit-app-region: drag;
-}
-span,
-input,
-p {
-  -webkit-app-region: no-drag;
-}
-
 h3 {
   text-align: center;
 }
 
 input.launch {
-  -webkit-app-region: no-drag;
   margin-top: 25px;
-}
-
-.btn {
-  -webkit-app-region: no-drag;
 }
 
 footer {
@@ -58,7 +44,6 @@ footer {
 
 .toolbar-footer {
   border-top: 1px solid #c2c0c2;
-  -webkit-app-region: drag
 }
 
 .toolbar-actions {
@@ -66,7 +51,6 @@ footer {
   margin-bottom: 3px;
   padding-right: 3px;
   padding-left: 3px;
-  -webkit-app-region: drag
 }
 .toolbar-footer .toolbar-actions {
   margin-bottom: 5px;
