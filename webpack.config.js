@@ -3,7 +3,8 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     main: './main.jsx',
-    about: './about.jsx'
+    about: './about.jsx',
+    tray: './tray.jsx'
   },
   context: __dirname + '/browser-app/src/js',
 

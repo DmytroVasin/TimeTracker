@@ -2,16 +2,18 @@
   "utils/mixins";
 
 @import
+  "base/base",
+  "base/sync",
+  "base/navigation";
+
+@import
   "layouts/window/window_header",
-  "layouts/window/about_window";
+  "layouts/window/about_window",
+  "layouts/window/tray_window";
 
 @import
   "utils/offline_modal";
 
-@import
-  "base/base",
-  "base/sync",
-  "base/navigation";
 
 @import
   "layouts/stories",

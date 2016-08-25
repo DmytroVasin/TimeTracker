@@ -4,60 +4,15 @@
     <link rel='stylesheet' type='text/css' href='http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css'>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
 
-    <link rel='stylesheet' href='../css/tray_page.css'>
-
-    <script src='../js/tray_page.js'></script>
+    <script type='text/javascript'>
+      window.ipcRenderer = require('electron').ipcRenderer;
+    </script>
   </head>
 
   <body>
-    <div id='tray-window'>
-      <header class='toolbar toolbar-header'>
-        <div class='toolbar-actions'>
-          <button class='btn btn-default'>
-            <span class='fa fa-bars' id='showMainAppBtn'></span>
-          </button>
+    <div id='react-root'></div>
 
-          <button class='btn btn-default pull-right'>
-            <span class='fa fa-cog' id='showAboutBtn'></span>
-          </button>
-        </div>
-      </header>
-
-      <div class='tray-window-content'>
-
-        <ul class='list-group'>
-          <li class='list-group-item'>
-            <a href='#'>
-              <span class='fa fa-circle' style="color:#fc605b"></span>
-              LA-2150 List item title
-              <span class='list-group-item-counter'>16</span>
-            </a>
-          </li>
-          <li class='list-group-item'>
-            <a href='#'>
-              <span class='fa fa-circle' style="color:#fdbc40"></span>
-              LA-2153 This is so cute story
-              <span class='list-group-item-counter'>23</span>
-            </a>
-          </li>
-          <li class='list-group-item'>
-            <a href='#'>
-              <span class='fa fa-circle' style="color:#34c84a"></span>
-              LA-2150 List item title
-              <span class='list-group-item-counter'>16</span>
-            </a>
-          </li>
-        </ul>
-
-      </div>
-
-
-      <footer class='toolbar toolbar-footer'>
-        <div class='toolbar-actions'>
-          <button class='btn btn-default' id='startBtn'>Start Work</button>
-          <button class='btn btn-negative pull-right' id='quitBtn'>Quit</button>
-        </div>
-      </footer>
-    </div>
+    <script src='http://localhost:8080/browser-app/dist/js/main.js'></script>
+    <!-- <script src='../../../browser-app/dist/js/tray.js'></script> -->
   </body>
 </html>
