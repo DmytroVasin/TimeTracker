@@ -63,7 +63,7 @@ class Tray extends Component {
 
           <footer className='toolbar toolbar-footer'>
             <div className='toolbar-actions'>
-              <button className='btn btn-default' id='startBtn'>Start Work</button>
+              <button className='btn btn-default'>Start Work</button>
               <button className='btn btn-negative pull-right' onClick={this.handleQuitApp}>Quit</button>
             </div>
           </footer>
