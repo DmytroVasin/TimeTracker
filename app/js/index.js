@@ -17,7 +17,9 @@ const {app, BrowserWindow, ipcMain, Menu, Tray} = electron;
 let tray = null;
 let main = null;
 let about = null;
+let trayIcon = null;
 
+app.dock.hide();
 app.on('ready', function () {
   installExtentions();
 
@@ -25,7 +27,7 @@ app.on('ready', function () {
   main = new MainWindow();
   about = new AboutWindow();
 
-  new TrayIcon(tray.window);
+  trayIcon = new TrayIcon(tray.window);
 
   Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate()) );
 })
@@ -76,16 +78,21 @@ ipcMain.on('hide-about-window-event', function() {
   about.window.hide();
 });
 
+// Custom events TRAY WINDOW
+ipcMain.on('update-title-tray-window-event', function(event, seconds) {
+  trayIcon.updateTitle(seconds);
+});
+
 // Only for dev!
 const installExtentions = function () {
-  let home = false;
+  let home = true;
   if(home == true){
     ext_path = '/Users/vasin/Library/Application Support/Google/Chrome/Profile 1/Extensions'
   } else {
     ext_path = '/Users/dv/Library/Application Support/Google/Chrome/Default/Extensions'
   };
-  BrowserWindow.addDevToolsExtension(`${ext_path}/fmkadmapgofadopljbjfkapdkoienihi/0.15.3_0`)
-  BrowserWindow.addDevToolsExtension(`${ext_path}/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.5_0`)
+  BrowserWindow.addDevToolsExtension(`${ext_path}/fmkadmapgofadopljbjfkapdkoienihi/0.15.4_0`)
+  BrowserWindow.addDevToolsExtension(`${ext_path}/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.6_0`)
 }
 
 const uninstallExtentions = function () {

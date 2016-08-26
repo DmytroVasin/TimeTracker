@@ -1,5 +1,3 @@
-import '../../../scss/application.scss'
-
 import React, { Component } from 'react'
 
 import { WindowHeaderMainContainer } from '../../containers/WindowHeaderMainContainer'

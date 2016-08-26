@@ -1,76 +1,19 @@
 import '../scss/application.scss'
 
-import React, { Component } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 
-class Tray extends Component {
+import TrayAppContainer  from './containers/TrayAppContainer.js'
 
-  handleMainAppOpen = () => {
-    ipcRenderer.send('show-main-window-event');
-  }
+import configureTrayStore from './config/configureTrayStore'
 
-  handleAboutOpen = () => {
-    ipcRenderer.send('show-about-window-event');
-  }
+const store = configureTrayStore()
 
-  handleQuitApp = () => {
-    ipcRenderer.send('quit-app');
-  }
+render(
+  <Provider store={store}>
+    <TrayAppContainer />
+  </Provider>,
 
-  render() {
-    return (
-      <div className='window'>
-        <div className='tray-container'>
-          <header className='toolbar toolbar-header'>
-            <div className='toolbar-actions'>
-              <button className='btn btn-default'>
-                <span className='fa fa-bars' onClick={this.handleMainAppOpen}></span>
-              </button>
-
-              <button className='btn btn-default pull-right'>
-                <span className='fa fa-cog' onClick={this.handleAboutOpen}></span>
-              </button>
-            </div>
-          </header>
-
-          <div className='list-group-container'>
-
-            <ul className='list-group'>
-              <li className='list-group-item'>
-                <a href='#'>
-                  <span className='fa fa-circle in_progress'></span>
-                  LA-2150 List item title
-                  <span className='list-group-item-counter'>16</span>
-                </a>
-              </li>
-              <li className='list-group-item'>
-                <a href='#'>
-                  <span className='fa fa-circle done'></span>
-                  LA-2153 This is so cute story
-                  <span className='list-group-item-counter'>23</span>
-                </a>
-              </li>
-              <li className='list-group-item'>
-                <a href='#'>
-                  <span className='fa fa-circle estimated'></span>
-                  LA-2150 List item title
-                  <span className='list-group-item-counter'>16</span>
-                </a>
-              </li>
-            </ul>
-
-          </div>
-
-          <footer className='toolbar toolbar-footer'>
-            <div className='toolbar-actions'>
-              <button className='btn btn-default'>Start Work</button>
-              <button className='btn btn-negative pull-right' onClick={this.handleQuitApp}>Quit</button>
-            </div>
-          </footer>
-        </div>
-      </div>
-    )
-  }
-}
-
-render(<Tray />, document.getElementById('react-root'))
+  document.getElementById('react-root')
+)

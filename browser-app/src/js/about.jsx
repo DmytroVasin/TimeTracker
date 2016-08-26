@@ -8,6 +8,11 @@ import { WindowHeaderAboutContainer } from './containers/WindowHeaderAboutContai
 const timeTrackerUrl = require('../images/time-tracker.png');
 
 class About extends Component {
+
+  getStorage = () => {
+    console.log( localStorage.getItem('reduxState') )
+  }
+
   render() {
     return (
       <div className='window'>
@@ -15,7 +20,7 @@ class About extends Component {
 
         <div className='window-container'>
           <div className='about-container'>
-            <img src={timeTrackerUrl} alt='Time Tracker' />
+            <img src={timeTrackerUrl} alt='Time Tracker' onClick={this.getStorage} />
 
             <div className='about'>
               <div className='version'>Version 0.0.1</div>
