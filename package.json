@@ -10,15 +10,18 @@
   "scripts": {
     "start": "NODE_ENV=development electron ./app/js/index.js",
     "watch": "webpack-dev-server --hot --inline",
-    "start:build": "electron ./app/js/index.js",
-    "build": "webpack --display-error-details"
+    "start:build": "NODE_ENV=production electron ./app/js/index.js",
+    "build": "NODE_ENV=production webpack --display-error-details"
   },
   "dependencies": {
     "electron-devtools-installer": "^2.0.1",
     "electron-is-dev": "^0.1.2",
     "electron-positioner": "^3.0.0",
     "file-loader": "^0.9.0",
+    "font-awesome": "^4.6.3",
+    "font-awesome-webpack": "0.0.4",
     "json-loader": "^0.5.4",
+    "less": "^2.7.1",
     "moment": "^2.14.1",
     "url-loader": "^0.5.7"
   },

@@ -1,4 +1,5 @@
-import '../scss/application.scss'
+require('font-awesome-webpack');
+import '../styles/application.scss'
 
 import React from 'react'
 import { render } from 'react-dom'

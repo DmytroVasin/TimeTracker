@@ -14,9 +14,9 @@ module.exports = {
   },
 
   output: {
-    path: __dirname + '/browser-app/dist/js',
+    path: './browser-app/dist/js',
     filename: '[name].js',
-    publicPath: 'http://localhost:8080/browser-app/dist/js/'
+    publicPath: env === 'production' ? '../../browser-app/dist/js/' : 'http://localhost:8080/browser-app/dist/js/'
   },
   devtool: 'source-map',
   module: {
@@ -31,7 +31,9 @@ module.exports = {
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
-      { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=50000' }
+      { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=50000' },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
     ]
   }
 };

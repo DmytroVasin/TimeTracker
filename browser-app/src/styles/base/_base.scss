@@ -1,8 +1,3 @@
-$to_estimate: #b0b0b0;
-$estimated:   #31bee1;
-$in_progress: #CEC700;
-$done:        #02B137;
-
 html {
   height: 100%;
 }
@@ -11,8 +6,9 @@ body {
   height: 100%;
   color: #333;
   font-size: 14px;
-  font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
   line-height: 1.4em;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 
   #react-root {
     height: 100%;
@@ -25,9 +21,7 @@ body {
   }
 }
 
-
 input, textarea, select, label {
-  box-sizing: border-box;
   font-size: 12px;
 
   &:focus {
