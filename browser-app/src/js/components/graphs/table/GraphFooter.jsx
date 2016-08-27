@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import moment from 'moment'
-import { minutesToHour } from '../../../utils/chartMinutesDisplayer'
+import { minutesToHour } from '../../../utils';
 
 export class GraphFooter extends Component {
 

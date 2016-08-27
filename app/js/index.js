@@ -1,4 +1,5 @@
 // TODO: How to recompile this into ES6?
+
 const isDev = require('electron-is-dev');
 
 const Positioner = require('electron-positioner')
@@ -7,9 +8,10 @@ const path = require('path');
 const electron = require('electron');
 const menuTemplate = require('./menu');
 
-const MainWindow = require('./MainWindow');
-const AboutWindow = require('./AboutWindow');
-const TrayWindow = require('./TrayWindow');
+const MainWindow  = require('../windows/MainWindow');
+const AboutWindow = require('../windows/AboutWindow');
+const TrayWindow  = require('../windows/TrayWindow');
+
 const TrayIcon = require('./TrayIcon');
 
 const {app, BrowserWindow, ipcMain, Menu, Tray} = electron;
@@ -79,13 +81,13 @@ ipcMain.on('hide-about-window-event', function() {
 });
 
 // Custom events TRAY WINDOW
-ipcMain.on('update-title-tray-window-event', function(event, seconds) {
-  trayIcon.updateTitle(seconds);
+ipcMain.on('update-title-tray-window-event', function(event, title) {
+  trayIcon.updateTitle(title);
 });
 
 // Only for dev!
 const installExtentions = function () {
-  let home = true;
+  let home = false;
   if(home == true){
     ext_path = '/Users/vasin/Library/Application Support/Google/Chrome/Profile 1/Extensions'
   } else {

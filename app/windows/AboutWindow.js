@@ -5,6 +5,8 @@ const Positioner = require('electron-positioner');
 class AboutWindow {
   constructor() {
 
+    let htmlPath = 'file://' + path.join(__dirname, '..') + '/pages/about_page.html'
+
     this.window = new BrowserWindow({
       show: false,
       width: 300,
@@ -13,7 +15,7 @@ class AboutWindow {
       // resizable: false
     })
 
-    this.window.loadURL('file://' + path.join(__dirname, '..') + '/pages/views/about_page.html');
+    this.window.loadURL(htmlPath);
 
     this.positioner = new Positioner(this.window);
     this.positioner.move('center');

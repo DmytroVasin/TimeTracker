@@ -3,7 +3,9 @@ import '../scss/application.scss'
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-import { WindowHeaderAboutContainer } from './containers/WindowHeaderAboutContainer'
+import { version } from './utils';
+
+import { WindowHeaderAbout } from './components/window/WindowHeaderAbout'
 
 const timeTrackerUrl = require('../images/time-tracker.png');
 
@@ -16,14 +18,14 @@ class About extends Component {
   render() {
     return (
       <div className='window'>
-        <WindowHeaderAboutContainer />
+        <WindowHeaderAbout />
 
         <div className='window-container'>
           <div className='about-container'>
             <img src={timeTrackerUrl} alt='Time Tracker' onClick={this.getStorage} />
 
             <div className='about'>
-              <div className='version'>Version 0.0.1</div>
+              <div className='version'>Version { version() }</div>
 
               <p><strong>Time Tracker</strong></p>
               <p>App is based on Electron, React, Redux + Rails as a back end.</p>

@@ -37,9 +37,9 @@ export function resetTimer() {
     type: 'RESET_TIMER'
   }
 }
-export function increaseTimer(minutes) {
+export function updateTimer(minutes) {
   return {
-    type: 'INCREASE_TIMER',
+    type: 'UPDATE_TIMER',
     payload: minutes
   }
 }

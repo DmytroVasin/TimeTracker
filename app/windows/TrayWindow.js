@@ -4,7 +4,7 @@ const { BrowserWindow } = require('electron');
 class TrayWindow {
   constructor() {
 
-    let htmlPath = path.join('file://', path.join(__dirname, '../pages/views/tray_page.html'));
+    let htmlPath = 'file://' + path.join(__dirname, '..') + '/pages/tray_page.html'
 
     this.window = new BrowserWindow({
       show: false,

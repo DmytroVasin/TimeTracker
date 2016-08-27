@@ -7,7 +7,7 @@ const initialState = {
   },
 
   timer: {
-    secondsPassed: null
+    minutesPassed: null
   }
 
 }
@@ -25,9 +25,9 @@ const reducer = function(state=initialState, action) {
 
 
     case 'RESET_TIMER':
-      return { ...state, timer: { secondsPassed: null }}
-    case 'INCREASE_TIMER':
-      return { ...state, timer: { secondsPassed: state.timer.secondsPassed + action.payload }}
+      return { ...state, timer: { minutesPassed: null }}
+    case 'UPDATE_TIMER':
+      return { ...state, timer: { minutesPassed: state.timer.minutesPassed + action.payload }}
 
 
     default:

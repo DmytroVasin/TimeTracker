@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 
+const env = process.env.NODE_ENV || 'development';
 module.exports = {
   entry: {
     main: './main.jsx',
@@ -25,17 +26,12 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'stage-0', 'react']
+          presets: ['react', 'es2015', 'stage-0']
         }
       },
-      {
-        test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader'
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        loader: 'url-loader?limit=50000'
-      }
+      { test: /\.json$/, loader: 'json-loader' },
+      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
+      { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=50000' }
     ]
   }
 };

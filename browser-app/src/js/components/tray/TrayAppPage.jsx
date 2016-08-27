@@ -20,8 +20,8 @@ export class TrayAppPage extends Component {
     ipcRenderer.send('quit-app');
   }
 
-  handleUpdateTrayTitle = (seconds) => {
-    ipcRenderer.send('update-title-tray-window-event', seconds);
+  handleUpdateTrayTitle = (minutes) => {
+    ipcRenderer.send('update-title-tray-window-event', minutes);
   }
 
   render() {

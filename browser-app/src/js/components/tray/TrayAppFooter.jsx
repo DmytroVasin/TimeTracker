@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { convertMinutesToTrayFromat } from '../../utils';
 
 export class TrayAppFooter extends Component {
   constructor(props) {
@@ -11,18 +12,18 @@ export class TrayAppFooter extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.props.handleUpdateTrayTitle( newProps.timer.secondsPassed )
+    this.props.handleUpdateTrayTitle( convertMinutesToTrayFromat(newProps.timer.minutesPassed) )
   }
 
   handleStartWorking = () => {
-    this.props.actions.increaseTimer(0)
+    this.props.actions.updateTimer(0)
 
     let interval = setInterval(
       () => {
         let newSeconds = this.state.seconds + 1
 
         if (newSeconds % 5 == 0) {
-          this.props.actions.increaseTimer(60)
+          this.props.actions.updateTimer(60)
         }
 
         this.setState({ seconds: newSeconds })
@@ -46,7 +47,7 @@ export class TrayAppFooter extends Component {
         let newSeconds = this.state.seconds + 1
 
         if (newSeconds % 5 == 0) {
-          this.props.actions.increaseTimer(60)
+          this.props.actions.updateTimer(60)
         }
 
         this.setState({ seconds: newSeconds })

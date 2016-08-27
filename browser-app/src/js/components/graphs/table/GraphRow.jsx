@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 import moment from 'moment'
-import { minutesToHour } from '../../../utils/chartMinutesDisplayer'
+import { minutesToHour } from '../../../utils';
 
 import { GraphCell } from './GraphCell'
 

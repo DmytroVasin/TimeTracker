@@ -1,6 +1,6 @@
 {
   "name": "your-app",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "main": "app/js/index.js",
   "scripts": {
     "start": "electron ./app/js/index.js",
@@ -8,9 +8,11 @@
     "watch": "webpack-dev-server --hot --inline"
   },
   "dependencies": {
+    "electron-devtools-installer": "^2.0.1",
     "electron-is-dev": "^0.1.2",
     "electron-positioner": "^3.0.0",
     "file-loader": "^0.9.0",
+    "json-loader": "^0.5.4",
     "moment": "^2.14.1",
     "url-loader": "^0.5.7"
   },

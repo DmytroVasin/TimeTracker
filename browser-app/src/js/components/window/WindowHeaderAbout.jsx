@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { WindowHeader } from '../components/window/WindowHeader.jsx'
+import { WindowHeader } from './WindowHeader'
 
-export class WindowHeaderAboutContainer extends Component {
+export class WindowHeaderAbout extends Component {
 
   handleWindowClose = () => {
     ipcRenderer.send('hide-about-window-event');
