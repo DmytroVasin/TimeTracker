@@ -3,7 +3,7 @@ import axios from 'axios'
 export function fetchStories() {
   return (dispatch) => {
     dispatch(fetchStoriesRequest())
-    axios.get('https://peaceful-dawn-52251.herokuapp.com/stories.json')
+    axios.get('https://time-tracker-api.herokuapp.com/stories.json')
     .then(function(response) {
       dispatch(fetchStoriesSuccess(response.data))
     })

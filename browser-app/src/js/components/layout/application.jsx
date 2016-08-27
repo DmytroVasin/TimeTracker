@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { WindowHeaderMain } from '../window/WindowHeaderMain'
+import { WindowHeader } from '../window/WindowHeader'
 import { Navigation } from './navigation.jsx'
 import { ModalRoot } from './modalRoot.jsx'
 import Spinner from '../layout/spinner.jsx';
@@ -9,7 +9,7 @@ export default class Application extends Component {
   render() {
     return (
       <div className='window'>
-        <WindowHeaderMain />
+        <WindowHeader title='Time Tracker' close='true' minimize='true' maximize='true' />
 
         <ModalRoot />
         <Navigation />

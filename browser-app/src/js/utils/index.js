@@ -1,6 +1,6 @@
 // TODO: ES6
 
-const pjson = require('../../../../package.json');
+const pJson = require('../../../../package.json');
 
 /**
  * Convert null, 0, 240 value minutes to
@@ -41,6 +41,6 @@ export function convertMinutesToTrayFromat(minutes) {
  * Get app version
  * @return {String}
  */
-export function version() {
-  return pjson.version;
+export function ecoSystemJson() {
+  return pJson;
 }

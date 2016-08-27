@@ -19,7 +19,7 @@ export function setSprintFilter(filter) {
 export function fetchStories() {
   return (dispatch) => {
     dispatch(fetchStoriesRequest())
-    axios.get('https://peaceful-dawn-52251.herokuapp.com/stories.json')
+    axios.get('https://time-tracker-api.herokuapp.com/stories.json')
     .then(function(response) {
       dispatch(fetchStoriesSuccess(response.data))
     })
@@ -51,7 +51,7 @@ function fetchStoriesFailure(error) {
 export function fetchPeriods() {
   return (dispatch) => {
     dispatch(fetchPeriodsRequest())
-    axios.get('https://peaceful-dawn-52251.herokuapp.com/periods.json')
+    axios.get('https://time-tracker-api.herokuapp.com/periods.json')
     .then(function(response) {
       dispatch(fetchPeriodsSuccess(response.data))
     })
@@ -83,7 +83,7 @@ function fetchPeriodsFailure(error) {
 export function fetchStory(id) {
   return (dispatch, getState) => {
     dispatch(fetchStoryRequest())
-    axios.get(`https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json`)
+    axios.get(`https://time-tracker-api.herokuapp.com/stories/${id}.json`)
     .then(function(response) {
       dispatch(fetchStorySuccess(response.data))
     })
@@ -115,7 +115,7 @@ function fetchStoryFailure(error) {
 export function deleteStory(id) {
   return (dispatch) => {
     dispatch(deleteStoryRequest())
-    axios.delete(`https://peaceful-dawn-52251.herokuapp.com/stories/${id}.json`)
+    axios.delete(`https://time-tracker-api.herokuapp.com/stories/${id}.json`)
     .then(function(response) {
       dispatch(deleteStorySuccess(response.data))
     })
@@ -147,7 +147,7 @@ function deleteStoryFailure(error) {
 export function createStory(story) {
   return (dispatch) => {
     dispatch(createStoryRequest())
-    axios.post('https://peaceful-dawn-52251.herokuapp.com/stories.json', { title: story.title, description: story.description, period_id: story.period_id, story_type: story.story_type })
+    axios.post('https://time-tracker-api.herokuapp.com/stories.json', { title: story.title, description: story.description, period_id: story.period_id, story_type: story.story_type })
     .then(function(response) {
       dispatch(createStorySuccess(response.data))
       dispatch(push('/'))
@@ -180,7 +180,7 @@ function createStoryFailure(error) {
 export function updateStory(story) {
   return (dispatch) => {
     dispatch(updateStoryRequest())
-    axios.patch(`https://peaceful-dawn-52251.herokuapp.com/stories/${story.id}.json`, { title: story.title, description: story.description, period_id: story.period_id, story_type: story.story_type })
+    axios.patch(`https://time-tracker-api.herokuapp.com/stories/${story.id}.json`, { title: story.title, description: story.description, period_id: story.period_id, story_type: story.story_type })
     .then(function(response) {
       dispatch(updateStorySuccess(response.data))
       dispatch(push('/'))
@@ -213,7 +213,7 @@ function updateStoryFailure(error) {
 export function fetchGraph() {
   return (dispatch) => {
     dispatch(fetchGraphRequest())
-    axios.get('https://peaceful-dawn-52251.herokuapp.com/graph.json')
+    axios.get('https://time-tracker-api.herokuapp.com/graph.json')
     .then(function(response) {
       dispatch(fetchGraphSuccess(response.data))
     })
@@ -292,7 +292,7 @@ function setDialogTasksList(tasks) {
 
 export function createTask(storyId, task) {
   return (dispatch) => {
-    axios.post(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks.json`, { minutes: task.minutes, comment: task.comment, task_date: task.task_date })
+    axios.post(`https://time-tracker-api.herokuapp.com/stories/${storyId}/tasks.json`, { minutes: task.minutes, comment: task.comment, task_date: task.task_date })
     .then(function(response) {
       dispatch(createTaskSuccess(response.data))
       dispatch(addTaskToGraphTable({ storyId: storyId, task: response.data }))
@@ -324,7 +324,7 @@ function addTaskToGraphTable(object) {
 
 export function deleteTask(storyId, taskId) {
   return (dispatch) => {
-    axios.delete(`https://peaceful-dawn-52251.herokuapp.com/stories/${storyId}/tasks/${taskId}.json`)
+    axios.delete(`https://time-tracker-api.herokuapp.com/stories/${storyId}/tasks/${taskId}.json`)
     .then(function(response) {
       dispatch(deleteTaskSuccess(response.data))
       dispatch(deleteTaskFromGraphTable({ storyId: storyId, task: response.data }))
