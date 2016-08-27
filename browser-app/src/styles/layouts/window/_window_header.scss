@@ -4,11 +4,11 @@
   text-align: center;
   border-top: 1px solid #f3f1f3;
   border-bottom: 1px solid #b1aeb1;
-  -webkit-user-select: none;
-  cursor: default;
 
   .window-controls-title {
+    -webkit-user-select: none;
     -webkit-app-region: drag;
+    cursor: default;
     cursor: default;
     font-size: 13px;
     line-height: 21px;
