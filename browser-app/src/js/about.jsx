@@ -15,6 +15,11 @@ class About extends Component {
     console.log( localStorage.getItem('reduxState') )
   }
 
+  openGithubExternal = () => {
+    // TODO: Create correct link.
+    shell.openExternal('https://github.com/DmytroVasin');
+  }
+
   render() {
     return (
       <div className='window'>
@@ -34,7 +39,7 @@ class About extends Component {
               <p>{ ecoSystemJson().buildAbout.apiApp }</p>
 
               <div className='copyright'>
-                <div>Github: <span>{ ecoSystemJson().buildAbout.appRepo }</span></div>
+                <div>Github: <span onClick={this.openGithubExternal}>{ ecoSystemJson().buildAbout.appRepo }</span></div>
               </div>
             </div>
           </div>
