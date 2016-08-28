@@ -11,6 +11,7 @@ class AboutWindow {
       width: 300,
       height: 336,
       frame: false,
+      backgroundColor: '#E4ECEF',
       // resizable: false
     })
 

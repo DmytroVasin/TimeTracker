@@ -27,14 +27,14 @@ export class WindowHeader extends React.Component {
 
   render() {
     return (
-      <div className='window-controls' onDoubleClick={ this.handleWindowToggleMaximize }>
-        <div className='window-controls-actions'>
+      <div className='window-header' onDoubleClick={ this.handleWindowToggleMaximize }>
+        <div className='window-header-controls'>
           <div className={`btn ${this.props.close    ? 'close'    : 'disabled' }`}    onClick={ this.handleWindowClose } />
           <div className={`btn ${this.props.minimize ? 'minimize' : 'disabled' }`} onClick={ this.handleWindowMinimize } />
           <div className={`btn ${this.props.maximize ? 'maximize' : 'disabled' }`} onClick={ this.handleWindowToggleMaximize } />
         </div>
 
-        <div className='window-controls-title'>{this.props.title}</div>
+        <div className='window-header-title'>{this.props.title}</div>
       </div>
     );
   }

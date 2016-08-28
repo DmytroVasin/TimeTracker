@@ -13,6 +13,7 @@ class MainWindow {
       frame: false,
       minWidth: 800,
       minHeight: 600,
+      backgroundColor: '#E4ECEF',
     })
 
     this.window.loadURL(htmlPath);

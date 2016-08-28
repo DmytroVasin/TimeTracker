@@ -31,7 +31,7 @@ export class TrayAppPage extends Component {
   render() {
     return (
       <div className='window'>
-        <div className='tray-container'>
+        <div className='window-container tray-window'>
           <TrayAppHeader handleMainAppOpen={this.handleMainAppOpen}
                          handleAboutOpen={this.handleAboutOpen} />
 
@@ -43,9 +43,8 @@ export class TrayAppPage extends Component {
                          timer={this.props.timer}
                          handleQuitApp={this.handleQuitApp}
                          handleUpdateTrayTitle={this.handleUpdateTrayTitle}/>
+          <TraySpinner />
         </div>
-
-        <TraySpinner />
       </div>
     )
   }

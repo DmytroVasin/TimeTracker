@@ -1,13 +1,50 @@
-.window-controls {
+html {
+  // height: 100%;
+}
+
+body {
+  // height: 100%;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.4em;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  background: #e4ecef;
+
+  #react-root {
+    // height: 100%;
+
+
+    .window {
+      // position: relative;
+      .window-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 21px;
+      }
+
+      .window-container {
+
+      }
+    }
+  }
+}
+
+
+.window-header {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+
   background-image: linear-gradient(to bottom, #e9e9e9 0, #EFEFEF 100%);
   color: #4d494d;
   text-align: center;
   border-top: 1px solid #f3f1f3;
   border-bottom: 1px solid #b1aeb1;
 
-  .window-controls-title {
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
+
+  .window-header-title {
     cursor: default;
     cursor: default;
     font-size: 13px;
@@ -15,10 +52,10 @@
     text-align: center;
   }
 
-  .window-controls-actions {
+  .window-header-controls {
     position: absolute;
     left: 4px;
-    top: 5px;
+    top: 4px;
     display: flex;
 
     .btn {
@@ -30,34 +67,34 @@
       background-size: 12px 12px;
     }
   }
-  .window-controls-actions .btn.close {
+  .window-header-controls .btn.close {
     background-image: url(../images/close-normal.png);
   }
-  .window-controls-actions:hover .btn.close {
+  .window-header-controls:hover .btn.close {
     background-image: url(../images/close-hover.png);
   }
-  .window-controls-actions .btn.close:active {
+  .window-header-controls .btn.close:active {
     background-image: url(../images/close-press.png);
   }
-  .window-controls-actions .btn.minimize {
+  .window-header-controls .btn.minimize {
     background-image: url(../images/min-normal.png);
   }
-  .window-controls-actions:hover .btn.minimize {
+  .window-header-controls:hover .btn.minimize {
     background-image: url(../images/min-hover.png);
   }
-  .window-controls-actions .btn.minimize:active {
+  .window-header-controls .btn.minimize:active {
     background-image: url(../images/min-press.png);
   }
-  .window-controls-actions .btn.maximize {
+  .window-header-controls .btn.maximize {
     background-image: url(../images/max-normal.png);
   }
-  .window-controls-actions:hover .btn.maximize {
+  .window-header-controls:hover .btn.maximize {
     background-image: url(../images/max-hover.png);
   }
-  .window-controls-actions .btn.maximize:active {
+  .window-header-controls .btn.maximize:active {
     background-image: url(../images/max-press.png);
   }
-  .window-controls-actions .btn.disabled {
+  .window-header-controls .btn.disabled {
     background-image: url(../images/disabled.png);
   }
 }

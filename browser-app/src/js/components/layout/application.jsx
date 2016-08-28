@@ -6,19 +6,19 @@ import { ModalRoot } from './modalRoot.jsx'
 import Spinner from '../layout/spinner.jsx';
 
 export default class Application extends Component {
+  // <ModalRoot />
   render() {
     return (
       <div className='window'>
         <WindowHeader title='Time Tracker' close='true' minimize='true' maximize='true' />
 
-        <ModalRoot />
-        <Navigation />
-
         <div className='window-container'>
-          {this.props.children}
-        </div>
+          <Navigation />
 
-        <Spinner />
+          {this.props.children}
+
+          <Spinner />
+        </div>
       </div>
     );
   }

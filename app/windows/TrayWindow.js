@@ -11,6 +11,7 @@ class TrayWindow {
       height: 200,
       width: 225,
       frame: false,
+      backgroundColor: '#E4ECEF',
       // resizable: false,
     });
 
