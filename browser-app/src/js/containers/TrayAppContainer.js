@@ -7,7 +7,7 @@ import { TrayAppPage } from '../components/tray/TrayAppPage.jsx';
 
 function mapStateToProps(store) {
   return {
-    stories: store.storyList.stories,
+    storyList: store.storyList,
     timer: store.timer
   }
 }

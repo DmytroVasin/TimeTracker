@@ -1,162 +1,109 @@
 .tray-container {
   height: 100%;
   background-color: white;
+  font-size: 0.9em;
 
-  .toolbar {
-    .toolbar-actions {
-      .btn {
-        &.btn-default {
+  header, footer {
+    padding: 5px;
+    min-height: 22px;
+    box-shadow: inset 0 1px 0 #f5f4f5;
+    background-color: #e8e6e8;
+    background-image: linear-gradient(to bottom,#e8e6e8 0,#d1cfd1 100%);
 
-        }
-        &.btn-negative {
+    button {
+      cursor: pointer;
+      padding: 3px 8px;
+      box-shadow: 0 1px 1px rgba(0,0,0,.06);
+      color: #333;
+      background-color: #fcfcfc;
+      background-image: linear-gradient(to bottom,#fcfcfc 0,#f1f1f1 100%);
+      border: 1px solid transparent;
+      border-color: #c2c0c2 #c2c0c2 #a19fa1;
+      border-radius: 4px;
 
+      &.pull-right {
+        float: right;
+      }
+
+      &:focus {
+        outline: 0;
+        box-shadow: none
+      }
+
+      &:active {
+        background-color: #ddd;
+        background-image: none
+      }
+
+      &.btn-negative {
+        color: #fff;
+        text-shadow: 0 1px 1px rgba(0,0,0,.1);
+        border-color: #fb2f29 #fb2f29 #fb1710;
+        background-color: #fd918d;
+        background-image: linear-gradient(to bottom,#fd918d 0,#fb2f29 100%);
+
+        &:active {
+          background-color: #fc605b;
+          background-image: linear-gradient(to bottom,#fc605b 0,#fb1710 100%);
         }
       }
+
+      &.resetButton {
+        margin-left: 5px;
+      }
     }
-
-    &.toolbar-header {}
-    &.toolbar-footer {}
   }
 
-  .list-group-container {
-    // TODO:
-  }
-
-
-  .btn {
-    cursor: pointer;
+  header {
+    border-bottom: 1px solid #c2c0c2
   }
 
   footer {
+    border-top: 1px solid #c2c0c2;
+
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
   }
 
-  .toolbar {
-    min-height: 22px;
-    box-shadow: inset 0 1px 0 #f5f4f5;
-    background-color: #e8e6e8;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#e8e6e8),color-stop(100%,#d1cfd1));
-    background-image: -webkit-linear-gradient(top,#e8e6e8 0,#d1cfd1 100%);
-    background-image: linear-gradient(to bottom,#e8e6e8 0,#d1cfd1 100%)
-  }
-  .toolbar-header {
-    border-bottom: 1px solid #c2c0c2
-  }
+  .list-group-container {
+    .list-group {
+      .list-group-item {
+        display: flex;
 
-  .toolbar-footer {
-    border-top: 1px solid #c2c0c2;
-  }
+        padding: 9px 5px 5px 10px;
+        color: #5c5c5c;
+        border-bottom: 1px solid #EEE;
 
-  .toolbar-actions {
-    margin-top: 4px;
-    margin-bottom: 3px;
-    padding-right: 3px;
-    padding-left: 3px;
-  }
-  .toolbar-footer .toolbar-actions {
-    margin-bottom: 5px;
-  }
+        .fa-circle {
+          line-height: inherit;
 
-  .toolbar-actions>.btn,.toolbar-actions>.btn-group {
-    margin-left: 4px;
-    margin-right: 4px
-  }
-  .clearfix:after,.toolbar-actions:after,.toolbar:after {
-    clear: both
-  }
+          &.in_progress { color: $in_progress; }
+          &.done { color: $done; }
+          &.to_estimate { color: $to_estimate; }
+          &.estimated { color: $estimated; }
+        }
 
-  .toolbar-actions:after,.toolbar-actions:before,.toolbar:after,.toolbar:before {
-    display: table;
-    content: " "
-  }
-  .btn {
-    display: inline-block;
-    padding: 3px 8px;
-    margin-bottom: 0;
-    line-height: 1.4;
-    white-space: nowrap;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.06)
-  }
+        .list-group-item-counter {
+          background: #F7F7F7;
+          border-radius: 3em;
+          color: #333333;
+          min-width: 13px;
+          padding: 0 3px;
+          text-align: center;
+          border: 1px solid #838383;
+          font-size: 0.8em;
+        }
 
-  .btn:focus {
-    outline: 0;
-    box-shadow: none
-  }
-
-  .btn-default {
-    color: #333;
-    background-color: #fcfcfc;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fcfcfc),color-stop(100%,#f1f1f1));
-    background-image: -webkit-linear-gradient(top,#fcfcfc 0,#f1f1f1 100%);
-    background-image: linear-gradient(to bottom,#fcfcfc 0,#f1f1f1 100%);
-    border-color: #c2c0c2 #c2c0c2 #a19fa1
-  }
-
-  .btn-default:active {
-    background-color: #ddd;
-    background-image: none
-  }
-
-  .btn-negative {
-    color: #fff;
-    text-shadow: 0 1px 1px rgba(0,0,0,.1)
-  }
-
-  .btn-negative {
-    border-color: #fb2f29 #fb2f29 #fb1710;
-    background-color: #fd918d;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fd918d),color-stop(100%,#fb2f29));
-    background-image: -webkit-linear-gradient(top,#fd918d 0,#fb2f29 100%);
-    background-image: linear-gradient(to bottom,#fd918d 0,#fb2f29 100%)
-  }
-
-  .btn-negative:active {
-    background-color: #fc605b;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fc605b),color-stop(100%,#fb1710));
-    background-image: -webkit-linear-gradient(top,#fc605b 0,#fb1710 100%);
-    background-image: linear-gradient(to bottom,#fc605b 0,#fb1710 100%)
-  }
-
-  .pull-right {
-    float: right;
-    margin-left: 10px;
-  }
-
-  .list-group-container .list-group .list-group-item a {
-    display: block;
-    line-height: 34px;
-    text-decoration: none;
-    padding: 0 12px 0 12px;
-    font-size: 12px;
-    color: #5c5c5c;
-    border-bottom: 1px solid #eee;
-  }
-
-  .list-group-item a .fa-circle {
-    padding-right: 5px;
-
-    &.in_progress { color: $in_progress; }
-    &.done { color: $done; }
-    &.to_estimate { color: $to_estimate; }
-    &.estimated { color: $estimated; }
-  }
-
-  .list-group-item a .list-group-item-counter {
-    float: right;
-    margin-top: 8px;
-    padding: 0 6px;
-    line-height: 18px;
-    font-size: 11px;
-    background: #464e59;
-    border-radius: 9px;
-    color: #999;
-    background: #fcfcfc;
-    box-shadow: inset 0 0 0 1px #dcdcdc;
+        .story-title {
+          flex: 1;
+          padding: 0 8px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
   }
 }

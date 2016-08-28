@@ -67,36 +67,34 @@ export class TrayAppFooter extends Component {
     let workingBtns = null;
 
     if( this.state.seconds == 0 && !this.state.interval ) {
-      workingBtns = <button className='btn btn-default'>
+      workingBtns = <button>
                       <span className='fa fa-connectdevelop' onClick={this.handleStartWorking}></span>
                     </button>
     } else if (!this.state.interval) {
       workingBtns = [
-        <button key='continue' className='btn btn-default'>
+        <button key='continue'>
           <span className='fa fa-play-circle' onClick={this.handleUnPauseTimer}></span>
         </button>,
-        <button key='reset' className='btn btn-default'>
+        <button key='reset' className='resetButton'>
           <span className='fa fa-power-off' onClick={this.handleResetTimer}></span>
         </button>
       ]
     } else {
       workingBtns = [
-        <button key='stop' className='btn btn-default'>
+        <button key='stop'>
           <span className='fa fa-pause-circle' onClick={this.handlePauseTimer}></span>
         </button>,
-        <button key='reset' className='btn btn-default'>
+        <button key='reset' className='resetButton'>
           <span className='fa fa-power-off' onClick={this.handleResetTimer}></span>
         </button>
       ]
     }
 
     return (
-          <footer className='toolbar toolbar-footer'>
-            <div className='toolbar-actions'>
-              { workingBtns }
-              <button className='btn btn-negative pull-right' onClick={this.props.handleQuitApp}>Quit</button>
-            </div>
-          </footer>
+      <footer>
+        { workingBtns }
+        <button className='btn-negative pull-right' onClick={this.props.handleQuitApp}>Quit</button>
+      </footer>
     )
   }
 }
