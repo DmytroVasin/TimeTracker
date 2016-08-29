@@ -18,7 +18,7 @@ export class TrayStoryList extends Component {
         <li key={story.id}  className='list-group-item'>
           <span className={`fa fa-circle ${story.story_type}`}></span>
           <p className='story-title'>{story.title}</p>
-          <span className='list-group-item-counter'>{story.id}</span>
+          <span className='list-group-item-counter'>{story.spent_time}</span>
         </li>
       )
     })

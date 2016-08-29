@@ -18,7 +18,7 @@ class TrayWindow {
     this.window.loadURL(htmlPath);
 
     this.window.on('blur', () => {
-      // this.window.hide();
+      this.window.hide();
     });
   }
 }
