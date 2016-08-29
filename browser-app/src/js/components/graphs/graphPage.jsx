@@ -15,8 +15,8 @@ export class GraphPage extends Component {
     }
 
     return (
-      <div id='contentWrapper'>
-        <div className='contentBox'>
+      <div id='app-box-wrapper'>
+        <div className='app-box'>
 
           <InlineDialog graphDialog={this.props.graphDialog}
                         createTask={this.props.actions.createTask}

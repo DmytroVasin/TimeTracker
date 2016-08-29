@@ -44,7 +44,7 @@ export class StoriesWrapper extends React.Component {
       <div id="stories-wrapper">
 
         <div className="stories-main">
-          { storyPeriods }
+            { storyPeriods }
         </div>
 
       </div>

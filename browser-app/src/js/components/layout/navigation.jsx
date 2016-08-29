@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export class Navigation extends Component {
   render() {
     return (
-      <div id='header'>
+      <div id='app-header'>
         <span className='project_name'>Lost Angels Project</span>
 
         <ul>

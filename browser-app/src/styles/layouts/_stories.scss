@@ -145,7 +145,6 @@
 
 // "components/stories/story_wrapper"
 .stories-main {
-  padding: 10px 20px 5px;
 
   .stories-period {
     .period-title {
@@ -164,20 +163,20 @@
 
 // stories_container
 .stories-container {
-  height: calc(100vh - 62px);
-  width: 100%;
-  display: table;
+  // height: calc(100vh - 62px);
+  // width: 100%;
+  // display: table;
 
   #stories-sidebar {
-    display: table-cell;
-    vertical-align: top;
-    width: 215px;
+    // display: table-cell;
+    // vertical-align: top;
+    // width: 215px;
     // width: 30%;
   }
 
   #stories-wrapper {
-    display: table-cell;
-    vertical-align: top;
+    // display: table-cell;
+    // vertical-align: top;
     // width: 70%;
   }
 }

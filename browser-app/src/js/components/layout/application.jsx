@@ -15,7 +15,9 @@ export default class Application extends Component {
         <div className='window-container'>
           <Navigation />
 
-          {this.props.children}
+          <div id='app-content'>
+            {this.props.children}
+          </div>
 
           <Spinner />
         </div>

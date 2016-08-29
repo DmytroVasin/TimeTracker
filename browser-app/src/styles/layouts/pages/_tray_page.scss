@@ -3,6 +3,10 @@
   font-size: 0.9em;
 
   header, footer {
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+
     padding: 5px;
     min-height: 22px;
     box-shadow: inset 0 1px 0 #f5f4f5;
@@ -25,7 +29,6 @@
       }
 
       &:focus {
-        outline: 0;
         box-shadow: none
       }
 
@@ -54,20 +57,29 @@
   }
 
   header {
-    border-bottom: 1px solid #c2c0c2
+    top: 0;
+    border-bottom: 1px solid #c2c0c2;
   }
 
   footer {
-    border-top: 1px solid #c2c0c2;
-
-    position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
+    border-top: 1px solid #c2c0c2;
   }
 
   .list-group-container {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 33px 0;
+
+    .no-story {
+      padding: 9px 5px 5px 10px;
+      color: #5C5C5C;
+    }
+
     .list-group {
+      height: 100%;
+      overflow: auto;
+
       .list-group-item {
         display: flex;
 

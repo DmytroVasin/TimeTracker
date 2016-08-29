@@ -8,7 +8,7 @@ class TrayWindow {
 
     this.window = new BrowserWindow({
       show: false,
-      height: 200,
+      height: 210,
       width: 225,
       frame: false,
       backgroundColor: '#E4ECEF',
@@ -18,7 +18,7 @@ class TrayWindow {
     this.window.loadURL(htmlPath);
 
     this.window.on('blur', () => {
-      this.window.hide();
+      // this.window.hide();
     });
   }
 }

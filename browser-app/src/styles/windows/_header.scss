@@ -1,0 +1,65 @@
+.window-header {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+
+  background-image: linear-gradient(to bottom, #e9e9e9 0, #EFEFEF 100%);
+  color: #4D494D;
+  text-align: center;
+  border-top: 1px solid #F3F3F3;
+  border-bottom: 1px solid #B1AEB1;
+
+
+  .window-header-title {
+    cursor: default;
+    cursor: default;
+    font-size: 13px;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  .window-header-controls {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    display: flex;
+
+    .btn {
+      cursor: pointer;
+      margin: 0 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 100%;
+      background-size: 12px 12px;
+    }
+  }
+  .window-header-controls .btn.close {
+    background-image: url(../images/close-normal.png);
+  }
+  .window-header-controls:hover .btn.close {
+    background-image: url(../images/close-hover.png);
+  }
+  .window-header-controls .btn.close:active {
+    background-image: url(../images/close-press.png);
+  }
+  .window-header-controls .btn.minimize {
+    background-image: url(../images/min-normal.png);
+  }
+  .window-header-controls:hover .btn.minimize {
+    background-image: url(../images/min-hover.png);
+  }
+  .window-header-controls .btn.minimize:active {
+    background-image: url(../images/min-press.png);
+  }
+  .window-header-controls .btn.maximize {
+    background-image: url(../images/max-normal.png);
+  }
+  .window-header-controls:hover .btn.maximize {
+    background-image: url(../images/max-hover.png);
+  }
+  .window-header-controls .btn.maximize:active {
+    background-image: url(../images/max-press.png);
+  }
+  .window-header-controls .btn.disabled {
+    background-image: url(../images/disabled.png);
+  }
+}

@@ -19,8 +19,8 @@ export class EditStoryPage extends Component {
     }
 
     return (
-      <div id='contentWrapper'>
-        <div className='contentBox'>
+      <div id='app-box-wrapper'>
+        <div className='app-box'>
 
           <StoryForm story={story}
                      periods={this.props.periods}

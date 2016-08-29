@@ -3,8 +3,8 @@
 @import 'utils/mixins';
 
 @import 'windows/base';
+@import 'windows/header';
 
-@import 'base/base';
 @import 'base/sync';
 @import 'base/navigation';
 
@@ -19,3 +19,4 @@
 @import 'layouts/stories';
 @import 'layouts/graph_page';
 @import 'layouts/spinner';
+@import 'layouts/app_box';
