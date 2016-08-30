@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 export class TrayStoryList extends Component {
 
   render() {
-    const { stories, error } = this.props.storyList
+    const { stories, error, loading } = this.props.storyList
 
     if (error) {
       return <div className='list-group-container'><div>Error: {error}</div></div>
     }
 
-    if (!stories.length) {
+    if (!stories.length && !loading ) {
       return <div className='list-group-container'><div className='no-story'>No story in progress...</div></div>
     }
 
