@@ -1,0 +1,7 @@
+{
+  "name": "TimeTracker",
+  "version": "0.0.1",
+  "description": "App is based on Electron, React, Redux + Rails as a back end.",
+  "main": "app/js/index.js",
+  "author": "Dmytro Vasin <dmytro.vasin@gmail.com>"
+}
