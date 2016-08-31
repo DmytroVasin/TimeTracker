@@ -2,8 +2,9 @@
 
 const isDev = (process.env.NODE_ENV === 'development');
 
+let installExtension = null;
 if ( isDev ) {
-  const installExtension = require('electron-devtools-installer');
+  installExtension = require('electron-devtools-installer');
 }
 
 const Positioner = require('electron-positioner')
