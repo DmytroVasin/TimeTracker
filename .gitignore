@@ -7,4 +7,5 @@ npm-debug.log
 browser-app/dist/
 node_modules/
 releases/
+dist/
 .DS_Store

@@ -3,5 +3,24 @@
   "version": "0.0.1",
   "license": "MIT",
   "description": "App is based on Electron, React, Redux + Rails as a back end.",
-  "author": "Dmytro Vasin <dmytro.vasin@gmail.com>"
+  "author": "Dmytro Vasin <dmytro.vasin@gmail.com>",
+  "main": "electron-app/js/index.js",
+  "dependencies": {
+    "electron-positioner": "^3.0.0",
+    "file-loader": "^0.9.0",
+    "font-awesome": "^4.6.3",
+    "font-awesome-webpack": "0.0.4",
+    "json-loader": "^0.5.4",
+    "less": "^2.7.1",
+    "moment": "^2.14.1",
+    "url-loader": "^0.5.7",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.5.2",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
+    "electron-devtools-installer": "^2.0.1"
+  }
 }
