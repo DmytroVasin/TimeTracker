@@ -1,7 +1,10 @@
 // TODO: How to recompile this into ES6?
 
 const isDev = (process.env.NODE_ENV === 'development');
-const installExtension = require('electron-devtools-installer');
+
+if ( isDev ) {
+  const installExtension = require('electron-devtools-installer');
+}
 
 const Positioner = require('electron-positioner')
 

@@ -10,19 +10,14 @@
     "url": "https://github.com/DmytroVasin/XXX.git"
   },
   "scripts": {
-    "start": "NODE_ENV=development electron ./electron-app/js/index.js --enable-logging",
-    "watch": "webpack-dev-server --hot --inline",
-    "start:localbuild": "NODE_ENV=production electron ./electron-app/js/index.js",
-    "localbuild": "NODE_ENV=production webpack --display-error-details",
-    "clean:osx": "rm -rf ./releases",
-    "build:osx": "npm run clean:osx && electron-packager . \"TimeTracker\" --out=releases/osx  --platform=darwin --arch=x64 --icon=app/build/time-tracker.icns --ignore=node_modules/electon-* --ignore=browser-app/src/*.* --ignore=.gitignore --ignore=webpack.config.js",
-    "package:osx": "asar pack releases/osx/TimeTracker-darwin-x64/TimeTracker.app/Contents/Resources/app releases/osx/TimeTracker-darwin-x64/TimeTracker.app/Contents/Resources/app.asar",
+    "compile": "NODE_ENV=production webpack --display-error-details",
+    "start": "NODE_ENV=production electron ./electron-app/js/index.js",
+    "compile:hot": "webpack-dev-server --hot --inline",
+    "start:hot": "NODE_ENV=development electron ./electron-app/js/index.js --enable-logging",
     "postinstall": "install-app-deps",
-    "dist:osx": "build --osx",
-    "publish:osx": "build --x64 --publish never"
+    "publish:osx": "build --x64"
   },
   "dependencies": {
-    "asar": "^0.12.3",
     "electron-positioner": "^3.0.0",
     "file-loader": "^0.9.0",
     "font-awesome": "^4.6.3",
