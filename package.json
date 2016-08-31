@@ -10,11 +10,13 @@
     "url": "https://github.com/DmytroVasin/XXX.git"
   },
   "scripts": {
-    "compile": "NODE_ENV=production webpack --display-error-details",
+    "compile": "NODE_ENV=production webpack --config webpack.config.js --display-error-details",
     "start": "NODE_ENV=production electron ./electron-app/js/index.js",
-    "compile:hot": "webpack-dev-server --hot --inline",
+    "compile:hot": "NODE_ENV=development webpack-dev-server --config webpack.config.js --hot --inline",
     "start:hot": "NODE_ENV=development electron ./electron-app/js/index.js --enable-logging",
     "postinstall": "install-app-deps",
+    "publish:compile": "webpack --config webpack.config.pro.js --display-error-details",
+    "publish:electron": "cp -R electron-app/ app/electron-app/",
     "publish:osx": "build --x64"
   },
   "dependencies": {
