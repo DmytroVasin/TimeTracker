@@ -1,23 +1,21 @@
 var webpack = require('webpack');
-// var nodeExternals = require('webpack-node-externals');
+// TODO: what is that?
+var nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: {
-    'index.js': './electron-app/js/index.js',
-    'about_page.html': './electron-app/pages/about_page.html',
-    'time_tracker_page.html': './electron-app/pages/time_tracker_page.html',
-    'tray_page.html': './electron-app/pages/tray_page.html'
+    'index': './electron-app/js/index.js'
   },
 
   output: {
-    path: __dirname + '/app/electron-app',
-    filename: '[name]'
+    path: __dirname + '/app/electron-app/js',
+    filename: 'index.js'
   },
 
   resolve: {
-    extensions: ['', '.js', '.html']
+    extensions: ['', '.js']
   },
-  // externals: [nodeExternals()],
+  externals: [nodeExternals()],
   module: {
     loaders: [
       {
@@ -26,9 +24,6 @@ module.exports = {
         query: {
           presets: ['es2015', 'stage-0']
         }
-      }, {
-        test: /\.html$/,
-        loader: "html"
       }
     ]
   },

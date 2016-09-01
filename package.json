@@ -10,15 +10,14 @@
     "url": "https://github.com/DmytroVasin/TimeTracker.git"
   },
   "scripts": {
-    "test": "webpack --config webpack.config.electon.js --display-error-details",
-    "clean": "rm -rf app/electron-app/ && rm -rf app/browser-app/",
+    "clean": "rm -rf app/electron-app/js/ && rm -rf app/browser-app/",
     "compile": "NODE_ENV=production webpack --config webpack.config.js --display-error-details",
     "start": "NODE_ENV=production electron ./electron-app/js/index.js",
     "compile:hot": "NODE_ENV=development webpack-dev-server --config webpack.config.js --hot --inline",
     "start:hot": "NODE_ENV=development electron ./electron-app/js/index.js",
     "postinstall": "install-app-deps",
     "publish:compile": "webpack --config webpack.config.pro.js --display-error-details",
-    "publish:electron": "cp -R electron-app/ app/electron-app/",
+    "publish:electron": "webpack --config webpack.config.electon.js --display-error-details",
     "publish:osx": "build --x64"
   },
   "dependencies": {
@@ -29,14 +28,15 @@
     "json-loader": "^0.5.4",
     "less": "^2.7.1",
     "moment": "^2.14.1",
-    "url-loader": "^0.5.7",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.5.2",
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "url-loader": "^0.5.7",
+    "webpack-node-externals": "^1.3.3"
   },
   "devDependencies": {
     "axios": "^0.13.1",
@@ -48,9 +48,8 @@
     "css-loader": "^0.24.0",
     "electron": "^1.3.4",
     "electron-builder": "^6.3.1",
-    "electron-packager": "^7.7.0",
     "electron-devtools-installer": "^2.0.1",
-    "firebase": "^3.2.0",
+    "electron-packager": "^7.7.0",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
