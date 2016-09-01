@@ -17,7 +17,7 @@ class About extends Component {
 
   openGithubExternal = () => {
     // TODO: Create correct link.
-    shell.openExternal('https://github.com/DmytroVasin');
+    shell.openExternal( ecoSystemJson().buildAbout.appRepo );
   }
 
   render() {
