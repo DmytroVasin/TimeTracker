@@ -64,9 +64,7 @@
     "appId": "hr.creaticon.eatodo",
     "category": "public.app-category.productivity",
     "dmg": {
-      "title": "TIme Tracker Installation",
-      "icon": "build/icon.icns",
-      "background": "build/background.png",
+      "title": "Time Tracker Installation",
       "contents": [
         {
           "x": 410,

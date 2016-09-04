@@ -71,7 +71,8 @@ ipcMain.on('create-notification-window-event', function(event, options) {
   Notifier.notify({
     title: options.title,
     message: options.message,
-    icon: path.join(__dirname, '../icons/app-icon.png'),
+    icon: path.join(__dirname, '../icons/icon-256.png'),
+    sound: 'Glass',
     wait: true
   });
 });

@@ -7,7 +7,7 @@ import { ecoSystemJson } from './utils';
 
 import { WindowHeader } from './components/window/WindowHeader'
 
-const timeTrackerUrl = require('../images/time-tracker.png');
+const timeTrackerUrl = require('../images/icon-128.png');
 
 class About extends Component {
 

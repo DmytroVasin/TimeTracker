@@ -16,6 +16,7 @@ export class TrayAppFooter extends Component {
   }
 
   handleStartWorking = () => {
+    this.props.handleWindowNotification({ title: 'Time Tracker NotificatioN:', message: 'Lorem it has long been known that the readable content' })
     this.props.actions.updateTimer(0)
 
     let interval = setInterval(
@@ -24,9 +25,6 @@ export class TrayAppFooter extends Component {
 
         if (newSeconds % 5 == 0) {
           this.props.actions.updateTimer(60)
-        }
-        if (newSeconds % 30 == 0) {
-          this.props.handleWindowNotification({ title: 'Time Tracker NotificatioN:', message: 'Lorem it has long been known that the readable content' })
         }
 
         this.setState({ seconds: newSeconds })

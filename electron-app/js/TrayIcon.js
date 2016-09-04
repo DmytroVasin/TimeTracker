@@ -5,7 +5,7 @@ const Positioner = require('electron-positioner');
 class TrayIcon {
   constructor(trayWindow) {
 
-    let iconPath = path.join(__dirname, '../icons/app-icon.png')
+    let iconPath = path.join(__dirname, '../icons/icon-22.png')
 
     this.trayIcon = new Tray(iconPath);
     this.trayIcon.setToolTip('Time Tracker');
