@@ -25,6 +25,9 @@ export class TrayAppFooter extends Component {
         if (newSeconds % 5 == 0) {
           this.props.actions.updateTimer(60)
         }
+        if (newSeconds % 30 == 0) {
+          this.props.handleWindowNotification({ title: 'Time Tracker NotificatioN:', message: 'Lorem it has long been known that the readable content' })
+        }
 
         this.setState({ seconds: newSeconds })
       },
@@ -68,7 +71,7 @@ export class TrayAppFooter extends Component {
 
     if( this.state.seconds == 0 && !this.state.interval ) {
       workingBtns = <button>
-                      <span className='fa fa-connectdevelop' onClick={this.handleStartWorking}></span>
+                      <span className='fa fa-play-circle' onClick={this.handleStartWorking}></span>
                     </button>
     } else if (!this.state.interval) {
       workingBtns = [

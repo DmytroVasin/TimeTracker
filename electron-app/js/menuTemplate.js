@@ -1,8 +1,8 @@
 const electron = require('electron');
 
-const {app, shell} = electron;
+const {app, shell, ipcMain} = electron;
 
-let Menu = function() {
+let menuTemplate = function(mainWindow) {
   return [
     {
       label: 'Application',
@@ -20,8 +20,8 @@ let Menu = function() {
       submenu: [
         {
           label: 'About App',
-          click: function() {
-            // app.emit('show-about')
+          click: function () {
+            ipcMain.emit('show-about-window-event')
           }
         },
         {
@@ -66,4 +66,4 @@ let Menu = function() {
   ]
 }
 
-module.exports = Menu
+module.exports = menuTemplate

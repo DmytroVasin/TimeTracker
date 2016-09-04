@@ -11,12 +11,7 @@ const timeTrackerUrl = require('../images/time-tracker.png');
 
 class About extends Component {
 
-  getStorage = () => {
-    console.log( localStorage.getItem('reduxState') )
-  }
-
   openGithubExternal = () => {
-    // TODO: Create correct link.
     shell.openExternal( ecoSystemJson().buildAbout.appRepo );
   }
 
@@ -27,7 +22,7 @@ class About extends Component {
 
         <div className='window-container'>
           <div className='about-container'>
-            <img src={timeTrackerUrl} alt='Time Tracker' onClick={this.getStorage} />
+            <img src={timeTrackerUrl} alt='Time Tracker' />
 
             <div className='about'>
               <div className='version'>Version { ecoSystemJson().version }</div>

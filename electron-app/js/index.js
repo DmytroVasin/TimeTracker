@@ -7,11 +7,12 @@ if ( isDev ) {
   installExtension = require('electron-devtools-installer');
 }
 
-const Positioner = require('electron-positioner')
+const Positioner = require('electron-positioner');
+const Notifier = require('node-notifier');
 
 const path = require('path');
 const electron = require('electron');
-const menuTemplate = require('./menu');
+const menuTemplate = require('./menuTemplate');
 
 const MainWindow  = require('../windows/MainWindow');
 const AboutWindow = require('../windows/AboutWindow');
@@ -36,7 +37,7 @@ app.on('ready', function () {
 
   trayIcon = new TrayIcon(tray.window);
 
-  Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate()) );
+  Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate(main)) );
 })
 
 
@@ -46,7 +47,6 @@ ipcMain.on('quit-app', function() {
   main.window.close();
   about.window.close();
   tray.window.close();
-
   app.quit();
 });
 
@@ -64,6 +64,16 @@ ipcMain.on('show-about-window-event', function() {
 
   this.positioner = new Positioner(about.window);
   this.positioner.move('center');
+});
+
+// Custom events NOTIFICATION WINDOW
+ipcMain.on('create-notification-window-event', function(event, options) {
+  Notifier.notify({
+    title: options.title,
+    message: options.message,
+    icon: path.join(__dirname, '../icons/app-icon.png'),
+    wait: true
+  });
 });
 
 

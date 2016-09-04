@@ -16,7 +16,6 @@ export class TrayAppPage extends Component {
   }
 
   handleAboutOpen = () => {
-    localStorage.setItem('reduxState', 'MUAHAHA')
     ipcRenderer.send('show-about-window-event');
   }
 
@@ -26,6 +25,10 @@ export class TrayAppPage extends Component {
 
   handleUpdateTrayTitle = (minutes) => {
     ipcRenderer.send('update-title-tray-window-event', minutes);
+  }
+
+  handleWindowNotification = (options) => {
+    ipcRenderer.send('create-notification-window-event', options);
   }
 
   render() {
@@ -42,7 +45,8 @@ export class TrayAppPage extends Component {
           <TrayAppFooter actions={this.props.actions}
                          timer={this.props.timer}
                          handleQuitApp={this.handleQuitApp}
-                         handleUpdateTrayTitle={this.handleUpdateTrayTitle}/>
+                         handleUpdateTrayTitle={this.handleUpdateTrayTitle}
+                         handleWindowNotification={this.handleWindowNotification}/>
           <TraySpinner />
         </div>
       </div>
