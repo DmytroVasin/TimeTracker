@@ -56,7 +56,7 @@ let menuTemplate = function(mainWindow) {
         {
           label: 'View Licence',
           click: function() {
-            shell.openExternal('https://github.com/kalpetros/hawkpass-desktop/blob/master/LICENSE');
+            shell.openExternal('https://github.com/DmytroVasin/TimeTracker/blob/master/LICENSE');
           }
         },
         { type: 'separator' },
