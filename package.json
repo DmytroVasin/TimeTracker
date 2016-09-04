@@ -10,15 +10,16 @@
     "url": "https://github.com/DmytroVasin/TimeTracker.git"
   },
   "scripts": {
-    "clean": "rm -rf app/electron-app/js/ && rm -rf app/browser-app/",
+    "clean": "rm -rf app/electron-app/ && rm -rf app/browser-app/ && rm -rf dist/",
     "compile": "NODE_ENV=production webpack --config webpack.config.js --display-error-details",
     "start": "NODE_ENV=production electron ./electron-app/js/index.js",
     "compile:hot": "NODE_ENV=development webpack-dev-server --config webpack.config.js --hot --inline",
     "start:hot": "NODE_ENV=development electron ./electron-app/js/index.js",
     "postinstall": "install-app-deps",
     "publish:compile": "webpack --config webpack.config.pro.js --display-error-details",
-    "publish:electron": "webpack --config webpack.config.electon.js --display-error-details",
-    "publish:osx": "build --x64"
+    "publish:electron": "webpack --config webpack.config.electon.js --display-error-details && cp -R electron-app/icons/ app/electron-app/icons/ && cp -R electron-app/pages/ app/electron-app/pages/",
+    "publish:osx": "build --x64",
+    "publish:dist": "npm run clean && npm run publish:compile && npm run publish:electron && npm run publish:osx"
   },
   "dependencies": {
     "electron-positioner": "^3.0.0",
@@ -62,16 +63,19 @@
     "appId": "hr.creaticon.eatodo",
     "category": "public.app-category.productivity",
     "dmg": {
+      "title": "TIme Tracker Installation",
+      "icon": "build/icon.icns",
+      "background": "build/background.png",
       "contents": [
         {
           "x": 410,
-          "y": 150,
+          "y": 125,
           "type": "link",
           "path": "/Applications"
         },
         {
           "x": 130,
-          "y": 150,
+          "y": 125,
           "type": "file"
         }
       ]
