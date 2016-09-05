@@ -1,5 +1,3 @@
-// TODO: How to recompile this into ES6?
-
 const isDev = (process.env.NODE_ENV === 'development');
 
 let installExtension = null;
@@ -84,7 +82,6 @@ ipcMain.on('update-title-tray-window-event', function(event, title) {
 });
 
 const installExtentions = function () {
-  // TODO: How to forse it to use import instead of require?
   installExtension['default']( installExtension['REDUX_DEVTOOLS'] )
   installExtension['default']( installExtension['REACT_DEVELOPER_TOOLS'] )
 }

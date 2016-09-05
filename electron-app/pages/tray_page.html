@@ -14,7 +14,7 @@
     <script>
       var bundlePath = '../../browser-app/dist/js/tray.js';
 
-      if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === 'development') {
         bundlePath = 'http://localhost:8080/browser-app/dist/js/tray.js';
       }
 

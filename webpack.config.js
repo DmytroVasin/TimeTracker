@@ -1,7 +1,5 @@
 var webpack = require('webpack');
 
-const env = process.env.NODE_ENV || 'development';
-
 module.exports = {
   entry: {
     main: './main.jsx',
@@ -17,7 +15,7 @@ module.exports = {
   output: {
     path: './browser-app/dist/js',
     filename: '[name].js',
-    publicPath: env === 'production' ? '../../browser-app/dist/js/' : 'http://localhost:8080/browser-app/dist/js/'
+    publicPath: 'http://localhost:8080/browser-app/dist/js/'
   },
   devtool: 'source-map',
   module: {
