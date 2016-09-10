@@ -28,7 +28,13 @@ export class TrayAppPage extends Component {
   }
 
   handleWindowNotification = (options) => {
-    ipcRenderer.send('create-notification-window-event', options);
+    let notif = new window.Notification( options.title, {
+      body: options.message
+    })
+
+    notif.onclick = function () {
+      window.ipcRenderer.send('show-main-window-event')
+    }
   }
 
   render() {

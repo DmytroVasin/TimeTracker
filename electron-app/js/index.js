@@ -6,7 +6,6 @@ if ( isDev ) {
 }
 
 const Positioner = require('electron-positioner');
-const Notifier = require('node-notifier');
 
 const path = require('path');
 const electron = require('electron');
@@ -62,17 +61,6 @@ ipcMain.on('show-about-window-event', function() {
 
   this.positioner = new Positioner(about.window);
   this.positioner.move('center');
-});
-
-// Custom events NOTIFICATION WINDOW
-ipcMain.on('create-notification-window-event', function(event, options) {
-  Notifier.notify({
-    title: options.title,
-    message: options.message,
-    icon: path.join(__dirname, '../icons/icon-256.png'),
-    sound: 'Glass',
-    wait: true
-  });
 });
 
 
