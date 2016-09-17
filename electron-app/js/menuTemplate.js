@@ -25,12 +25,6 @@ let menuTemplate = function(mainWindow) {
           }
         },
         {
-          label: 'Toggle Developer Tools', accelerator: 'F12',
-          click: function (item, focusedWindow) {
-            focusedWindow.webContents.toggleDevTools();
-          }
-        },
-        {
           label: 'Reload', accelerator: 'CmdOrCtrl+R',
           click: function (item, focusedWindow) {
             focusedWindow.reload();

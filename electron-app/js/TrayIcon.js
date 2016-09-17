@@ -10,7 +10,7 @@ class TrayIcon {
     this.trayIcon = new Tray(iconPath);
     this.trayIcon.setToolTip('Time Tracker');
 
-    this.trayIcon.on('click', (_e, bounds) => {
+    this.trayIcon.on('click', (e, bounds) => {
       if ( trayWindow.isVisible() ) {
         trayWindow.hide();
       } else {
@@ -25,8 +25,6 @@ class TrayIcon {
   updateTitle(title) {
     this.trayIcon.setTitle(title)
   }
-
-
 }
 
 module.exports = TrayIcon;

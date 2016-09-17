@@ -7,7 +7,7 @@ import { ecoSystemJson } from './utils';
 
 import { WindowHeader } from './components/window/WindowHeader'
 
-const timeTrackerUrl = require('../images/icon-128.png');
+const timeTrackerIcon = require('../images/icon-128.png');
 
 class About extends Component {
 
@@ -22,7 +22,7 @@ class About extends Component {
 
         <div className='window-container'>
           <div className='about-container'>
-            <img src={timeTrackerUrl} alt='Time Tracker' />
+            <img src={timeTrackerIcon} alt='Time Tracker' />
 
             <div className='about'>
               <div className='version'>Version { ecoSystemJson().version }</div>

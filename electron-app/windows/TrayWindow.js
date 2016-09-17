@@ -12,7 +12,7 @@ class TrayWindow {
       width: 225,
       frame: false,
       backgroundColor: '#E4ECEF',
-      // resizable: false,
+      // resizable: false
     });
 
     this.window.loadURL(htmlPath);
