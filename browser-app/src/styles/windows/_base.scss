@@ -8,6 +8,8 @@ html {
 }
 
 body {
+  -webkit-app-region: no-drag;
+
   height: 100%;
   color: #333;
   font-size: 14px;

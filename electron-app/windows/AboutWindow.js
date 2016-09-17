@@ -1,5 +1,6 @@
 const path = require('path');
 const { BrowserWindow } = require('electron');
+const Positioner = require('electron-positioner');
 
 class AboutWindow {
   constructor() {
@@ -19,6 +20,11 @@ class AboutWindow {
 
     this.window.on('blur', () => {
       this.window.hide();
+    });
+
+    this.window.on('show', () => {
+      let positioner = new Positioner(this.window);
+      positioner.move('center');
     });
   }
 }

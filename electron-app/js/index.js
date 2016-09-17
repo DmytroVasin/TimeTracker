@@ -5,9 +5,6 @@ if ( isDev ) {
   installExtension = require('electron-devtools-installer');
 }
 
-const Positioner = require('electron-positioner');
-
-const path = require('path');
 const electron = require('electron');
 const menuTemplate = require('./menuTemplate');
 
@@ -17,7 +14,7 @@ const TrayWindow  = require('../windows/TrayWindow');
 
 const TrayIcon = require('./TrayIcon');
 
-const {app, BrowserWindow, ipcMain, Menu, Tray} = electron;
+const {app, ipcMain, Menu} = electron;
 
 let tray = null;
 let main = null;
@@ -39,8 +36,6 @@ app.on('ready', function () {
 
 
 ipcMain.on('quit-app', function() {
-  console.log('QUIT APP ...')
-
   main.window.close();
   about.window.close();
   tray.window.close();
@@ -58,9 +53,6 @@ ipcMain.on('show-main-window-event', function() {
 // Custom events ABOUT WINDOW
 ipcMain.on('show-about-window-event', function() {
   about.window.show();
-
-  this.positioner = new Positioner(about.window);
-  this.positioner.move('center');
 });
 
 

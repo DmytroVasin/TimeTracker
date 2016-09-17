@@ -4,7 +4,7 @@ const { BrowserWindow } = require('electron');
 class MainWindow {
   constructor() {
 
-    let htmlPath = 'file://' + path.join(__dirname, '..') + '/pages/time_tracker_page.html'
+    let htmlPath = 'file://' + path.join(__dirname, '..') + '/pages/main_page.html'
 
     this.window = new BrowserWindow({
       show: false,
@@ -17,10 +17,6 @@ class MainWindow {
     })
 
     this.window.loadURL(htmlPath);
-
-    this.window.webContents.on('did-finish-load', () => {
-      // this.window.show();
-    });
   }
 }
 

@@ -1,3 +1,4 @@
+// npm-check -u
 var webpack = require('webpack');
 
 module.exports = {

@@ -4,7 +4,6 @@
   "license": "MIT",
   "description": "App is based on Electron, React, Redux + Rails as a back end.",
   "author": "Dmytro Vasin <dmytro.vasin@gmail.com>",
-  "main": "electron-app/js/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/DmytroVasin/TimeTracker.git"
